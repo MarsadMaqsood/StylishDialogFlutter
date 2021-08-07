@@ -36,7 +36,32 @@ Simple Stylish Dialog with title and content text
     );
     
 ### Progress Dialog
+Progress dialog without title and content text
 
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.PROGRESS,
+        titleText: 'This is title',
+        contentText: 'This is content text',
+    );
+    
+Progress dialog with only title
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.PROGRESS,
+        titleText: 'This is title',
+        contentText: 'This is content text',
+    );
+    
+Progress dialog with title and content text
+    
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.PROGRESS,
+        titleText: 'This is title',
+        contentText: 'This is content text',
+    );
 
 ### Success Dialog
 Success dialog without title and content text
