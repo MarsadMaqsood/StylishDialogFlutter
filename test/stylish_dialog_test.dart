@@ -29,7 +29,7 @@ void main() {
                 child: new MaterialApp(
                     home: new StylishDialog(
                   context: context,
-                  alertType: StylishDialog.NORMAL,
+                  alertType: StylishDialog.PROGRESS,
                   titleText: 'This is title',
                   contentText: 'This is content text',
                 )));

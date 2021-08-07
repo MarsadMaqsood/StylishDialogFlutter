@@ -116,6 +116,7 @@ class _StylishDialogState extends State<StylishDialog>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: Text(
             '${(widget.titleText == null ? '' : widget.titleText)}',
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -128,6 +129,7 @@ class _StylishDialogState extends State<StylishDialog>
               const EdgeInsets.only(top: 6.0, left: 8, right: 8, bottom: 12),
           child: Text(
             '${(widget.contentText == null ? '' : widget.contentText)}',
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -155,6 +157,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 10.0, left: 8, right: 8, bottom: 8),
                 child: Text(
                   '${(widget.titleText == null ? '' : widget.titleText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -169,6 +172,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 6.0, left: 8, right: 8, bottom: 12),
                 child: Text(
                   '${(widget.contentText == null ? '' : widget.contentText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -217,6 +221,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 10.0, left: 8, right: 8, bottom: 8),
                 child: Text(
                   '${(widget.titleText == null ? '' : widget.titleText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -231,6 +236,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 6.0, left: 8, right: 8, bottom: 12),
                 child: Text(
                   '${(widget.contentText == null ? '' : widget.contentText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -265,6 +271,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 10.0, left: 8, right: 8, bottom: 8),
                 child: Text(
                   '${(widget.titleText == null ? '' : widget.titleText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -279,6 +286,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 6.0, left: 8, right: 8, bottom: 12),
                 child: Text(
                   '${(widget.contentText == null ? '' : widget.contentText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -313,6 +321,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 10.0, left: 8, right: 8, bottom: 8),
                 child: Text(
                   '${(widget.titleText == null ? '' : widget.titleText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -327,6 +336,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 6.0, left: 8, right: 8, bottom: 12),
                 child: Text(
                   '${(widget.contentText == null ? '' : widget.contentText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -373,6 +383,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 10.0, left: 8, right: 8, bottom: 8),
                 child: Text(
                   '${(widget.titleText == null ? '' : widget.titleText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -387,6 +398,7 @@ class _StylishDialogState extends State<StylishDialog>
                     top: 6.0, left: 8, right: 8, bottom: 12),
                 child: Text(
                   '${(widget.contentText == null ? '' : widget.contentText)}',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

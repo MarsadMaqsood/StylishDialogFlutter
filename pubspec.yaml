@@ -1,6 +1,6 @@
 name: stylish_dialog
-description: Stylish Alert Dialogs for Flutter.
-version: 0.0.3
+description: A collection of stylish animated dialogs like Normal, Progress, Success, Info, Warning, and Error for flutter.
+version: 0.0.3+1
 homepage: https://github.com/MarsadMaqsood/StylishDialogFlutter.git
 
 environment:
@@ -14,7 +14,3 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-executables:
-  codecov:
-    token: 25ddd5a4-9fd3-444c-9d5b-d50723eec215
