@@ -3,30 +3,31 @@ import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class StylishDialog extends StatefulWidget {
+  // ignore: non_constant_identifier_names
   static final int NORMAL = 1;
+  // ignore: non_constant_identifier_names
   static final int PROGRESS = 2;
+  // ignore: non_constant_identifier_names
   static final int SUCCESS = 3;
+  // ignore: non_constant_identifier_names
   static final int INFO = 4;
+  // ignore: non_constant_identifier_names
   static final int WARNING = 5;
+  // ignore: non_constant_identifier_names
   static final int ERROR = 6;
 
   StylishDialog({
     Key? key,
+    required this.context,
     required this.alertType,
     this.titleText,
     this.contentText,
-    this.itemBuilder,
-    this.controller,
-    required this.context,
   }) : super(key: key);
 
+  final BuildContext? context;
   final int? alertType;
   String? titleText;
   String? contentText;
-  final IndexedWidgetBuilder? itemBuilder;
-
-  final AnimationController? controller;
-  final BuildContext? context;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -73,13 +74,6 @@ class _StylishDialogState extends State<StylishDialog>
     parent: _errorAnimController,
     curve: Curves.fastOutSlowIn,
   );
-
-  @override
-  void initState() {
-    super.initState();
-    widget.titleText ??= '';
-    widget.contentText ??= '';
-  }
 
   @override
   void dispose() {

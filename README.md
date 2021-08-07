@@ -2,13 +2,141 @@
 
 Stylish Alert Dialogs for Flutter.
 
-## Getting Started
+## ⭐  Installing
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+    dependencies:
+        stylish_dialog: ^0.0.3
+        
+## ⚡ Import
+    import 'package:stylish_dialog/stylish_dialog.dart';
+    
+## 📙 How To Use
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+    context:
+    alertType:
+    titleText:
+    contentText:
+    
+#### Alert Type
+    StylishDialog.NORMAL
+    StylishDialog.PROGRESS
+    StylishDialog.SUCCESS
+    StylishDialog.INFO
+    StylishDialog.WARNING
+    StylishDialog.ERROR
+    
+### Simple Dialog
+Simple Stylish Dialog with title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.NORMAL,
+        titleText: 'This is title',
+        contentText: 'This is content text',
+    );
+    
+### Progress Dialog
+
+
+### Success Dialog
+Success dialog without title and content text
+    
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.SUCCESS,
+    );
+    
+Success dialog with only title
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.SUCCESS,
+        titleText: 'Wow',
+    );
+
+Success Dialog with title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.SUCCESS,
+        titleText: 'Wow',
+        contentText: 'Task completed',
+    );
+    
+### Info Dialog
+Info Dialog without title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.INFO,
+    ),
+    
+
+Info Dialog with only title
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.INFO,
+        titleText: 'You know',
+    ),
+
+Info Dialog with title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.INFO,
+        titleText: 'You know',
+        contentText: 'This is an amazing dialog',
+    ),
+
+### Warning Dialog
+Warning Dialog without title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.WARNING,
+    );
+
+Warning Dialog with only title
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.WARNING,
+        titleText: 'Wait',
+    );
+
+
+Warning Dialog with title and content text
+    
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.WARNING,
+        titleText: 'Wait',
+        contentText: 'Are you sure you want to delete',
+    );
+    
+### Error Dialog
+Error Dialog without title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.ERROR,
+    );
+
+Error Dialog with only title
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.ERROR,
+        titleText: 'Oops',
+    );
+
+Error Dialog with title and content text
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.ERROR,
+        titleText: 'Oops',
+        contentText: 'Task Failed',
+    );
+    
