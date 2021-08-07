@@ -14,3 +14,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+codecov:
+  token: 25ddd5a4-9fd3-444c-9d5b-d50723eec215
