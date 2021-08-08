@@ -200,7 +200,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     builder: (context) {
                       return StylishDialog(
                         context: context,
-                        alertType: StylishDialog.SUCCESS,
+                        alertType: StylishDialog.INFO,
                         titleText: 'You know',
                         contentText: 'Sun rises in the east',
                       );

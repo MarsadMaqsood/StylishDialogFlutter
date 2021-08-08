@@ -5,7 +5,7 @@ Stylish Alert Dialogs for Flutter.
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.3
+        stylish_dialog: ^0.0.3+1
         
 ## ⚡ Import
     import 'package:stylish_dialog/stylish_dialog.dart';
