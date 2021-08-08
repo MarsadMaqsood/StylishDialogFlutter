@@ -7,7 +7,7 @@ Stylish Alert Dialogs for Flutter.
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.3+1
+        stylish_dialog: ^0.0.4
         
 ## ⚡ Import
     import 'package:stylish_dialog/stylish_dialog.dart';
@@ -18,6 +18,28 @@ Stylish Alert Dialogs for Flutter.
     alertType:
     titleText:
     contentText:
+    confirmText:
+    cancelText:
+    confirmPressEvent:
+    cancelPressEvent:
+
+#### Prperties
+`context → BuildContext`
+
+`alertType → int`
+
+`titleText → String`
+
+`contentText → String`
+
+`confirmText → String`
+
+`cancelText → String`
+
+`confirmPressEvent → void Function ()`
+
+`cancelPressEvent → void Function ()`
+
     
 #### Alert Type
     StylishDialog.NORMAL
@@ -26,6 +48,15 @@ Stylish Alert Dialogs for Flutter.
     StylishDialog.INFO
     StylishDialog.WARNING
     StylishDialog.ERROR
+    
+#### Press Event
+    confirmPressEvent: (){
+        
+    }
+    
+    cancelPressEvent: (){
+        
+    }
     
 ### Simple Dialog
 Simple Stylish Dialog with title and content text
@@ -166,4 +197,20 @@ Error Dialog with title and content text
         titleText: 'Oops',
         contentText: 'Task Failed',
     );
+    
+### Success Dialog 
+Success Dialog with click
+
+    StylishDialog(
+        context: context,
+        alertType: StylishDialog.SUCCESS,
+        titleText: 'Wow',
+        contentText: 'You did it',
+        confirmText: 'Dismiss',
+        confirmPressEvent: () {
+            //Dismiss stylish dialog
+            Navigator.of(context).pop();
+        },
+    );
+
     

@@ -22,12 +22,20 @@ class StylishDialog extends StatefulWidget {
     required this.alertType,
     this.titleText,
     this.contentText,
+    this.confirmText,
+    this.cancelText,
+    this.confirmPressEvent,
+    this.cancelPressEvent,
   }) : super(key: key);
 
   final BuildContext? context;
   final int? alertType;
   String? titleText;
   String? contentText;
+  String? confirmText;
+  String? cancelText;
+  final VoidCallback? confirmPressEvent;
+  final VoidCallback? cancelPressEvent;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -86,6 +94,11 @@ class _StylishDialogState extends State<StylishDialog>
 
   @override
   Widget build(BuildContext context) {
+    //Default values of Confirm Button Text
+    widget.confirmText ??= 'Confirm';
+    //Default values of Cancel Button Text
+    widget.cancelText ??= 'Cancel';
+
     return Dialog(
       key: (widget.key == null ? key : widget.key),
       shape: RoundedRectangleBorder(
@@ -103,40 +116,32 @@ class _StylishDialogState extends State<StylishDialog>
                       ? stylishInfoContentBox()
                       : widget.alertType == StylishDialog.WARNING
                           ? stylishWarningContentBox()
+                          // : stylishProgressContentBox()),
                           : stylishErrorContentBox()),
     );
   }
 
   stylishContentBox() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
-          child: Text(
-            '${(widget.titleText == null ? '' : widget.titleText)}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (widget.titleText != null) titleTextWidget(widget.titleText),
+          if (widget.contentText != null) contentTextWidget(widget.contentText),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.cancelPressEvent != null)
+                pressButtonWidget(
+                    widget.cancelPressEvent, Colors.red, widget.cancelText),
+              if (widget.confirmPressEvent != null)
+                pressButtonWidget(
+                    widget.confirmPressEvent, Colors.teal, widget.confirmText),
+            ],
           ),
-        ),
-        Padding(
-          padding:
-              const EdgeInsets.only(top: 6.0, left: 8, right: 8, bottom: 12),
-          child: Text(
-            '${(widget.contentText == null ? '' : widget.contentText)}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -151,35 +156,20 @@ class _StylishDialogState extends State<StylishDialog>
             color: Colors.teal,
           ),
         ),
-        (widget.titleText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 10.0, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  '${(widget.titleText == null ? '' : widget.titleText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              )
-            : Text('')),
-        (widget.contentText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 6.0, left: 8, right: 8, bottom: 12),
-                child: Text(
-                  '${(widget.contentText == null ? '' : widget.contentText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            : Text('')),
+        if (widget.titleText != null) titleTextWidget(widget.titleText),
+        if (widget.contentText != null) contentTextWidget(widget.contentText),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
       ],
     );
   }
@@ -215,35 +205,20 @@ class _StylishDialogState extends State<StylishDialog>
                 )),
           ),
         ),
-        (widget.titleText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 10.0, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  '${(widget.titleText == null ? '' : widget.titleText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              )
-            : Text('')),
-        (widget.contentText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 6.0, left: 8, right: 8, bottom: 12),
-                child: Text(
-                  '${(widget.contentText == null ? '' : widget.contentText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            : Text('')),
+        if (widget.titleText != null) titleTextWidget(widget.titleText),
+        if (widget.contentText != null) contentTextWidget(widget.contentText),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
       ],
     );
   }
@@ -265,35 +240,20 @@ class _StylishDialogState extends State<StylishDialog>
                 size: 44,
               )),
         ),
-        (widget.titleText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 10.0, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  '${(widget.titleText == null ? '' : widget.titleText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              )
-            : Text('')),
-        (widget.contentText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 6.0, left: 8, right: 8, bottom: 12),
-                child: Text(
-                  '${(widget.contentText == null ? '' : widget.contentText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            : Text('')),
+        if (widget.titleText != null) titleTextWidget(widget.titleText),
+        if (widget.contentText != null) contentTextWidget(widget.contentText),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
       ],
     );
   }
@@ -315,35 +275,20 @@ class _StylishDialogState extends State<StylishDialog>
                 size: 44,
               )),
         ),
-        (widget.titleText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 10.0, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  '${(widget.titleText == null ? '' : widget.titleText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              )
-            : Text('')),
-        (widget.contentText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 6.0, left: 8, right: 8, bottom: 12),
-                child: Text(
-                  '${(widget.contentText == null ? '' : widget.contentText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            : Text('')),
+        if (widget.titleText != null) titleTextWidget(widget.titleText),
+        if (widget.contentText != null) contentTextWidget(widget.contentText),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
       ],
     );
   }
@@ -377,36 +322,71 @@ class _StylishDialogState extends State<StylishDialog>
                 )),
           ),
         ),
-        (widget.titleText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 10.0, left: 8, right: 8, bottom: 8),
-                child: Text(
-                  '${(widget.titleText == null ? '' : widget.titleText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              )
-            : Text('')),
-        (widget.contentText != null
-            ? Padding(
-                padding: const EdgeInsets.only(
-                    top: 6.0, left: 8, right: 8, bottom: 12),
-                child: Text(
-                  '${(widget.contentText == null ? '' : widget.contentText)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            : Text('')),
+        if (widget.titleText != null) titleTextWidget(widget.titleText),
+        if (widget.contentText != null) contentTextWidget(widget.contentText),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
       ],
+    );
+  }
+
+  titleTextWidget(text) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
+      child: Text(
+        '$text',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  contentTextWidget(text) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
+      child: Text(
+        '$text',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  pressButtonWidget(pressEvent, color, text) {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: TextButton(
+          onPressed: () async {
+            pressEvent();
+          },
+          child: Text(
+            '$text',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(color),
+          ),
+        ),
+      ),
     );
   }
 }

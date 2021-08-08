@@ -47,6 +47,7 @@ class _StylishExampleState extends State<StylishExample> {
               left: MediaQuery.of(context).size.width / 3.2,
               child: TextButton(
                 onPressed: () {
+                  print('DONE');
                   showDialog(
                       context: context,
                       builder: (context) {
@@ -55,6 +56,11 @@ class _StylishExampleState extends State<StylishExample> {
                           alertType: StylishDialog.SUCCESS,
                           titleText: 'Wow',
                           contentText: 'You did it',
+                          confirmText: 'Dismiss',
+                          confirmPressEvent: () {
+                            //Dismiss stylish dialog
+                            Navigator.of(context).pop();
+                          },
                         );
                       });
                 },
