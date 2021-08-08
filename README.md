@@ -2,6 +2,8 @@
 
 Stylish Alert Dialogs for Flutter.
 
+<img src="https://github.com/MarsadMaqsood/StylishDialogFlutter/blob/master/assets/stylish_dialog-screen%20recording.gif" alt="alt text" width="300" height="620">
+
 ## ⭐  Installing
 
     dependencies:
