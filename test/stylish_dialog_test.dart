@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 
 import 'package:stylish_dialog/stylish_dialog.dart';
 
@@ -12,7 +13,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                    home: new StylishDialog(
+                    home: new StylishDialogUI(
                         alertType: StylishDialog.NORMAL, context: context)));
             return testWidget;
           },
@@ -27,7 +28,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                    home: new StylishDialog(
+                    home: new StylishDialogUI(
                   context: context,
                   alertType: StylishDialog.PROGRESS,
                   titleText: 'This is title',
@@ -46,7 +47,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                    home: new StylishDialog(
+                    home: new StylishDialogUI(
                   alertType: StylishDialog.SUCCESS,
                   context: context,
                   titleText: 'Wow',
@@ -65,7 +66,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                  home: new StylishDialog(
+                  home: new StylishDialogUI(
                     context: context,
                     alertType: StylishDialog.INFO,
                     titleText: 'You know',
@@ -85,7 +86,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                  home: new StylishDialog(
+                  home: new StylishDialogUI(
                     context: context,
                     alertType: StylishDialog.WARNING,
                     titleText: 'Wait',
@@ -105,7 +106,7 @@ void main() {
             Widget testWidget = new MediaQuery(
                 data: new MediaQueryData(),
                 child: new MaterialApp(
-                    home: new StylishDialog(
+                    home: new StylishDialogUI(
                   context: context,
                   alertType: StylishDialog.ERROR,
                   titleText: 'Oops',

@@ -1,3 +1,13 @@
+## 0.0.4+1
+
+```diff
++ dismissOnTouchOutside:
++ ..show()
++ ..dismiss()
+
+```
+
+
 ## 0.0.4
 
 ### Added
@@ -7,6 +17,7 @@
 + confirmPressEvent:
 + cancelPressEvent:
 ```
+
 
 ## 0.0.3+1
 

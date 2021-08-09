@@ -28,16 +28,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.NORMAL,
-                        titleText: 'Hey',
-                        contentText: 'This is simple dialog',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.NORMAL,
+                  titleText: 'Hey',
+                  contentText: 'This is simple dialog',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -62,15 +58,11 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.PROGRESS,
-                        titleText: 'Processing...',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.PROGRESS,
+                  titleText: 'Processing...',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -95,15 +87,11 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.SUCCESS,
-                        titleText: 'Wow',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.SUCCESS,
+                  titleText: 'Wow',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -128,16 +116,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.SUCCESS,
-                        titleText: 'Wow',
-                        contentText: 'You did it',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.SUCCESS,
+                  titleText: 'Wow',
+                  contentText: 'You did it',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -162,15 +146,11 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.INFO,
-                        titleText: 'Wait',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.INFO,
+                  titleText: 'Wait',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -195,16 +175,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.INFO,
-                        titleText: 'You know',
-                        contentText: 'Sun rises in the east',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.INFO,
+                  titleText: 'You know',
+                  contentText: 'Sun rises in the east',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -229,16 +205,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.WARNING,
-                        titleText: 'Wait',
-                        contentText: 'Are you sure you want to do this',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.WARNING,
+                  titleText: 'Wait',
+                  contentText: 'Are you sure you want to do this',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -263,16 +235,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
             ),
             TextButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.ERROR,
-                        titleText: 'Opps',
-                        contentText: 'Task failed to complete',
-                      );
-                    });
+                StylishDialog(
+                  context: context,
+                  alertType: StylishDialog.ERROR,
+                  titleText: 'Opps',
+                  contentText: 'Task failed to complete',
+                )..show();
               },
               child: Text(
                 'Show Me',
@@ -286,33 +254,6 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  dialogButtons() {
-    return TextButton(
-      onPressed: () {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return StylishDialog(
-                context: context,
-                alertType: StylishDialog.SUCCESS,
-                titleText: 'Wow',
-                contentText: 'You did it',
-              );
-            });
-      },
-      child: Text(
-        'Show Me',
-        style: TextStyle(color: Colors.white, fontSize: 16),
-      ),
-      style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(Size(160, 44)),
-        backgroundColor: MaterialStateProperty.all(
-          Colors.teal,
         ),
       ),
     );

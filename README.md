@@ -1,15 +1,17 @@
 # stylish_dialog
 
-Stylish Alert Dialogs for Flutter.
+A collection of stylish animated dialogs like Normal, Progress, Success, Info, Warning, and Error for flutter.
 
-<img src="https://github.com/MarsadMaqsood/StylishDialogFlutter/blob/master/assets/stylish_dialog-screen%20recording.gif" alt="alt text" width="300" height="620">
+## Showcase
+<img src="https://github.com/MarsadMaqsood/StylishDialogFlutter/blob/master/assets/showcase.gif" width="300" height="620">
 
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.4
+        stylish_dialog: ^0.0.4+1
         
 ## ⚡ Import
+
     import 'package:stylish_dialog/stylish_dialog.dart';
     
 ## 📙 How To Use
@@ -22,8 +24,10 @@ Stylish Alert Dialogs for Flutter.
     cancelText:
     confirmPressEvent:
     cancelPressEvent:
+    dismissOnTouchOutside:
 
-#### Prperties
+### Prperties
+
 `context → BuildContext`
 
 `alertType → int`
@@ -40,8 +44,11 @@ Stylish Alert Dialogs for Flutter.
 
 `cancelPressEvent → void Function ()`
 
-    
-#### Alert Type
+`dismissOnTouchOutside → bool`
+
+
+### Alert Type
+
     StylishDialog.NORMAL
     StylishDialog.PROGRESS
     StylishDialog.SUCCESS
@@ -50,6 +57,7 @@ Stylish Alert Dialogs for Flutter.
     StylishDialog.ERROR
     
 #### Press Event
+
     confirmPressEvent: (){
         
     }
@@ -57,8 +65,24 @@ Stylish Alert Dialogs for Flutter.
     cancelPressEvent: (){
         
     }
+
+### Example 
+
+    StylishDialog dialog = StylishDialog(
+            context: context,
+            alertType: StylishDialog.NORMAL,
+            titleText: 'This is title',
+            contentText: 'This is content text',
+        );
+        
+    //show stylish dialog
+    dialog..show();
     
+    //dismiss stylish dialog
+    dialog..dismiss();
+
 ### Simple Dialog
+
 Simple Stylish Dialog with title and content text
 
     StylishDialog(
@@ -66,9 +90,10 @@ Simple Stylish Dialog with title and content text
         alertType: StylishDialog.NORMAL,
         titleText: 'This is title',
         contentText: 'This is content text',
-    );
+    )..show();
     
 ### Progress Dialog
+
 Progress dialog without title and content text
 
     StylishDialog(
@@ -76,7 +101,7 @@ Progress dialog without title and content text
         alertType: StylishDialog.PROGRESS,
         titleText: 'This is title',
         contentText: 'This is content text',
-    );
+    )..show();
     
 Progress dialog with only title
 
@@ -85,7 +110,7 @@ Progress dialog with only title
         alertType: StylishDialog.PROGRESS,
         titleText: 'This is title',
         contentText: 'This is content text',
-    );
+    )..show();
     
 Progress dialog with title and content text
     
@@ -94,15 +119,16 @@ Progress dialog with title and content text
         alertType: StylishDialog.PROGRESS,
         titleText: 'This is title',
         contentText: 'This is content text',
-    );
+    )..show();
 
 ### Success Dialog
+
 Success dialog without title and content text
     
     StylishDialog(
         context: context,
         alertType: StylishDialog.SUCCESS,
-    );
+    )..show();
     
 Success dialog with only title
 
@@ -110,7 +136,7 @@ Success dialog with only title
         context: context,
         alertType: StylishDialog.SUCCESS,
         titleText: 'Wow',
-    );
+    )..show();
 
 Success Dialog with title and content text
 
@@ -119,15 +145,16 @@ Success Dialog with title and content text
         alertType: StylishDialog.SUCCESS,
         titleText: 'Wow',
         contentText: 'Task completed',
-    );
+    )..show();
     
 ### Info Dialog
+
 Info Dialog without title and content text
 
     StylishDialog(
         context: context,
         alertType: StylishDialog.INFO,
-    ),
+    )..show();
     
 
 Info Dialog with only title
@@ -136,7 +163,7 @@ Info Dialog with only title
         context: context,
         alertType: StylishDialog.INFO,
         titleText: 'You know',
-    ),
+    )..show();
 
 Info Dialog with title and content text
 
@@ -145,15 +172,16 @@ Info Dialog with title and content text
         alertType: StylishDialog.INFO,
         titleText: 'You know',
         contentText: 'This is an amazing dialog',
-    ),
+    )..show();
 
 ### Warning Dialog
+
 Warning Dialog without title and content text
 
     StylishDialog(
         context: context,
         alertType: StylishDialog.WARNING,
-    );
+    )..show();
 
 Warning Dialog with only title
 
@@ -161,7 +189,7 @@ Warning Dialog with only title
         context: context,
         alertType: StylishDialog.WARNING,
         titleText: 'Wait',
-    );
+    )..show();
 
 
 Warning Dialog with title and content text
@@ -171,15 +199,16 @@ Warning Dialog with title and content text
         alertType: StylishDialog.WARNING,
         titleText: 'Wait',
         contentText: 'Are you sure you want to delete',
-    );
+    )..show();
     
 ### Error Dialog
+
 Error Dialog without title and content text
 
     StylishDialog(
         context: context,
         alertType: StylishDialog.ERROR,
-    );
+    )..show();
 
 Error Dialog with only title
 
@@ -187,7 +216,7 @@ Error Dialog with only title
         context: context,
         alertType: StylishDialog.ERROR,
         titleText: 'Oops',
-    );
+    )..show();
 
 Error Dialog with title and content text
 
@@ -196,9 +225,10 @@ Error Dialog with title and content text
         alertType: StylishDialog.ERROR,
         titleText: 'Oops',
         contentText: 'Task Failed',
-    );
+    )..show();
     
 ### Success Dialog 
+
 Success Dialog with click
 
     StylishDialog(
@@ -211,6 +241,6 @@ Success Dialog with click
             //Dismiss stylish dialog
             Navigator.of(context).pop();
         },
-    );
+    )..show();
 
     

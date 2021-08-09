@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-// ignore: must_be_immutable
-class StylishDialog extends StatefulWidget {
-  // ignore: non_constant_identifier_names
-  static final int NORMAL = 1;
-  // ignore: non_constant_identifier_names
-  static final int PROGRESS = 2;
-  // ignore: non_constant_identifier_names
-  static final int SUCCESS = 3;
-  // ignore: non_constant_identifier_names
-  static final int INFO = 4;
-  // ignore: non_constant_identifier_names
-  static final int WARNING = 5;
-  // ignore: non_constant_identifier_names
-  static final int ERROR = 6;
+import '../stylish_dialog.dart';
 
-  StylishDialog({
+// ignore: must_be_immutable
+class StylishDialogUI extends StatefulWidget {
+  StylishDialogUI({
     Key? key,
     required this.context,
     required this.alertType,
@@ -28,7 +17,7 @@ class StylishDialog extends StatefulWidget {
     this.cancelPressEvent,
   }) : super(key: key);
 
-  final BuildContext? context;
+  final BuildContext context;
   final int? alertType;
   String? titleText;
   String? contentText;
@@ -41,7 +30,7 @@ class StylishDialog extends StatefulWidget {
   _StylishDialogState createState() => _StylishDialogState();
 }
 
-class _StylishDialogState extends State<StylishDialog>
+class _StylishDialogState extends State<StylishDialogUI>
     with TickerProviderStateMixin {
   var key = GlobalKey<NavigatorState>();
 
