@@ -1,9 +1,17 @@
+## 0.0.5
+
+Added `changeAlertType()` function to change current dialog type.
+```diff
++ changeAlertType()
+
+```
+
 ## 0.0.4+1
 
 ```diff
 + dismissOnTouchOutside:
-+ ..show()
-+ ..dismiss()
++ .show()
++ .dismiss()
 
 ```
 

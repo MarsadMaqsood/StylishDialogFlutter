@@ -38,7 +38,7 @@ class _StylishExampleState extends State<StylishExample> {
           children: [
             Center(
               child: Text(
-                'Simple message dialog',
+                'Simple dialog bind with success dialog',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -49,14 +49,23 @@ class _StylishExampleState extends State<StylishExample> {
                 onPressed: () {
                   StylishDialog dialog = StylishDialog(
                     context: context,
-                    alertType: StylishDialog.SUCCESS,
+                    alertType: StylishDialog.PROGRESS,
+                    titleText: 'Processing...',
+                    dismissOnTouchOutside: false,
                   );
+                  dialog.show();
 
-                  dialog..show();
-
-                  // Future.delayed(Duration(seconds: 5), () {
-                  //   dialog..dismiss();
-                  // });
+                  Future.delayed(Duration(seconds: 3), () {
+                    dialog.changeAlertType(
+                      alertType: StylishDialog.SUCCESS,
+                      titleText: 'Congrats!',
+                      contentText: 'Task completed successfuly',
+                      confirmPressEvent: () {
+                        dialog.dismiss();
+                      },
+                      confirmText: 'Dismiss',
+                    );
+                  });
                 },
                 child: Text(
                   'Show Me',

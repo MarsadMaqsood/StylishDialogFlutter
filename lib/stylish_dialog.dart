@@ -7,18 +7,12 @@ import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 // export 'src/stylish_dialogs.dart';
 
 class StylishDialog {
-  // ignore: non_constant_identifier_names
-  static final int NORMAL = 1;
-  // ignore: non_constant_identifier_names
-  static final int PROGRESS = 2;
-  // ignore: non_constant_identifier_names
-  static final int SUCCESS = 3;
-  // ignore: non_constant_identifier_names
-  static final int INFO = 4;
-  // ignore: non_constant_identifier_names
-  static final int WARNING = 5;
-  // ignore: non_constant_identifier_names
-  static final int ERROR = 6;
+  static const int NORMAL = 1;
+  static const int PROGRESS = 2;
+  static const int SUCCESS = 3;
+  static const int INFO = 4;
+  static const int WARNING = 5;
+  static const int ERROR = 6;
 
   final BuildContext context;
   final int? alertType;
@@ -27,8 +21,8 @@ class StylishDialog {
   String? confirmText;
   String? cancelText;
   bool dismissOnTouchOutside;
-  final VoidCallback? confirmPressEvent;
-  final VoidCallback? cancelPressEvent;
+  VoidCallback? confirmPressEvent;
+  VoidCallback? cancelPressEvent;
 
   StylishDialog({
     required this.context,
@@ -46,27 +40,55 @@ class StylishDialog {
         context: this.context,
         barrierDismissible: this.dismissOnTouchOutside,
         builder: (context) {
-          return _buildDialog;
+          return StatefulBuilder(builder: (context, setState) {
+            stateSetter = setState;
+            return _buildDialog;
+          });
         },
       );
 
-  Widget get _buildDialog => WillPopScope(
-        onWillPop: _onWillPop,
-        child: StylishDialogUI(
-          context: this.context,
-          alertType: this.alertType,
-          titleText: this.titleText,
-          contentText: this.contentText,
-          confirmText: this.confirmText,
-          cancelText: this.cancelText,
-          confirmPressEvent: this.confirmPressEvent,
-          cancelPressEvent: this.cancelPressEvent,
-        ),
-      );
+  Widget get _buildDialog =>
+      WillPopScope(onWillPop: _onWillPop, child: _buildDialogUI());
 
   Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
 
   dismiss() {
     Navigator.of(this.context).pop();
+  }
+
+  late StateSetter stateSetter;
+  int changeAlert = 9;
+
+  changeAlertType(
+      {required int alertType,
+      String? titleText,
+      String? contentText,
+      String? confirmText,
+      String? cancelText,
+      VoidCallback? confirmPressEvent,
+      VoidCallback? cancelPressEvent}) {
+    stateSetter(() {
+      this.titleText = titleText;
+      this.contentText = contentText;
+      this.confirmText = confirmText;
+      this.cancelText = cancelText;
+      this.confirmPressEvent = confirmPressEvent;
+      this.cancelPressEvent = cancelPressEvent;
+      changeAlert = alertType;
+      _buildDialogUI(alertType: alertType);
+    });
+  }
+
+  _buildDialogUI({int? alertType}) {
+    return StylishDialogUI(
+      context: this.context,
+      alertType: (changeAlert == 9 ? this.alertType : changeAlert),
+      titleText: this.titleText,
+      contentText: this.contentText,
+      confirmText: this.confirmText,
+      cancelText: this.cancelText,
+      confirmPressEvent: this.confirmPressEvent,
+      cancelPressEvent: this.cancelPressEvent,
+    );
   }
 }

@@ -117,5 +117,42 @@ void main() {
         ),
       );
     });
+
+    testWidgets('Simple D Bind With Success Test', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            Widget testWidget = new MediaQuery(
+              data: new MediaQueryData(),
+              child: new MaterialApp(
+                home: ElevatedButton(
+                  onPressed: () {
+                    StylishDialog dialog = StylishDialog(
+                        context: context,
+                        alertType: StylishDialog.PROGRESS,
+                        titleText: 'Processing...');
+                    dialog.show();
+
+                    Future.delayed(Duration(seconds: 5), () {
+                      dialog.changeAlertType(
+                        alertType: StylishDialog.SUCCESS,
+                        titleText: 'Congrats!',
+                        contentText: 'Task completed successfuly',
+                        confirmPressEvent: () {
+                          dialog.dismiss();
+                        },
+                        confirmText: 'Dismiss',
+                      );
+                    });
+                  },
+                  child: Text('Show'),
+                ),
+              ),
+            );
+            return testWidget;
+          },
+        ),
+      );
+    });
   });
 }
