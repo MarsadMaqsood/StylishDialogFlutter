@@ -161,10 +161,14 @@ class _StylishDialogState extends State<StylishDialogUI>
           onPressed: () async {
             pressEvent();
           },
-          child: Text(
-            '$text',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 16),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 8.0, right: 4.0, top: 4, bottom: 4),
+            child: Text(
+              '$text',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(color),
@@ -177,7 +181,9 @@ class _StylishDialogState extends State<StylishDialogUI>
   _stylishDialogChange() {
     switch (widget.alertType) {
       case StylishDialog.NORMAL:
-        return Container();
+        return Container(
+          width: 0,
+        );
       case StylishDialog.PROGRESS:
         return Padding(
           padding:

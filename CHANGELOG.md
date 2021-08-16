@@ -1,3 +1,11 @@
+## 0.0.5+1
+
+```diff
+
++ rootNavigator:
+
+```
+
 ## 0.0.5
 
 Added `changeAlertType()` function to change current dialog type.

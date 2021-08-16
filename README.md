@@ -8,7 +8,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.5
+        stylish_dialog: ^0.0.5+1
         
 ## ⚡ Import
 
@@ -46,6 +46,8 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 `cancelPressEvent → void Function ()`
 
 `dismissOnTouchOutside → bool`
+
+`rootNavigator → bool`
 
 
 ### Alert Type
@@ -88,6 +90,11 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
     
     //dismiss stylish dialog
     dialog.dismiss();
+
+    //dialog.dismiss(/*rootNavigator: bool  default true */);
+
+
+
 
 ### Simple Dialog
 

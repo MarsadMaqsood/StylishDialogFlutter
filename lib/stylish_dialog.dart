@@ -52,8 +52,8 @@ class StylishDialog {
 
   Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
 
-  dismiss() {
-    Navigator.of(this.context).pop();
+  dismiss({bool rootNavigator = true}) {
+    Navigator.of(this.context, rootNavigator: rootNavigator).pop();
   }
 
   late StateSetter stateSetter;
