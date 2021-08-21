@@ -14,8 +14,10 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
         
 ## ⚡ Import
 
-    import 'package:stylish_dialog/stylish_dialog.dart';
-    
+```dart
+import 'package:stylish_dialog/stylish_dialog.dart';
+```
+
 ## 📙 How To Use
 
     context:
@@ -29,47 +31,53 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
     dismissOnTouchOutside:
     
 
-### Prperties
+### Properties
 
-`context → BuildContext`
+```dart
+context → BuildContext
 
-`alertType → int`
+alertType → int
 
-`titleText → String`
+titleText → String
 
-`contentText → String`
+contentText → String
 
-`confirmText → String`
+confirmText → String
 
-`cancelText → String`
+cancelText → String
 
-`confirmPressEvent → void Function ()`
+confirmPressEvent → void Function ()
 
-`cancelPressEvent → void Function ()`
+cancelPressEvent → void Function ()
 
-`dismissOnTouchOutside → bool`
+dismissOnTouchOutside → bool
 
-`rootNavigator → bool`
-
+rootNavigator → bool
+```
 
 ### Alert Type
 
-    StylishDialog.NORMAL
-    StylishDialog.PROGRESS
-    StylishDialog.SUCCESS
-    StylishDialog.INFO
-    StylishDialog.WARNING
-    StylishDialog.ERROR
+```dart
+StylishDialog.NORMAL
+StylishDialog.PROGRESS
+StylishDialog.SUCCESS
+StylishDialog.INFO
+StylishDialog.WARNING
+StylishDialog.ERROR
+```
+    
     
 #### Press Event
 
-    confirmPressEvent: (){
+```dart
+confirmPressEvent: (){
         
-    }
+}
     
-    cancelPressEvent: (){
+cancelPressEvent: (){
         
-    }
+}
+```
 
 ### Bind Dialog/Change Alert Type
 
@@ -78,8 +86,8 @@ dialog.changeAlertType(
     alertType: /*Alert Type*/,
     ...
 );
-
 ```
+
 ### Example 
 
 ```dart
@@ -126,171 +134,201 @@ StylishDialog(
     contentText: 'This is content text',
 ).show();
 ```
-    
+
 Progress dialog with only title
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.PROGRESS,
-        titleText: 'This is title',
-        contentText: 'This is content text',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.PROGRESS,
+    titleText: 'This is title',
+    contentText: 'This is content text',
+).show();
+```
     
 Progress dialog with title and content text
     
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.PROGRESS,
-        titleText: 'This is title',
-        contentText: 'This is content text',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.PROGRESS,
+    titleText: 'This is title',
+    contentText: 'This is content text',
+).show();
+```
 
 ### Success Dialog
 
 Success dialog without title and content text
-    
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.SUCCESS,
-    ).show();
-    
+
+```dart    
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.SUCCESS,
+).show();
+```
+
 Success dialog with only title
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.SUCCESS,
-        titleText: 'Wow',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.SUCCESS,
+    titleText: 'Wow',
+).show();
+```
 
 Success Dialog with title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.SUCCESS,
-        titleText: 'Wow',
-        contentText: 'Task completed',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.SUCCESS,
+    titleText: 'Wow',
+    contentText: 'Task completed',
+).show();
+```
     
 ### Info Dialog
 
 Info Dialog without title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.INFO,
-    ).show();
-    
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.INFO,
+).show();
+```
 
 Info Dialog with only title
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.INFO,
-        titleText: 'You know',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.INFO,
+    titleText: 'You know',
+).show();
+```
 
 Info Dialog with title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.INFO,
-        titleText: 'You know',
-        contentText: 'This is an amazing dialog',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.INFO,
+    titleText: 'You know',
+    contentText: 'This is an amazing dialog',
+).show();
+```
 
 ### Warning Dialog
 
 Warning Dialog without title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.WARNING,
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.WARNING,
+).show();
+```
 
 Warning Dialog with only title
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.WARNING,
-        titleText: 'Wait',
-    ).show();
-
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.WARNING,
+    titleText: 'Wait',
+).show();
+```
 
 Warning Dialog with title and content text
     
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.WARNING,
-        titleText: 'Wait',
-        contentText: 'Are you sure you want to delete',
-    ).show();
-    
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.WARNING,
+    titleText: 'Wait',
+    contentText: 'Are you sure you want to delete',
+).show();
+```
+
 ### Error Dialog
 
 Error Dialog without title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.ERROR,
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.ERROR,
+).show();
+```
 
 Error Dialog with only title
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.ERROR,
-        titleText: 'Oops',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.ERROR,
+    titleText: 'Oops',
+).show();
+```
 
 Error Dialog with title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.ERROR,
-        titleText: 'Oops',
-        contentText: 'Task Failed',
-    ).show();
-    
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.ERROR,
+    titleText: 'Oops',
+    contentText: 'Task Failed',
+).show();
+```
+
 ### Success Dialog 
 
 Success Dialog with click
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.SUCCESS,
-        titleText: 'Wow',
-        contentText: 'You did it',
-        confirmText: 'Dismiss',
-        confirmPressEvent: () {
-            //Dismiss stylish dialog
-            Navigator.of(context).pop();
-        },
-    ).show();
-    
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.SUCCESS,
+    titleText: 'Wow',
+    contentText: 'You did it',
+    confirmText: 'Dismiss',
+    confirmPressEvent: () {
+        //Dismiss stylish dialog
+        Navigator.of(context).pop();
+    },
+).show();
+```
+
     
 ### Differnt Ways to bind
 Progress dialog bind with Success dialog
 
-    StylishDialog dialog = StylishDialog(
-        context: context,
-        alertType: StylishDialog.PROGRESS,
-        titleText: 'Processing...',
-        dismissOnTouchOutside: false,
-    );
-    dialog.show();
+```dart
+StylishDialog dialog = StylishDialog(
+    context: context,
+    alertType: StylishDialog.PROGRESS,
+    titleText: 'Processing...',
+    dismissOnTouchOutside: false,
+);
+dialog.show();
 
-    Future.delayed(Duration(seconds: 3), () {
-        dialog.changeAlertType(
-            alertType: StylishDialog.SUCCESS,
-            titleText: 'Congrats!',
-            contentText: 'Task completed successfuly',
-            confirmPressEvent: () {
-                dialog.dismiss();
-            },
-        confirmText: 'Dismiss',
-        );
-    });
-    
+Future.delayed(Duration(seconds: 3), () {
+    dialog.changeAlertType(
+    alertType: StylishDialog.SUCCESS,
+        titleText: 'Congrats!',
+        contentText: 'Task completed successfuly',
+        confirmPressEvent: () {
+            dialog.dismiss();
+        },
+    confirmText: 'Dismiss',
+    );
+});
+```
+
     
     
     
