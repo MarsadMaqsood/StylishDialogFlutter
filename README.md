@@ -73,52 +73,59 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 
 ### Bind Dialog/Change Alert Type
 
-    dialog.changeAlertType(
-        alertType: /*Alert Type*/,
-        ...
-    );
+```dart
+dialog.changeAlertType(
+    alertType: /*Alert Type*/,
+    ...
+);
 
+```
 ### Example 
 
-    StylishDialog dialog = StylishDialog(
-            context: context,
-            alertType: StylishDialog.NORMAL,
-            titleText: 'This is title',
-            contentText: 'This is content text',
-        );
+```dart
+StylishDialog dialog = StylishDialog(
+        context: context,
+        alertType: StylishDialog.NORMAL,
+        titleText: 'This is title',
+        contentText: 'This is content text',
+    );
         
-    //show stylish dialog
-    dialog.show();
+//show stylish dialog
+dialog.show();
     
-    //dismiss stylish dialog
-    dialog.dismiss();
+//dismiss stylish dialog
+dialog.dismiss();
 
-    //dialog.dismiss(/*rootNavigator: bool  default true */);
+//dialog.dismiss(/*rootNavigator: bool  default true */);
 
-
+```
 
 
 ### Simple Dialog
 
 Simple Stylish Dialog with title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.NORMAL,
-        titleText: 'This is title',
-        contentText: 'This is content text',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.NORMAL,
+    titleText: 'This is title',
+    contentText: 'This is content text',
+).show();
+```
     
 ### Progress Dialog
 
 Progress dialog without title and content text
 
-    StylishDialog(
-        context: context,
-        alertType: StylishDialog.PROGRESS,
-        titleText: 'This is title',
-        contentText: 'This is content text',
-    ).show();
+```dart
+StylishDialog(
+    context: context,
+    alertType: StylishDialog.PROGRESS,
+    titleText: 'This is title',
+    contentText: 'This is content text',
+).show();
+```
     
 Progress dialog with only title
 
