@@ -41,9 +41,9 @@ alertType → int
 
 titleText → String
 
-`addView → Widget`
+addView → Widget
 
-`confirmText → String`
+confirmText → String
 
 confirmText → String
 
@@ -124,7 +124,7 @@ StylishDialog(
 ).show();
 ```
 
-### Simple Dialog
+### Normal Dialog with Custom Widget
 Normal dialog with custom widget
 Note: `addView:` is only supported with `StylishDialog.NORMAL` `alertType`
 
