@@ -1,6 +1,6 @@
 # stylish_dialog
 
-[![Hello](https://img.shields.io/badge/Hello-Sweet%20World-teal)](https://github.com/MarsadMaqsood) [![StylishDialog](https://img.shields.io/badge/Flutter-Stylish%20Dialog-blueviolet)](https://pub.dev/packages/stylish_dialog) [![Version](https://img.shields.io/pub/v/stylish_dialog?color=%2354C92F&logo=dart)](https://pub.dev/packages/stylish_dialog/install) [![BuyMeCoffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FEDD00)](https://www.buymeacoffee.com/marsad) [![Paypal](https://img.shields.io/badge/Donate-Paypal-blue)](https://paypal.me/codeasset?locale.x=en_US)
+[![Hello](https://img.shields.io/badge/Hello-Sweet%20World-teal)](https://github.com/MarsadMaqsood) [![StylishDialog](https://img.shields.io/badge/Flutter-Stylish%20Dialog-blueviolet)](https://pub.dev/packages/stylish_dialog) [![Version](https://img.shields.io/pub/v/stylish_dialog?color=%2354C92F&logo=dart)](https://pub.dev/packages/stylish_dialog/install) [![BuyMeCoffee](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FEDD00)](https://www.buymeacoffee.com/marsad) [![Paypal](https://img.shields.io/badge/Donate-Paypal-blue)](https://www.paypal.com/donate/?hosted_button_id=X2T3MP8XBY9LL)
 
 
 
