@@ -1,10 +1,10 @@
 # stylish_dialog
 
-![Hello](https://img.shields.io/badge/Hello-Sweet%20World-teal) ![StylishDialog](https://img.shields.io/badge/Flutter-Stylish%20Dialog-blueviolet) ![Version](https://img.shields.io/pub/v/stylish_dialog?color=%2354C92F&logo=dart)
+![Hello](https://img.shields.io/badge/Hello-Sweet%20World-teal) [![StylishDialog](https://img.shields.io/badge/Flutter-Stylish%20Dialog-blueviolet)](https://pub.dev/packages/stylish_dialog) [![Version](https://img.shields.io/pub/v/stylish_dialog?color=%2354C92F&logo=dart)](https://pub.dev/packages/stylish_dialog/install)
 
 
 
-![Normal](https://img.shields.io/badge/Alert%20Type-Normal-ff69b4)
+[![Normal](https://img.shields.io/badge/Alert%20Type-Normal-ff69b4)](#simple-dialog)
 ![Progress](https://img.shields.io/badge/Alert%20Type-Progress-yellowgreen)
 ![Success](https://img.shields.io/badge/Alert%20Type-Success-success)
 ![Warning](https://img.shields.io/badge/Alert%20Type-Warning-orange)
