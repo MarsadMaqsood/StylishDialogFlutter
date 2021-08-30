@@ -5,11 +5,11 @@
 
 
 [![Normal](https://img.shields.io/badge/Alert%20Type-Normal-ff69b4)](#simple-dialog)
-![Progress](https://img.shields.io/badge/Alert%20Type-Progress-yellowgreen)
-![Success](https://img.shields.io/badge/Alert%20Type-Success-success)
-![Warning](https://img.shields.io/badge/Alert%20Type-Warning-orange)
-![Info](https://img.shields.io/badge/Alert%20Type-Info-blue)
-![Error](https://img.shields.io/badge/Alert%20Type-Error-red)
+[![Progress](https://img.shields.io/badge/Alert%20Type-Progress-yellowgreen)](#progress-dialog)
+[![Success](https://img.shields.io/badge/Alert%20Type-Success-success)](#success-dialog)
+[![Info](https://img.shields.io/badge/Alert%20Type-Info-blue)](#info-dialog)
+[![Warning](https://img.shields.io/badge/Alert%20Type-Warning-orange)](#warning-dialog)
+[![Error](https://img.shields.io/badge/Alert%20Type-Error-red)](#error-dialog)
 
 
 A collection of stylish animated dialogs like Normal, Progress, Success, Info, Warning, and Error for flutter.
