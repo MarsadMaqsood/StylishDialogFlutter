@@ -1,6 +1,6 @@
 # stylish_dialog
 
-[![Version](https://img.shields.io/pub/v/stylish_dialog?logo=dart)](https://pub.dev/packages/stylish_dialog)
+![Version](https://img.shields.io/pub/v/stylish_dialog?color=%2354C92F&logo=dart)
 
 A collection of stylish animated dialogs like Normal, Progress, Success, Info, Warning, and Error for flutter.
 
