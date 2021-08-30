@@ -41,13 +41,9 @@ alertType → int
 
 titleText → String
 
-<<<<<<< HEAD
 `addView → Widget`
 
 `confirmText → String`
-=======
-contentText → String
->>>>>>> aac57ce69eb19b046c43f732927c95ed01a1c8ac
 
 confirmText → String
 
@@ -354,3 +350,8 @@ Future.delayed(Duration(seconds: 3), () {
     );
 });
 ```
+
+    
+    
+    
+    
