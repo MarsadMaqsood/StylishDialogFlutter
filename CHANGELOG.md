@@ -1,4 +1,5 @@
 ## 0.0.6
+Added `addView:` to add custom widget inside dialog.
 ```diff
 
 + addView:

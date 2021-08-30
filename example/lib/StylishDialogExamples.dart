@@ -294,8 +294,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                       addView: TextField(
                         controller: controller,
                         decoration: InputDecoration(),
-                      ))
-                    ..show();
+                      )).show();
                 },
                 child: Text(
                   'Show Me',
