@@ -9,6 +9,14 @@ class StylishDialogExamples extends StatefulWidget {
 }
 
 class _StylishDialogExamplesState extends State<StylishDialogExamples> {
+  var controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -250,6 +258,44 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     titleText: 'Opps',
                     contentText: 'Task failed to complete',
                   )..show();
+                },
+                child: Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                style: ButtonStyle(
+                  minimumSize: MaterialStateProperty.all(Size(160, 44)),
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.teal,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 28,
+              ),
+              Text(
+                'Dialog with custom view',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              TextButton(
+                onPressed: () {
+                  StylishDialog(
+                      context: context,
+                      alertType: StylishDialog.NORMAL,
+                      titleText: 'Name',
+                      contentText: 'Please enter your name',
+                      confirmText: 'Submit',
+                      confirmPressEvent: () {
+                        print(controller.text);
+                      },
+                      addView: TextField(
+                        controller: controller,
+                        decoration: InputDecoration(),
+                      ))
+                    ..show();
                 },
                 child: Text(
                   'Show Me',

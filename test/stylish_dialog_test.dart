@@ -118,7 +118,8 @@ void main() {
       );
     });
 
-    testWidgets('Simple D Bind With Success Test', (WidgetTester tester) async {
+    testWidgets('Simple D. Bind With Success Test',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
@@ -144,6 +145,42 @@ void main() {
                         confirmText: 'Dismiss',
                       );
                     });
+                  },
+                  child: Text('Show'),
+                ),
+              ),
+            );
+            return testWidget;
+          },
+        ),
+      );
+    });
+
+    var controller = TextEditingController();
+
+    testWidgets('Custom widget dialog', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Builder(
+          builder: (BuildContext context) {
+            Widget testWidget = new MediaQuery(
+              data: new MediaQueryData(),
+              child: new MaterialApp(
+                home: ElevatedButton(
+                  onPressed: () {
+                    StylishDialog dialog = StylishDialog(
+                        context: context,
+                        alertType: StylishDialog.NORMAL,
+                        addView: TextField(
+                          controller: controller,
+                          decoration:
+                              InputDecoration(hintText: 'Enter your name'),
+                        ),
+                        confirmText: 'Submit',
+                        confirmPressEvent: () {
+                          print(controller.text);
+                        },
+                        titleText: 'Name');
+                    dialog.show();
                   },
                   child: Text('Show'),
                 ),

@@ -15,6 +15,7 @@ class StylishDialogUI extends StatefulWidget {
     this.cancelText,
     this.confirmPressEvent,
     this.cancelPressEvent,
+    this.addView,
   }) : super(key: key);
 
   final BuildContext context;
@@ -25,6 +26,7 @@ class StylishDialogUI extends StatefulWidget {
   String? cancelText;
   VoidCallback? confirmPressEvent;
   VoidCallback? cancelPressEvent;
+  Widget? addView;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -52,7 +54,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     curve: Curves.fastOutSlowIn,
   );
 
-//warning animation controller
+  //warning animation controller
   late final AnimationController _warnAnimController = AnimationController(
     duration: const Duration(seconds: 3),
     vsync: this,
@@ -107,6 +109,12 @@ class _StylishDialogState extends State<StylishDialogUI>
           _stylishDialogChange(),
           if (widget.titleText != null) titleTextWidget(widget.titleText),
           if (widget.contentText != null) contentTextWidget(widget.contentText),
+          if (widget.alertType == StylishDialog.NORMAL &&
+              widget.addView != null)
+            Container(
+                padding:
+                    EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+                child: widget.addView),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
@@ -124,6 +132,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     );
   }
 
+  //Text widget for title text
   titleTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
@@ -139,6 +148,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     );
   }
 
+  //Text widget for content text
   contentTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
@@ -153,6 +163,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     );
   }
 
+  //Button widget for confirm and cancel buttons
   pressButtonWidget(pressEvent, color, text) {
     return Flexible(
       child: Padding(
@@ -226,8 +237,6 @@ class _StylishDialogState extends State<StylishDialogUI>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
               scale: _infoAnimation,
-              // axis: Axis.horizontal,
-              // axisAlignment: -1,
               child: Icon(
                 Icons.info_outlined,
                 color: Colors.blue,
@@ -240,8 +249,6 @@ class _StylishDialogState extends State<StylishDialogUI>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
               scale: _warningAnimation,
-              // axis: Axis.horizontal,
-              // axisAlignment: -1,
               child: Icon(
                 Icons.info_outlined,
                 color: Colors.amber,

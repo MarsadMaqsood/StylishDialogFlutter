@@ -8,7 +8,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.5+1
+        stylish_dialog: ^0.0.6
         
 ## ⚡ Import
 
@@ -20,6 +20,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
     alertType:
     titleText:
     contentText:
+    addView:
     confirmText:
     cancelText:
     confirmPressEvent:
@@ -36,6 +37,8 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 `titleText → String`
 
 `contentText → String`
+
+`addView → Widget`
 
 `confirmText → String`
 
@@ -92,8 +95,6 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
     dialog.dismiss();
 
     //dialog.dismiss(/*rootNavigator: bool  default true */);
-
-
 
 
 ### Simple Dialog
@@ -259,7 +260,7 @@ Success Dialog with click
     ).show();
     
     
-### Differnt Ways to bind
+### Different Ways to bind
 Progress dialog bind with Success dialog
 
     StylishDialog dialog = StylishDialog(

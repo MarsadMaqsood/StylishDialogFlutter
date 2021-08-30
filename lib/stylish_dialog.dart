@@ -23,6 +23,8 @@ class StylishDialog {
   bool dismissOnTouchOutside;
   VoidCallback? confirmPressEvent;
   VoidCallback? cancelPressEvent;
+  //Custom Widget to show in dialog
+  Widget? addView;
 
   StylishDialog({
     required this.context,
@@ -34,8 +36,10 @@ class StylishDialog {
     this.confirmPressEvent,
     this.cancelPressEvent,
     this.dismissOnTouchOutside = true,
+    this.addView,
   });
 
+  //Method to show dialog
   Future show() => showDialog(
         context: this.context,
         barrierDismissible: this.dismissOnTouchOutside,
@@ -47,11 +51,13 @@ class StylishDialog {
         },
       );
 
+  //to build dialog
   Widget get _buildDialog =>
       WillPopScope(onWillPop: _onWillPop, child: _buildDialogUI());
 
   Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
 
+  //Method to dismiss dialog
   dismiss({bool rootNavigator = true}) {
     Navigator.of(this.context, rootNavigator: rootNavigator).pop();
   }
@@ -59,6 +65,7 @@ class StylishDialog {
   late StateSetter stateSetter;
   int changeAlert = 9;
 
+  //to change current dialog alert type
   changeAlertType(
       {required int alertType,
       String? titleText,
@@ -79,6 +86,7 @@ class StylishDialog {
     });
   }
 
+  //Method to build dialog UI
   _buildDialogUI({int? alertType}) {
     return StylishDialogUI(
       context: this.context,
@@ -89,6 +97,7 @@ class StylishDialog {
       cancelText: this.cancelText,
       confirmPressEvent: this.confirmPressEvent,
       cancelPressEvent: this.cancelPressEvent,
+      addView: this.addView,
     );
   }
 }
