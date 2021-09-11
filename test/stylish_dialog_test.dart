@@ -5,7 +5,7 @@ import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 import 'package:stylish_dialog/stylish_dialog.dart';
 
 void main() {
-  group("StylishDialog", () {
+  group("StylishDialog Test", () {
     testWidgets('Normal Test', (WidgetTester tester) async {
       await tester.pumpWidget(
         Builder(
@@ -14,7 +14,8 @@ void main() {
                 data: new MediaQueryData(),
                 child: new MaterialApp(
                     home: new StylishDialogUI(
-                        alertType: StylishDialog.NORMAL, context: context)));
+                        alertType: StylishDialogType.NORMAL,
+                        context: context)));
             return testWidget;
           },
         ),
@@ -30,7 +31,7 @@ void main() {
                 child: new MaterialApp(
                     home: new StylishDialogUI(
                   context: context,
-                  alertType: StylishDialog.PROGRESS,
+                  alertType: StylishDialogType.PROGRESS,
                   titleText: 'This is title',
                   contentText: 'This is content text',
                 )));
@@ -48,8 +49,9 @@ void main() {
                 data: new MediaQueryData(),
                 child: new MaterialApp(
                     home: new StylishDialogUI(
-                  alertType: StylishDialog.SUCCESS,
+                  alertType: StylishDialogType.SUCCESS,
                   context: context,
+                  animationLoop: false,
                   titleText: 'Wow',
                   contentText: 'Task completed',
                 )));
@@ -68,9 +70,10 @@ void main() {
                 child: new MaterialApp(
                   home: new StylishDialogUI(
                     context: context,
-                    alertType: StylishDialog.INFO,
+                    alertType: StylishDialogType.INFO,
                     titleText: 'You know',
                     contentText: 'This is an amazing dialog',
+                    animationLoop: false,
                   ),
                 ));
             return testWidget;
@@ -88,9 +91,10 @@ void main() {
                 child: new MaterialApp(
                   home: new StylishDialogUI(
                     context: context,
-                    alertType: StylishDialog.WARNING,
+                    alertType: StylishDialogType.WARNING,
                     titleText: 'Wait',
                     contentText: 'Are you sure you want to delete',
+                    animationLoop: false,
                   ),
                 ));
             return testWidget;
@@ -108,9 +112,10 @@ void main() {
                 child: new MaterialApp(
                     home: new StylishDialogUI(
                   context: context,
-                  alertType: StylishDialog.ERROR,
+                  alertType: StylishDialogType.ERROR,
                   titleText: 'Oops',
                   contentText: 'Task Failed',
+                  animationLoop: false,
                 )));
             return testWidget;
           },
@@ -129,14 +134,16 @@ void main() {
                 home: ElevatedButton(
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
-                        context: context,
-                        alertType: StylishDialog.PROGRESS,
-                        titleText: 'Processing...');
+                      context: context,
+                      alertType: StylishDialogType.PROGRESS,
+                      titleText: 'Processing...',
+                      animationLoop: false,
+                    );
                     dialog.show();
 
                     Future.delayed(Duration(seconds: 5), () {
                       dialog.changeAlertType(
-                        alertType: StylishDialog.SUCCESS,
+                        alertType: StylishDialogType.SUCCESS,
                         titleText: 'Congrats!',
                         contentText: 'Task completed successfuly',
                         confirmPressEvent: () {
@@ -169,7 +176,7 @@ void main() {
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
                         context: context,
-                        alertType: StylishDialog.NORMAL,
+                        alertType: StylishDialogType.NORMAL,
                         addView: TextField(
                           controller: controller,
                           decoration:
@@ -179,7 +186,8 @@ void main() {
                         confirmPressEvent: () {
                           print(controller.text);
                         },
-                        titleText: 'Name');
+                        titleText: 'Name',
+                        animationLoop: false);
                     dialog.show();
                   },
                   child: Text('Show'),

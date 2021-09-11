@@ -1,3 +1,11 @@
+## 0.0.7
+- Added `animationLoop:` to play animations in a loop
+```diff
++ animationLoop:
+```
+- Performance Improvement
+- Bug Fixes
+
 ## 0.0.6
 Added `addView:` to add custom widget inside dialog.
 ```diff

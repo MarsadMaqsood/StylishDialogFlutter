@@ -47,7 +47,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.NORMAL,
+                    alertType: StylishDialogType.NORMAL,
                     titleText: 'Hey',
                     contentText: 'This is simple dialog',
                   )..show();
@@ -77,7 +77,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.PROGRESS,
+                    alertType: StylishDialogType.PROGRESS,
                     titleText: 'Processing...',
                   )..show();
                 },
@@ -106,7 +106,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.SUCCESS,
+                    alertType: StylishDialogType.SUCCESS,
                     titleText: 'Wow',
                   )..show();
                 },
@@ -135,7 +135,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.SUCCESS,
+                    alertType: StylishDialogType.SUCCESS,
                     titleText: 'Wow',
                     contentText: 'You did it',
                   )..show();
@@ -165,7 +165,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.INFO,
+                    alertType: StylishDialogType.INFO,
                     titleText: 'Wait',
                   )..show();
                 },
@@ -194,7 +194,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.INFO,
+                    alertType: StylishDialogType.INFO,
                     titleText: 'You know',
                     contentText: 'Sun rises in the east',
                   )..show();
@@ -224,7 +224,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.WARNING,
+                    alertType: StylishDialogType.WARNING,
                     titleText: 'Wait',
                     contentText: 'Are you sure you want to do this',
                   )..show();
@@ -254,7 +254,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                     context: context,
-                    alertType: StylishDialog.ERROR,
+                    alertType: StylishDialogType.ERROR,
                     titleText: 'Opps',
                     contentText: 'Task failed to complete',
                   )..show();
@@ -284,7 +284,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                 onPressed: () {
                   StylishDialog(
                       context: context,
-                      alertType: StylishDialog.NORMAL,
+                      alertType: StylishDialogType.NORMAL,
                       titleText: 'Name',
                       contentText: 'Please enter your name',
                       confirmText: 'Submit',

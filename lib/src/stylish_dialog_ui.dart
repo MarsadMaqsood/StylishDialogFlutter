@@ -3,12 +3,15 @@ import 'package:flutter/widgets.dart';
 
 import '../stylish_dialog.dart';
 
+const _sizeK = 50.0;
+
 // ignore: must_be_immutable
 class StylishDialogUI extends StatefulWidget {
   StylishDialogUI({
     Key? key,
     required this.context,
     required this.alertType,
+    this.animationLoop,
     this.titleText,
     this.contentText,
     this.confirmText,
@@ -19,7 +22,8 @@ class StylishDialogUI extends StatefulWidget {
   }) : super(key: key);
 
   final BuildContext context;
-  final int? alertType;
+  final StylishDialogType? alertType;
+  final bool? animationLoop;
   String? titleText;
   String? contentText;
   String? confirmText;
@@ -34,53 +38,42 @@ class StylishDialogUI extends StatefulWidget {
 
 class _StylishDialogState extends State<StylishDialogUI>
     with TickerProviderStateMixin {
-  var key = GlobalKey<NavigatorState>();
+  var _key = GlobalKey<NavigatorState>();
 
-  late final AnimationController _successAnimController = AnimationController(
-    duration: const Duration(seconds: 3),
-    vsync: this,
-  )..repeat();
-  late final Animation<double> _successAnimation = CurvedAnimation(
-    parent: _successAnimController,
-    curve: Curves.fastOutSlowIn,
-  );
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
-  late final AnimationController _infoAnimController = AnimationController(
-    duration: const Duration(seconds: 3),
-    vsync: this,
-  )..repeat();
-  late final Animation<double> _infoAnimation = CurvedAnimation(
-    parent: _infoAnimController,
-    curve: Curves.fastOutSlowIn,
-  );
+  @override
+  void initState() {
+    super.initState();
+    _initializeAnimation();
+  }
 
-  //warning animation controller
-  late final AnimationController _warnAnimController = AnimationController(
-    duration: const Duration(seconds: 3),
-    vsync: this,
-  )..repeat();
-  late final Animation<double> _warningAnimation = CurvedAnimation(
-    parent: _warnAnimController,
-    curve: Curves.fastOutSlowIn,
-  );
+  @override
+  void didUpdateWidget(covariant StylishDialogUI oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
-  //error animation controller
-  late final AnimationController _errorAnimController = AnimationController(
-    duration: const Duration(seconds: 3),
-    vsync: this,
-  )..repeat();
-  late final Animation<double> _errorAnimation = CurvedAnimation(
-    parent: _errorAnimController,
-    curve: Curves.fastOutSlowIn,
-  );
+    ///dispose current active controller and
+    /// create new one for changeAlertType
+    _controller.dispose();
+    _initializeAnimation();
+  }
 
   @override
   void dispose() {
-    _successAnimController.dispose();
-    _infoAnimController.dispose();
-    _warnAnimController.dispose();
-    _errorAnimController.dispose();
+    _controller.dispose();
     super.dispose();
+  }
+
+  _initializeAnimation() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 2000),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    );
   }
 
   @override
@@ -91,49 +84,46 @@ class _StylishDialogState extends State<StylishDialogUI>
     widget.cancelText ??= 'Cancel';
 
     return Dialog(
-      key: (widget.key == null ? key : widget.key),
+      key: (widget.key == null ? _key : widget.key),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
       ),
       elevation: 0,
       backgroundColor: Colors.white,
-      child: stylishContentBox(),
+      child: _stylishContentBox(),
     );
   }
 
-  stylishContentBox() {
-    return SafeArea(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _stylishDialogChange(),
-          if (widget.titleText != null) titleTextWidget(widget.titleText),
-          if (widget.contentText != null) contentTextWidget(widget.contentText),
-          if (widget.alertType == StylishDialog.NORMAL &&
-              widget.addView != null)
-            Container(
-                padding:
-                    EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
-                child: widget.addView),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (widget.cancelPressEvent != null)
-                pressButtonWidget(
-                    widget.cancelPressEvent, Colors.red, widget.cancelText),
-              if (widget.confirmPressEvent != null)
-                pressButtonWidget(
-                    widget.confirmPressEvent, Colors.teal, widget.confirmText),
-            ],
-          ),
-        ],
-      ),
+  _stylishContentBox() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _stylishDialogChange(),
+        if (widget.titleText != null) _titleTextWidget(widget.titleText),
+        if (widget.contentText != null) _contentTextWidget(widget.contentText),
+        if (widget.alertType == StylishDialogType.NORMAL &&
+            widget.addView != null)
+          Container(
+              padding: EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+              child: widget.addView),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.cancelPressEvent != null)
+              _pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+            if (widget.confirmPressEvent != null)
+              _pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+          ],
+        ),
+      ],
     );
   }
 
   //Text widget for title text
-  titleTextWidget(text) {
+  _titleTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
       child: Text(
@@ -149,7 +139,7 @@ class _StylishDialogState extends State<StylishDialogUI>
   }
 
   //Text widget for content text
-  contentTextWidget(text) {
+  _contentTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
       child: Text(
@@ -164,7 +154,7 @@ class _StylishDialogState extends State<StylishDialogUI>
   }
 
   //Button widget for confirm and cancel buttons
-  pressButtonWidget(pressEvent, color, text) {
+  _pressButtonWidget(pressEvent, color, text) {
     return Flexible(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -189,13 +179,20 @@ class _StylishDialogState extends State<StylishDialogUI>
     );
   }
 
+  _playAnimation() {
+    if (widget.animationLoop!)
+      _controller.repeat();
+    else
+      _controller.forward();
+  }
+
   _stylishDialogChange() {
     switch (widget.alertType) {
-      case StylishDialog.NORMAL:
+      case StylishDialogType.NORMAL:
         return Container(
           width: 0,
         );
-      case StylishDialog.PROGRESS:
+      case StylishDialogType.PROGRESS:
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
@@ -203,14 +200,15 @@ class _StylishDialogState extends State<StylishDialogUI>
             color: Colors.teal,
           ),
         );
-      case StylishDialog.SUCCESS:
+      case StylishDialogType.SUCCESS:
+        _playAnimation();
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: Container(
             alignment: Alignment.center,
-            width: 50,
-            height: 50,
+            width: _sizeK,
+            height: _sizeK,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(44),
               color: Colors.white,
@@ -221,7 +219,7 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
             padding: EdgeInsets.all(4.0),
             child: SizeTransition(
-                sizeFactor: _successAnimation,
+                sizeFactor: _animation,
                 axis: Axis.horizontal,
                 axisAlignment: -1,
                 child: Icon(
@@ -231,38 +229,41 @@ class _StylishDialogState extends State<StylishDialogUI>
                 )),
           ),
         );
-      case StylishDialog.INFO:
+      case StylishDialogType.INFO:
+        _playAnimation();
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
-              scale: _infoAnimation,
+              scale: _animation,
               child: Icon(
                 Icons.info_outlined,
                 color: Colors.blue,
                 size: 44,
               )),
         );
-      case StylishDialog.WARNING:
+      case StylishDialogType.WARNING:
+        _playAnimation();
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
-              scale: _warningAnimation,
+              scale: _animation,
               child: Icon(
                 Icons.info_outlined,
                 color: Colors.amber,
                 size: 44,
               )),
         );
-      case StylishDialog.ERROR:
+      case StylishDialogType.ERROR:
+        _playAnimation();
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: Container(
             alignment: Alignment.center,
-            width: 50,
-            height: 50,
+            width: _sizeK,
+            height: _sizeK,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(44),
               color: Colors.white,
@@ -273,13 +274,18 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
             padding: EdgeInsets.all(4.0),
             child: ScaleTransition(
-                scale: _errorAnimation,
+                scale: _animation,
                 child: Icon(
                   Icons.clear,
                   color: Colors.red,
                   size: 40,
                 )),
           ),
+        );
+
+      default:
+        return Container(
+          width: 0,
         );
     }
   }

@@ -1,29 +1,64 @@
 library stylish_dialog;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 
-// export 'src/stylish_dialogs.dart';
+enum StylishDialogType {
+  NORMAL,
+  PROGRESS,
+  SUCCESS,
+  INFO,
+  WARNING,
+  ERROR,
+  _CHANGE,
+}
 
 class StylishDialog {
-  static const int NORMAL = 1;
-  static const int PROGRESS = 2;
-  static const int SUCCESS = 3;
-  static const int INFO = 4;
-  static const int WARNING = 5;
-  static const int ERROR = 6;
-
   final BuildContext context;
-  final int? alertType;
+
+  ///StylishDialog to show dialog with different alert types. You can specify alert type
+  /// using for Normal [StylishDialogType.NORMAL]
+  ///
+  ///Progress [StylishDialogType.PROGRESS]
+  ///
+  ///Success [StylishDialogType.SUCCESS]
+  ///
+  ///Info [StylishDialogType.INFO]
+  ///
+  ///Warning [StylishDialogType.WARNING]
+  ///
+  ///Error [StylishDialogType.ERROR]
+  final StylishDialogType? alertType;
+
+  ///Use this to set dialog title text
   String? titleText;
+
+  ///Use this to set dialog content/detail text
   String? contentText;
+
+  ///Use this to set confirm button text
   String? confirmText;
+
+  ///Use this to set cancel button text
   String? cancelText;
+
+  ///Use this to stop dialog from dismissing by touching outside of the dialog
+  ///Default value is true
   bool dismissOnTouchOutside;
+
+  ///Play animations in loop.
+  ///Default value is false
+  bool animationLoop;
+
+  ///Hanlde confirm button press event
   VoidCallback? confirmPressEvent;
+
+  ///Hanlde cancel button press event
   VoidCallback? cancelPressEvent;
-  //Custom Widget to show in dialog
+
+  ///Add custom widget in dialog
   Widget? addView;
 
   StylishDialog({
@@ -36,16 +71,17 @@ class StylishDialog {
     this.confirmPressEvent,
     this.cancelPressEvent,
     this.dismissOnTouchOutside = true,
+    this.animationLoop = false,
     this.addView,
-  });
+  }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
-  //Method to show dialog
+  ///Function to show dialog
   Future show() => showDialog(
         context: this.context,
         barrierDismissible: this.dismissOnTouchOutside,
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
-            stateSetter = setState;
+            _stateSetter = setState;
             return _buildDialog;
           });
         },
@@ -57,40 +93,43 @@ class StylishDialog {
 
   Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
 
-  //Method to dismiss dialog
+  ///Function to dismiss dialog
   dismiss({bool rootNavigator = true}) {
     Navigator.of(this.context, rootNavigator: rootNavigator).pop();
   }
 
-  late StateSetter stateSetter;
-  int changeAlert = 9;
+  late StateSetter _stateSetter;
+  StylishDialogType _changeAlert = StylishDialogType._CHANGE;
 
-  //to change current dialog alert type
+  ///Function to change current dialog alert type
   changeAlertType(
-      {required int alertType,
+      {required StylishDialogType alertType,
       String? titleText,
       String? contentText,
       String? confirmText,
       String? cancelText,
       VoidCallback? confirmPressEvent,
       VoidCallback? cancelPressEvent}) {
-    stateSetter(() {
+    _stateSetter(() {
       this.titleText = titleText;
       this.contentText = contentText;
       this.confirmText = confirmText;
       this.cancelText = cancelText;
       this.confirmPressEvent = confirmPressEvent;
       this.cancelPressEvent = cancelPressEvent;
-      changeAlert = alertType;
-      _buildDialogUI(alertType: alertType);
+      _changeAlert = alertType;
+
+      _buildDialogUI();
     });
   }
 
-  //Method to build dialog UI
-  _buildDialogUI({int? alertType}) {
+  ///Function to build dialog UI
+  _buildDialogUI() {
     return StylishDialogUI(
       context: this.context,
-      alertType: (changeAlert == 9 ? this.alertType : changeAlert),
+      alertType: _changeAlert == StylishDialogType._CHANGE
+          ? this.alertType
+          : _changeAlert,
       titleText: this.titleText,
       contentText: this.contentText,
       confirmText: this.confirmText,
@@ -98,6 +137,7 @@ class StylishDialog {
       confirmPressEvent: this.confirmPressEvent,
       cancelPressEvent: this.cancelPressEvent,
       addView: this.addView,
+      animationLoop: this.animationLoop,
     );
   }
 }

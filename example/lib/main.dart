@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_dialog/stylish_dialog.dart';
 
@@ -50,7 +51,8 @@ class _StylishExampleState extends State<StylishExample> {
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
                       context: context,
-                      alertType: StylishDialog.PROGRESS,
+                      alertType: StylishDialogType.PROGRESS,
+                      animationLoop: true,
                       titleText: 'Processing...',
                       dismissOnTouchOutside: false,
                     );
@@ -58,7 +60,7 @@ class _StylishExampleState extends State<StylishExample> {
 
                     Future.delayed(Duration(seconds: 3), () {
                       dialog.changeAlertType(
-                        alertType: StylishDialog.SUCCESS,
+                        alertType: StylishDialogType.SUCCESS,
                         titleText: 'Congrats!',
                         contentText: 'Task completed successfuly',
                         confirmPressEvent: () {
