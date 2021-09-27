@@ -1,3 +1,19 @@
+## 0.0.8
+
+ - ✔️ Added
+```diff
++ confirmButton:
++ cancelButton:
+```
+
+ - ❌ Deprecated
+```dart
+@deprecated confirmText:
+@deprecated cancelText:
+@deprecated confirmPressEvent:
+@deprecated cancelPressEvent:
+```
+
 ## 0.0.7
 - Added `animationLoop:` to play animations in a loop
 ```diff

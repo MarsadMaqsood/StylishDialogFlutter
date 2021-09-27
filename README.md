@@ -13,7 +13,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ## ⭐  Installing
 
     dependencies:
-        stylish_dialog: ^0.0.7
+        stylish_dialog: ^0.0.8
         
 ## ⚡ Import
 
@@ -23,17 +23,22 @@ import 'package:stylish_dialog/stylish_dialog.dart';
 
 ## 📙 How To Use
 
-    context:
-    alertType:
-    titleText:
-    contentText:
-    addView:
-    confirmText:
-    cancelText:
-    confirmPressEvent:
-    cancelPressEvent:
-    dismissOnTouchOutside:
-    animationLoop:
+```dart
+context:
+alertType:
+titleText:
+contentText:
+addView:
+confirmButton:
+cancelButton:
+dismissOnTouchOutside:
+animationLoop:
+@deprecated confirmText:
+@deprecated cancelText:
+@deprecated confirmPressEvent:
+@deprecated cancelPressEvent:
+    
+```
     
 
 ## Properties
@@ -62,6 +67,12 @@ dismissOnTouchOutside → bool
 rootNavigator → bool
 
 animationLoop → bool
+
+confirmButton → Widget
+
+cancelButton → Widget
+
+
 ```
 
 ## Alert Type
@@ -79,6 +90,10 @@ StylishDialogType.ERROR
 ### Press Event
 
 ```dart
+///Press events are deprecated and should be replaced with
+/// [confirmButton:], [cancelButton:] 
+///  To handle clicks you can wrap your widget with
+/// [GestureDetector] or [InkWell]
 confirmPressEvent: (){
         
 }
@@ -352,7 +367,7 @@ ___
 
     
 ### Different Ways to bind
-Progress dialog bind with Success dialog
+Progress dialog binds with Success dialog
 
 ```dart
 StylishDialog dialog = StylishDialog(
@@ -369,10 +384,28 @@ Future.delayed(Duration(seconds: 3), () {
     alertType: StylishDialogType.SUCCESS,
         titleText: 'Congrats!',
         contentText: 'Task completed successfuly',
-        confirmPressEvent: () {
-            dialog.dismiss();
-        },
-    confirmText: 'Dismiss',
+
+        confirmButton: TextButton(
+            onPressed: () {
+                dialog.dismiss();
+            },
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.teal),
+                ),
+            ),
+            child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Text('Dismiss',
+                        style: TextStyle(
+                            color: Colors.white, fontSize: 16),
+                        ),
+                    ),
+
+        //confirmText: 'Dismiss',
+        //confirmPressEvent: () {
+        //    dialog.dismiss();
+        //},
     );
 });
 ```

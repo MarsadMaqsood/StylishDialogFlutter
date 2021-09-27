@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 library stylish_dialog;
 
 import 'package:flutter/cupertino.dart';
@@ -39,9 +41,11 @@ class StylishDialog {
   String? contentText;
 
   ///Use this to set confirm button text
+  @Deprecated('Use `confirmEvent` instead. will be removed soon')
   String? confirmText;
 
-  ///Use this to set cancel button text
+  ///Use this to set cancel button tex
+  @Deprecated('Use `cancelEvent` instead. will be removed soon')
   String? cancelText;
 
   ///Use this to stop dialog from dismissing by touching outside of the dialog
@@ -53,26 +57,44 @@ class StylishDialog {
   bool animationLoop;
 
   ///Hanlde confirm button press event
+  @Deprecated('Use `confirmButton` instead. Will be removed soon')
   VoidCallback? confirmPressEvent;
 
   ///Hanlde cancel button press event
+  @Deprecated('Use `cancelButton` instead. Will be removed soon')
   VoidCallback? cancelPressEvent;
 
   ///Add custom widget in dialog
   Widget? addView;
+
+  ///Use this to add confirm button widget.
+  ///To assign press event on non-clickable widgets like Containter(), Text() etc.
+  ///Wrap you widget with GestureDetector() or InkWell()
+  Widget? confirmButton;
+
+  ///Use this to add cancel button widget.
+  ///To assign press event on non-clickable widgets like Containter(), Text() etc.
+  ///Wrap you widget with GestureDetector() or InkWell()
+  Widget? cancelButton;
 
   StylishDialog({
     required this.context,
     required this.alertType,
     this.titleText,
     this.contentText,
-    this.confirmText,
-    this.cancelText,
-    this.confirmPressEvent,
-    this.cancelPressEvent,
+    @Deprecated('Use `confirmButton` instead. will be removed soon')
+        this.confirmText,
+    @Deprecated('Use `cancelButton` instead. will be removed soon')
+        this.cancelText,
+    @Deprecated('Use `confirmButton` instead. will be removed soon')
+        this.confirmPressEvent,
+    @Deprecated('Use `cancelButton` instead. will be removed soon')
+        this.cancelPressEvent,
     this.dismissOnTouchOutside = true,
     this.animationLoop = false,
     this.addView,
+    this.confirmButton,
+    this.cancelButton,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
   ///Function to show dialog
@@ -102,14 +124,29 @@ class StylishDialog {
   StylishDialogType _changeAlert = StylishDialogType._CHANGE;
 
   ///Function to change current dialog alert type
-  changeAlertType(
-      {required StylishDialogType alertType,
-      String? titleText,
-      String? contentText,
-      String? confirmText,
-      String? cancelText,
-      VoidCallback? confirmPressEvent,
-      VoidCallback? cancelPressEvent}) {
+  changeAlertType({
+    required StylishDialogType alertType,
+    String? titleText,
+    String? contentText,
+    @Deprecated('Use `confirmButton` instead. will be removed soon')
+        String? confirmText,
+    @Deprecated('Use `cancelButton` instead. will be removed soon')
+        String? cancelText,
+    @Deprecated('Use `confirmButton` instead. will be removed soon')
+        VoidCallback? confirmPressEvent,
+    @Deprecated('Use `cancelButton` instead. will be removed soon')
+        VoidCallback? cancelPressEvent,
+
+    ///Use this to add confirm button widget.
+    ///To assign press event on non-clickable widgets like Containter(), Text() etc.
+    ///Wrap you widget with GestureDetector() or InkWell()
+    Widget? confirmButton,
+
+    ///Use this to add cancel button widget.
+    ///To assign press event on non-clickable widgets like Containter(), Text() etc.
+    ///Wrap you widget with GestureDetector() or InkWell()
+    Widget? cancelButton,
+  }) {
     _stateSetter(() {
       this.titleText = titleText;
       this.contentText = contentText;
@@ -117,6 +154,8 @@ class StylishDialog {
       this.cancelText = cancelText;
       this.confirmPressEvent = confirmPressEvent;
       this.cancelPressEvent = cancelPressEvent;
+      this.confirmButton = confirmButton;
+      this.cancelButton = cancelButton;
       _changeAlert = alertType;
 
       _buildDialogUI();
@@ -138,6 +177,8 @@ class StylishDialog {
       cancelPressEvent: this.cancelPressEvent,
       addView: this.addView,
       animationLoop: this.animationLoop,
+      cancelButton: this.cancelButton,
+      confirmButton: this.confirmButton,
     );
   }
 }

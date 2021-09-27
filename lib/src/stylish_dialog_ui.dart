@@ -19,6 +19,8 @@ class StylishDialogUI extends StatefulWidget {
     this.confirmPressEvent,
     this.cancelPressEvent,
     this.addView,
+    this.confirmButton,
+    this.cancelButton,
   }) : super(key: key);
 
   final BuildContext context;
@@ -31,6 +33,9 @@ class StylishDialogUI extends StatefulWidget {
   VoidCallback? confirmPressEvent;
   VoidCallback? cancelPressEvent;
   Widget? addView;
+  //
+  Widget? confirmButton;
+  Widget? cancelButton;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -110,12 +115,25 @@ class _StylishDialogState extends State<StylishDialogUI>
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (widget.cancelPressEvent != null)
-              _pressButtonWidget(
-                  widget.cancelPressEvent, Colors.red, widget.cancelText),
-            if (widget.confirmPressEvent != null)
+            if (widget.confirmButton != null)
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: widget.confirmButton!,
+              )
+            else if (widget.confirmPressEvent != null)
               _pressButtonWidget(
                   widget.confirmPressEvent, Colors.teal, widget.confirmText),
+
+            ///
+            ///
+            if (widget.cancelButton != null)
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: widget.cancelButton!,
+              )
+            else if (widget.cancelPressEvent != null)
+              _pressButtonWidget(
+                  widget.cancelPressEvent, Colors.red, widget.cancelText),
           ],
         ),
       ],

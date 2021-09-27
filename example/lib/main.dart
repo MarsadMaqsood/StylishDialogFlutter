@@ -52,7 +52,7 @@ class _StylishExampleState extends State<StylishExample> {
                     StylishDialog dialog = StylishDialog(
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
-                      animationLoop: true,
+                      animationLoop: false,
                       titleText: 'Processing...',
                       dismissOnTouchOutside: false,
                     );
@@ -60,14 +60,41 @@ class _StylishExampleState extends State<StylishExample> {
 
                     Future.delayed(Duration(seconds: 3), () {
                       dialog.changeAlertType(
-                        alertType: StylishDialogType.SUCCESS,
-                        titleText: 'Congrats!',
-                        contentText: 'Task completed successfuly',
-                        confirmPressEvent: () {
-                          dialog.dismiss();
-                        },
-                        confirmText: 'Dismiss',
-                      );
+                          alertType: StylishDialogType.SUCCESS,
+                          titleText: 'Congrats!',
+                          contentText: 'Task completed successfuly',
+
+                          /// Deprecated
+                          /// ```dart
+                          /// confirmPressEvent: () {
+                          ///   dialog.dismiss();
+                          /// },
+                          /// ```
+                          ///
+                          /// Deprecated
+                          /// ```
+                          /// confirmText: 'Dismiss',
+                          /// ```
+                          ///
+
+                          //Use [confirmButton] now
+                          confirmButton: TextButton(
+                            onPressed: () {
+                              dialog.dismiss();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Text(
+                                'Dismiss',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.teal),
+                            ),
+                          ));
                     });
                   },
                   child: Text(

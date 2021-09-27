@@ -1,7 +1,7 @@
 name: stylish_dialog
 description: A collection of stylish animated dialogs like Normal, Progress, Success, Info, Warning, and Error for flutter.
-version: 0.0.7
-homepage: https://github.com/MarsadMaqsood/StylishDialogFlutter.git
+version: 0.0.8
+homepage: https://github.com/MarsadMaqsood/StylishDialogFlutter
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
