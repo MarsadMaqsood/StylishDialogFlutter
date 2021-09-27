@@ -41,11 +41,11 @@ class StylishDialog {
   String? contentText;
 
   ///Use this to set confirm button text
-  @Deprecated('Use `confirmEvent` instead. will be removed soon')
+  @Deprecated('Use `confirmEvent` instead. Will be removed soon')
   String? confirmText;
 
   ///Use this to set cancel button tex
-  @Deprecated('Use `cancelEvent` instead. will be removed soon')
+  @Deprecated('Use `cancelEvent` instead. Will be removed soon')
   String? cancelText;
 
   ///Use this to stop dialog from dismissing by touching outside of the dialog

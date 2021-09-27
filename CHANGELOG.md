@@ -68,6 +68,7 @@ Added `changeAlertType()` function to change current dialog type.
 ```
 
 
+
 ## 0.0.3+1
 
 * Fixed content text alignment

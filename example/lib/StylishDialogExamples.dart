@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+
 import 'package:stylish_dialog/stylish_dialog.dart';
 
 class StylishDialogExamples extends StatefulWidget {

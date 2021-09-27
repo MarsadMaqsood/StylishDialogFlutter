@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import '../stylish_dialog.dart';
 
 const _sizeK = 50.0;

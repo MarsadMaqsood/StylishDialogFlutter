@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
-
 import 'package:stylish_dialog/stylish_dialog.dart';
 
 void main() {

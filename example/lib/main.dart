@@ -64,7 +64,7 @@ class _StylishExampleState extends State<StylishExample> {
                           titleText: 'Congrats!',
                           contentText: 'Task completed successfuly',
 
-                          /// Deprecated
+                          /// Deprecatd
                           /// ```dart
                           /// confirmPressEvent: () {
                           ///   dialog.dismiss();
