@@ -114,17 +114,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (widget.confirmButton != null)
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: widget.confirmButton!,
-              )
-            else if (widget.confirmPressEvent != null)
-              _pressButtonWidget(
-                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
-
-            ///
-            ///
+            ///Cancel
             if (widget.cancelButton != null)
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -133,6 +123,16 @@ class _StylishDialogState extends State<StylishDialogUI>
             else if (widget.cancelPressEvent != null)
               _pressButtonWidget(
                   widget.cancelPressEvent, Colors.red, widget.cancelText),
+
+            ///Confirm
+            if (widget.confirmButton != null)
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: widget.confirmButton!,
+              )
+            else if (widget.confirmPressEvent != null)
+              _pressButtonWidget(
+                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
           ],
         ),
       ],

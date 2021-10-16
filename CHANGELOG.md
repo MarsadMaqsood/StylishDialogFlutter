@@ -1,3 +1,6 @@
+## 0.0.8+1
+- Fixed some bugs
+
 ## 0.0.8
 
  - ✔️ Added

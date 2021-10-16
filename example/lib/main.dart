@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Stylish Dialog Demo',
+      title: 'Stylish Dialog Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -60,41 +60,41 @@ class _StylishExampleState extends State<StylishExample> {
 
                     Future.delayed(Duration(seconds: 3), () {
                       dialog.changeAlertType(
-                          alertType: StylishDialogType.SUCCESS,
-                          titleText: 'Congrats!',
-                          contentText: 'Task completed successfuly',
+                        alertType: StylishDialogType.SUCCESS,
+                        titleText: 'Congrats!',
+                        contentText: 'Task completed successfuly',
 
-                          /// Deprecatd
-                          /// ```dart
-                          /// confirmPressEvent: () {
-                          ///   dialog.dismiss();
-                          /// },
-                          /// ```
-                          ///
-                          /// Deprecated
-                          /// ```
-                          /// confirmText: 'Dismiss',
-                          /// ```
-                          ///
+                        /// Deprecatd
+                        /// ```dart
+                        /// confirmPressEvent: () {
+                        ///   dialog.dismiss();
+                        /// },
+                        /// ```
+                        ///
+                        /// Deprecated
+                        /// ```
+                        /// confirmText: 'Dismiss',
+                        /// ```
 
-                          //Use [confirmButton] now
-                          confirmButton: TextButton(
-                            onPressed: () {
-                              dialog.dismiss();
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Text(
-                                'Dismiss',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              ),
+                        //Use [confirmButton] now
+                        confirmButton: TextButton(
+                          onPressed: () {
+                            dialog.dismiss();
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              'Dismiss',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16),
                             ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.teal),
-                            ),
-                          ));
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                          ),
+                        ),
+                      );
                     });
                   },
                   child: Text(

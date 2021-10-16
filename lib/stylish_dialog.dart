@@ -64,17 +64,29 @@ class StylishDialog {
   @Deprecated('Use `cancelButton` instead. Will be removed soon')
   VoidCallback? cancelPressEvent;
 
-  ///Add custom widget in dialog
+  ///Add custom widget in the dialog.
   Widget? addView;
 
   ///Use this to add confirm button widget.
-  ///To assign press event on non-clickable widgets like Containter(), Text() etc.
-  ///Wrap you widget with GestureDetector() or InkWell()
+  ///To assign press event on non-clickable widgets like
+  ///```dart
+  /// Containter(), Text() etc.
+  ///```
+  ///Wrap you widget with
+  ///```dart
+  ///GestureDetector() or InkWell()
+  ///```
   Widget? confirmButton;
 
   ///Use this to add cancel button widget.
-  ///To assign press event on non-clickable widgets like Containter(), Text() etc.
-  ///Wrap you widget with GestureDetector() or InkWell()
+  ///To assign press event on non-clickable widgets like
+  ///```dart
+  /// Containter(), Text() etc.
+  ///```
+  ///Wrap you widget with
+  ///```dart
+  ///GestureDetector() or InkWell()
+  ///```
   Widget? cancelButton;
 
   StylishDialog({
@@ -138,13 +150,25 @@ class StylishDialog {
         VoidCallback? cancelPressEvent,
 
     ///Use this to add confirm button widget.
-    ///To assign press event on non-clickable widgets like Containter(), Text() etc.
-    ///Wrap you widget with GestureDetector() or InkWell()
+    ///To assign press event on non-clickable widgets like
+    ///```dart
+    /// Containter(), Text() etc.
+    ///```
+    ///Wrap you widget with
+    ///```dart
+    ///GestureDetector() or InkWell()
+    ///```
     Widget? confirmButton,
 
     ///Use this to add cancel button widget.
-    ///To assign press event on non-clickable widgets like Containter(), Text() etc.
-    ///Wrap you widget with GestureDetector() or InkWell()
+    ///To assign press event on non-clickable widgets like
+    ///```dart
+    /// Containter(), Text() etc.
+    ///```
+    ///Wrap you widget with
+    ///```dart
+    ///GestureDetector() or InkWell()
+    ///```
     Widget? cancelButton,
   }) {
     _stateSetter(() {

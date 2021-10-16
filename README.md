@@ -12,9 +12,11 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 
 ## ⭐  Installing
 
-    dependencies:
-        stylish_dialog: ^0.0.8
-        
+```yaml
+dependencies:
+    stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
+    #stylish_dialog: ^0.0.8+1
+```
 ## ⚡ Import
 
 ```dart
