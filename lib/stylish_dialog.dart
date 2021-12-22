@@ -2,9 +2,7 @@
 
 library stylish_dialog;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 
 enum StylishDialogType {
@@ -40,41 +38,67 @@ class StylishDialog {
   ///Use this to set dialog content/detail text
   String? contentText;
 
-  ///Use this to set confirm button text
+  ///Use this to set confirm button text.
+  ///
+  ///@Deprecated('Use `confirmEvent` instead. Will be removed soon')
   @Deprecated('Use `confirmEvent` instead. Will be removed soon')
   String? confirmText;
 
-  ///Use this to set cancel button tex
+  ///Use this to set cancel button text.
+  ///
+  ///@Deprecated('Use `cancelEvent` instead. Will be removed soon')
   @Deprecated('Use `cancelEvent` instead. Will be removed soon')
   String? cancelText;
 
   ///Use this to stop dialog from dismissing by touching outside of the dialog
   ///Default value is true
+  ///
+  ///```
+  ///bool dismissOnTouchOutside = true;
+  ///```
   bool dismissOnTouchOutside;
 
-  ///Play animations in loop.
+  ///Play animations in a loop.
   ///Default value is false
+  ///```
+  /// bool animationLoop = false;
+  ///```
   bool animationLoop;
 
-  ///Hanlde confirm button press event
+  ///Hanlde confirm button press event.
+  ///
+  ///@Deprecated('Use `confirmButton` instead. Will be removed soon')
   @Deprecated('Use `confirmButton` instead. Will be removed soon')
   VoidCallback? confirmPressEvent;
 
-  ///Hanlde cancel button press event
+  ///Hanlde cancel button press event.
+  ///
+  ///@Deprecated('Use `cancelButton` instead. Will be removed soon')
   @Deprecated('Use `cancelButton` instead. Will be removed soon')
   VoidCallback? cancelPressEvent;
 
   ///Add custom widget in the dialog.
+  ///Only available in the Normal Dialog Type [StylishDialogType.NORMAL]
   Widget? addView;
 
   ///Use this to add confirm button widget.
   ///To assign press event on non-clickable widgets like
   ///```dart
-  /// Containter(), Text() etc.
-  ///```
-  ///Wrap you widget with
-  ///```dart
-  ///GestureDetector() or InkWell()
+  /// GestureDetector(
+  ///   onTap: (){
+  ///
+  ///   }
+  ///   child: widget,
+  /// )
+  ///
+  ///or
+  ///
+  /// InkWell(
+  ///   onTap: (){
+  ///
+  ///   }
+  ///   child: widget,
+  /// )
   ///```
   Widget? confirmButton;
 
@@ -85,9 +109,47 @@ class StylishDialog {
   ///```
   ///Wrap you widget with
   ///```dart
-  ///GestureDetector() or InkWell()
+  /// GestureDetector(
+  ///   onTap: (){
+  ///
+  ///   }
+  ///   child: widget,
+  /// )
+  ///
+  ///or
+  ///
+  /// InkWell(
+  ///   onTap: (){
+  ///
+  ///   }
+  ///   child: widget,
+  /// )
   ///```
   Widget? cancelButton;
+
+  ///Use this to change content text style.
+  ///Default is
+  ///```
+  /// TextStyle(
+  ///    fontWeight: FontWeight.bold,
+  ///    fontSize: 20.0,
+  /// )
+  ///```
+  TextStyle? titleStyle;
+
+  ///Use this to change title text style
+  ///Default is
+  ///```
+  /// TextStyle()
+  ///```
+  TextStyle? contentStyle;
+
+  ///Use this to change progress bar color.
+  ///Default is
+  ///```
+  ///  Theme.of(context).primaryColor
+  ///```
+  Color? progressColor;
 
   StylishDialog({
     required this.context,
@@ -107,9 +169,22 @@ class StylishDialog {
     this.addView,
     this.confirmButton,
     this.cancelButton,
+    this.titleStyle = const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0,
+    ),
+    this.contentStyle = const TextStyle(),
+    this.progressColor,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
-  ///Function to show dialog
+  ///Function used to show the dialog
+  ///```
+  ///StylishDialog(
+  ///   context: context,
+  ///   alertType: StylishDialogType.PROGRESS,
+  ///   ...
+  ///).show();
+  ///```
   Future show() => showDialog(
         context: this.context,
         barrierDismissible: this.dismissOnTouchOutside,
@@ -127,7 +202,16 @@ class StylishDialog {
 
   Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
 
-  ///Function to dismiss dialog
+  ///Function used to dismiss the dialog
+  ///```
+  ///StylishDialog dialog = StylishDialog(
+  ///   context: context,
+  ///   alertType: StylishDialogType.NORMAL,
+  ///   ...
+  ///);
+  ///...
+  ///dialog.dismiss();
+  ///```
   dismiss({bool rootNavigator = true}) {
     Navigator.of(this.context, rootNavigator: rootNavigator).pop();
   }
@@ -135,7 +219,21 @@ class StylishDialog {
   late StateSetter _stateSetter;
   StylishDialogType _changeAlert = StylishDialogType._CHANGE;
 
-  ///Function to change current dialog alert type
+  ///Function used to change current dialog alert type
+  ///```
+  ///StylishDialog dialog = StylishDialog(
+  ///   context: context,
+  ///   alertType: StylishDialogType.PROGRESS,
+  ///   ...
+  ///);
+  ///...
+  ///
+  ///dialog.changeAlertType(
+  ///   alertType: StylishDialogType.WARNING,
+  ///   ...
+  ///);
+  ///
+  ///```
   changeAlertType({
     required StylishDialogType alertType,
     String? titleText,
@@ -203,6 +301,9 @@ class StylishDialog {
       animationLoop: this.animationLoop,
       cancelButton: this.cancelButton,
       confirmButton: this.confirmButton,
+      titleStyle: this.titleStyle,
+      contentStyle: this.contentStyle,
+      color: progressColor ?? Theme.of(context).primaryColor,
     );
   }
 }

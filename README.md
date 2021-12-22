@@ -15,7 +15,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ```yaml
 dependencies:
     stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
-    #stylish_dialog: ^0.0.8+1
+    #stylish_dialog: ^0.0.9
 ```
 ## ⚡ Import
 
@@ -35,11 +35,13 @@ confirmButton:
 cancelButton:
 dismissOnTouchOutside:
 animationLoop:
+titleStyle:
+contentStyle:
+progressColor:
 @deprecated confirmText:
 @deprecated cancelText:
 @deprecated confirmPressEvent:
 @deprecated cancelPressEvent:
-    
 ```
     
 
@@ -75,7 +77,11 @@ confirmButton → Widget
 
 cancelButton → Widget
 
+titleStyle → TextStyle
 
+contentStyle → TextStyle
+
+progressColor → Color
 ```
 
 ## Alert Type

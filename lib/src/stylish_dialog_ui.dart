@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../stylish_dialog.dart';
 
 const _sizeK = 50.0;
@@ -20,6 +19,9 @@ class StylishDialogUI extends StatefulWidget {
     this.addView,
     this.confirmButton,
     this.cancelButton,
+    this.color,
+    this.titleStyle,
+    this.contentStyle,
   }) : super(key: key);
 
   final BuildContext context;
@@ -32,9 +34,13 @@ class StylishDialogUI extends StatefulWidget {
   VoidCallback? confirmPressEvent;
   VoidCallback? cancelPressEvent;
   Widget? addView;
+
   //
   Widget? confirmButton;
   Widget? cancelButton;
+  Color? color;
+  TextStyle? titleStyle;
+  TextStyle? contentStyle;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -146,11 +152,7 @@ class _StylishDialogState extends State<StylishDialogUI>
       child: Text(
         '$text',
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-        ),
+        style: widget.titleStyle,
       ),
     );
   }
@@ -162,10 +164,7 @@ class _StylishDialogState extends State<StylishDialogUI>
       child: Text(
         '$text',
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
+        style: widget.contentStyle,
       ),
     );
   }
@@ -214,7 +213,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: CircularProgressIndicator(
-            color: Colors.teal,
+            color: widget.color,
           ),
         );
       case StylishDialogType.SUCCESS:

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_dialog/stylish_dialog.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Stylish Dialog Example',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: StylishExample(),
     );
@@ -52,9 +51,8 @@ class _StylishExampleState extends State<StylishExample> {
                     StylishDialog dialog = StylishDialog(
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
-                      animationLoop: false,
                       titleText: 'Processing...',
-                      dismissOnTouchOutside: false,
+                      // dismissOnTouchOutside: false,
                     );
                     dialog.show();
 

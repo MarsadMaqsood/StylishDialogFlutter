@@ -1,3 +1,12 @@
+## 0.0.9
+- Revert some changes
+- Added
+```diff
++ titleStyle:
++ contentStyle:
++ progressColor:
+```
+
 ## 0.0.8+1
 - Fixed some bugs
 
