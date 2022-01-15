@@ -15,6 +15,11 @@ enum StylishDialogType {
   _CHANGE,
 }
 
+enum Style {
+  Default,
+  Style1,
+}
+
 class StylishDialog {
   final BuildContext context;
 
@@ -78,7 +83,6 @@ class StylishDialog {
   VoidCallback? cancelPressEvent;
 
   ///Add custom widget in the dialog.
-  ///Only available in the Normal Dialog Type [StylishDialogType.NORMAL]
   Widget? addView;
 
   ///Use this to add confirm button widget.
@@ -151,6 +155,10 @@ class StylishDialog {
   ///```
   Color? progressColor;
 
+  ///Use this to change button style
+  ///Default [ButtonStyle.Default]
+  Style? style;
+
   StylishDialog({
     required this.context,
     required this.alertType,
@@ -175,6 +183,7 @@ class StylishDialog {
     ),
     this.contentStyle = const TextStyle(),
     this.progressColor,
+    this.style = Style.Default,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
   ///Function used to show the dialog
@@ -304,6 +313,7 @@ class StylishDialog {
       titleStyle: this.titleStyle,
       contentStyle: this.contentStyle,
       color: progressColor ?? Theme.of(context).primaryColor,
+      style: this.style!,
     );
   }
 }

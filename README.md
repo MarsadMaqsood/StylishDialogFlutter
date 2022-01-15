@@ -15,7 +15,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ```yaml
 dependencies:
     stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
-    #stylish_dialog: ^0.0.9
+    #stylish_dialog: ^0.0.10
 ```
 ## ⚡ Import
 
@@ -82,6 +82,8 @@ titleStyle → TextStyle
 contentStyle → TextStyle
 
 progressColor → Color
+
+style → Style
 ```
 
 ## Alert Type
@@ -94,8 +96,14 @@ StylishDialogType.INFO
 StylishDialogType.WARNING
 StylishDialogType.ERROR
 ```
-    
-    
+
+## Dialog Style
+
+```dart
+Style.Default
+Style.Style1
+```
+
 ### Press Event
 
 ```dart

@@ -1,3 +1,7 @@
+## 0.0.10
+- Added styles
+- Improved addView: usage
+
 ## 0.0.9
 - Revert some changes
 - Added

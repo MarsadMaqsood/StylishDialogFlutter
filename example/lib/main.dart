@@ -52,7 +52,8 @@ class _StylishExampleState extends State<StylishExample> {
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
                       titleText: 'Processing...',
-                      // dismissOnTouchOutside: false,
+                      dismissOnTouchOutside: false,
+                      // style: Style.Style1,
                     );
                     dialog.show();
 
@@ -62,19 +63,21 @@ class _StylishExampleState extends State<StylishExample> {
                         titleText: 'Congrats!',
                         contentText: 'Task completed successfuly',
 
-                        /// Deprecatd
+                        /// Deprecated
+                        ///
                         /// ```dart
+                        ///
+                        /// confirmText: 'Dismiss',
                         /// confirmPressEvent: () {
                         ///   dialog.dismiss();
                         /// },
-                        /// ```
                         ///
-                        /// Deprecated
-                        /// ```
-                        /// confirmText: 'Dismiss',
+                        /// cancelText: 'Not now',
+                        /// cancelPressEvent: () {},
+                        ///
                         /// ```
 
-                        //Use [confirmButton] now
+                        //Use `confirmButton` now
                         confirmButton: TextButton(
                           onPressed: () {
                             dialog.dismiss();

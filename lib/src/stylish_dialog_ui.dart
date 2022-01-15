@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../stylish_dialog.dart';
 
-const _sizeK = 50.0;
+const _sizeK = 48.0;
 
 // ignore: must_be_immutable
 class StylishDialogUI extends StatefulWidget {
@@ -22,6 +22,7 @@ class StylishDialogUI extends StatefulWidget {
     this.color,
     this.titleStyle,
     this.contentStyle,
+    this.style,
   }) : super(key: key);
 
   final BuildContext context;
@@ -41,6 +42,7 @@ class StylishDialogUI extends StatefulWidget {
   Color? color;
   TextStyle? titleStyle;
   TextStyle? contentStyle;
+  Style? style;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -99,8 +101,11 @@ class _StylishDialogState extends State<StylishDialogUI>
         borderRadius: BorderRadius.circular(14),
       ),
       elevation: 0,
-      backgroundColor: Colors.white,
-      child: _stylishContentBox(),
+      backgroundColor:
+          widget.style == Style.Default ? Colors.white : Colors.black,
+      child: widget.style == Style.Default
+          ? _stylishContentBox()
+          : _stylishContentBoxStyle1(),
     );
   }
 
@@ -111,8 +116,9 @@ class _StylishDialogState extends State<StylishDialogUI>
         _stylishDialogChange(),
         if (widget.titleText != null) _titleTextWidget(widget.titleText),
         if (widget.contentText != null) _contentTextWidget(widget.contentText),
-        if (widget.alertType == StylishDialogType.NORMAL &&
-            widget.addView != null)
+        if (
+        // widget.alertType == StylishDialogType.NORMAL &&
+        widget.addView != null)
           Container(
               padding: EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
               child: widget.addView),
@@ -189,6 +195,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(color),
+            foregroundColor: MaterialStateProperty.all(color),
           ),
         ),
       ),
@@ -235,14 +242,15 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
             padding: EdgeInsets.all(4.0),
             child: SizeTransition(
-                sizeFactor: _animation,
-                axis: Axis.horizontal,
-                axisAlignment: -1,
-                child: Icon(
-                  Icons.check,
-                  color: Colors.green,
-                  size: 40,
-                )),
+              sizeFactor: _animation,
+              axis: Axis.horizontal,
+              axisAlignment: -1,
+              child: Icon(
+                Icons.check,
+                color: Colors.green,
+                size: 38,
+              ),
+            ),
           ),
         );
       case StylishDialogType.INFO:
@@ -304,5 +312,86 @@ class _StylishDialogState extends State<StylishDialogUI>
           width: 0,
         );
     }
+  }
+
+  _stylishContentBoxStyle1() {
+    return Transform.rotate(
+      angle: -0.07,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.all(1),
+        child: Transform.rotate(
+          angle: 0.07,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 12,
+              ),
+              if (widget.titleText != null) _titleTextWidget(widget.titleText),
+              if (widget.contentText != null)
+                _contentTextWidget(widget.contentText),
+              if (widget.addView != null)
+                Container(
+                    padding:
+                        EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+                    child: widget.addView),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ///Confirm
+                  if (widget.confirmButton != null)
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: widget.confirmButton!,
+                    )
+                  else if (widget.confirmPressEvent != null)
+                    _pressButtonWidgetStyle1(widget.confirmPressEvent,
+                        Colors.black, widget.confirmText),
+
+                  ///Cancel
+                  if (widget.cancelButton != null)
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: widget.cancelButton!,
+                    )
+                  else if (widget.cancelPressEvent != null)
+                    _pressButtonWidgetStyle1(widget.cancelPressEvent,
+                        Colors.transparent, widget.cancelText,
+                        textColor: Colors.black),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _pressButtonWidgetStyle1(pressEvent, color, text, {textColor}) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: GestureDetector(
+        onTap: () async {
+          pressEvent();
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: color,
+          ),
+          padding: const EdgeInsets.all(12),
+          child: Text(
+            '$text',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: textColor ?? Colors.white, fontSize: 16),
+          ),
+        ),
+      ),
+    );
   }
 }
