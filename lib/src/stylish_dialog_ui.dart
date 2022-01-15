@@ -195,7 +195,6 @@ class _StylishDialogState extends State<StylishDialogUI>
           ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(color),
-            foregroundColor: MaterialStateProperty.all(color),
           ),
         ),
       ),
@@ -245,7 +244,7 @@ class _StylishDialogState extends State<StylishDialogUI>
               sizeFactor: _animation,
               axis: Axis.horizontal,
               axisAlignment: -1,
-              child: Icon(
+              child: const Icon(
                 Icons.check,
                 color: Colors.green,
                 size: 38,
@@ -260,7 +259,7 @@ class _StylishDialogState extends State<StylishDialogUI>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
               scale: _animation,
-              child: Icon(
+              child: const Icon(
                 Icons.info_outlined,
                 color: Colors.blue,
                 size: 44,
@@ -273,7 +272,7 @@ class _StylishDialogState extends State<StylishDialogUI>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: ScaleTransition(
               scale: _animation,
-              child: Icon(
+              child: const Icon(
                 Icons.info_outlined,
                 color: Colors.amber,
                 size: 44,
@@ -299,7 +298,7 @@ class _StylishDialogState extends State<StylishDialogUI>
             padding: EdgeInsets.all(4.0),
             child: ScaleTransition(
                 scale: _animation,
-                child: Icon(
+                child: const Icon(
                   Icons.clear,
                   color: Colors.red,
                   size: 40,
