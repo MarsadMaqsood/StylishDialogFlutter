@@ -23,8 +23,8 @@ enum Style {
 class StylishDialog {
   final BuildContext context;
 
-  ///StylishDialog to show dialog with different alert types. You can specify alert type
-  /// using for Normal [StylishDialogType.NORMAL]
+  ///To show dialog with different alert types. You can specify alert type
+  /// using; for Normal [StylishDialogType.NORMAL]
   ///
   ///Progress [StylishDialogType.PROGRESS]
   ///
@@ -40,7 +40,7 @@ class StylishDialog {
   ///Use this to set dialog title text
   String? titleText;
 
-  ///Use this to set dialog content/detail text
+  ///Use this to set the dialog content/detail text
   String? contentText;
 
   ///Use this to set confirm button text.
