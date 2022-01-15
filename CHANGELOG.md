@@ -1,5 +1,9 @@
 ## 0.0.10
-- Added styles
+- Added dialog styles
+```diff
++ Style.Default
++ Style.Style1
+```
 - Improved addView: usage
 
 ## 0.0.9
