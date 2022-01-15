@@ -36,7 +36,6 @@ class StylishDialogUI extends StatefulWidget {
   VoidCallback? cancelPressEvent;
   Widget? addView;
 
-  //
   Widget? confirmButton;
   Widget? cancelButton;
   Color? color;
@@ -116,9 +115,7 @@ class _StylishDialogState extends State<StylishDialogUI>
         _stylishDialogChange(),
         if (widget.titleText != null) _titleTextWidget(widget.titleText),
         if (widget.contentText != null) _contentTextWidget(widget.contentText),
-        if (
-        // widget.alertType == StylishDialogType.NORMAL &&
-        widget.addView != null)
+        if (widget.addView != null)
           Container(
               padding: EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
               child: widget.addView),
@@ -190,7 +187,7 @@ class _StylishDialogState extends State<StylishDialogUI>
             child: Text(
               '$text',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
           style: ButtonStyle(
