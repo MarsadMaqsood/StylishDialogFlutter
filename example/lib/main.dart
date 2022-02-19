@@ -48,11 +48,24 @@ class _StylishExampleState extends State<StylishExample> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
+                    DialogController controller = DialogController(
+                      listener: (status) {
+                        if (status == DialogStatus.Showing) {
+                          print("Dialog is showing");
+                        } else if (status == DialogStatus.Changed) {
+                          print("Dialog type changed");
+                        } else if (status == DialogStatus.Dismissed) {
+                          print("Dialog dismissed");
+                        }
+                      },
+                    );
+
                     StylishDialog dialog = StylishDialog(
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
                       titleText: 'Processing...',
-                      dismissOnTouchOutside: false,
+                      // dismissOnTouchOutside: false,
+                      controller: controller,
                       // style: Style.Style1,
                     );
                     dialog.show();

@@ -3,7 +3,10 @@
 library stylish_dialog;
 
 import 'package:flutter/material.dart';
+import 'package:stylish_dialog/src/callback.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
+
+export 'src/callback.dart';
 
 enum StylishDialogType {
   NORMAL,
@@ -22,6 +25,7 @@ enum Style {
 
 enum DialogStatus {
   Showing,
+  Changed,
   Dismissed,
 }
 
@@ -164,6 +168,17 @@ class StylishDialog {
   ///Default [Style.Default]
   Style? style;
 
+  ///Handle dialog callbacks like
+  /// [DialogStatus.Showing], [DialogStatus.Changed] or [DialogStatus.Dismissed]
+  /// ```dart
+  /// DialogController controller = DialogController(
+  ///  listener: (status) {
+  ///   ...
+  ///  },
+  /// );
+  /// ```
+  final DialogController? controller;
+
   StylishDialog({
     required this.context,
     required this.alertType,
@@ -189,6 +204,7 @@ class StylishDialog {
     this.contentStyle = const TextStyle(),
     this.progressColor,
     this.style = Style.Default,
+    this.controller,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
   ///Function used to show the dialog
@@ -203,12 +219,22 @@ class StylishDialog {
         context: this.context,
         barrierDismissible: this.dismissOnTouchOutside,
         builder: (context) {
+          if (this.controller != null)
+            this.controller!.setValue(DialogStatus.Showing);
+
           return StatefulBuilder(builder: (context, setState) {
             _stateSetter = setState;
+
             return _buildDialog;
           });
         },
-      );
+      ).then((value) {
+        if (value == null) {
+          if (controller != null) {
+            controller!.setValue(DialogStatus.Dismissed);
+          }
+        }
+      });
 
   //to build dialog
   Widget get _buildDialog =>
@@ -293,6 +319,8 @@ class StylishDialog {
       this.confirmButton = confirmButton;
       this.cancelButton = cancelButton;
       _changeAlert = alertType;
+      if (this.controller != null)
+        this.controller!.setValue(DialogStatus.Changed);
 
       _buildDialogUI();
     });
