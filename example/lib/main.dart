@@ -64,7 +64,7 @@ class _StylishExampleState extends State<StylishExample> {
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
                       titleText: 'Processing...',
-                      // dismissOnTouchOutside: false,
+                      dismissOnTouchOutside: false,
                       controller: controller,
                       // style: Style.Style1,
                     );

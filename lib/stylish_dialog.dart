@@ -168,7 +168,7 @@ class StylishDialog {
   ///Default [Style.Default]
   Style? style;
 
-  ///Handle dialog callbacks like
+  ///Handle dialog callbacks
   /// [DialogStatus.Showing], [DialogStatus.Changed] or [DialogStatus.Dismissed]
   /// ```dart
   /// DialogController controller = DialogController(
