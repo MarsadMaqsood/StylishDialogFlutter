@@ -20,6 +20,11 @@ enum Style {
   Style1,
 }
 
+enum DialogStatus {
+  Showing,
+  Dismissed,
+}
+
 class StylishDialog {
   final BuildContext context;
 
