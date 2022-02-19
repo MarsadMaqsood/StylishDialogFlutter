@@ -161,7 +161,7 @@ class StylishDialog {
   Color? progressColor;
 
   ///Use this to change button style
-  ///Default [ButtonStyle.Default]
+  ///Default [Style.Default]
   Style? style;
 
   StylishDialog({
