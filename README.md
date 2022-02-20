@@ -157,6 +157,7 @@ StylishDialog dialog = StylishDialog(
         titleText: 'This is title',
         contentText: 'This is content text',
         animationLoop: true,
+        controller: controller,
     );
         
 //show stylish dialog
