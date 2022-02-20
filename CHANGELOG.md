@@ -1,3 +1,9 @@
+## 0.0.12
+- Updated Changelog and example code
+
+## 0.0.11
+- Added controller to handle dialog listeners
+
 ## 0.0.10
 - Added dialog styles
 ```diff

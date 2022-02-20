@@ -48,6 +48,7 @@ class _StylishExampleState extends State<StylishExample> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
+                    //Dialog Controller
                     DialogController controller = DialogController(
                       listener: (status) {
                         if (status == DialogStatus.Showing) {
