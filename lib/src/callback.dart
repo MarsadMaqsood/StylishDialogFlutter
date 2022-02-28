@@ -13,6 +13,8 @@ class DialogController extends ChangeNotifier {
     notifyListeners();
   }
 
+  dismiss() {}
+
   @override
   void dispose() {
     listener = null;
