@@ -209,11 +209,13 @@ class StylishDialog {
 
   ///Function used to show the dialog
   ///```
-  ///StylishDialog(
+  ///StylishDialog dialog = StylishDialog(
   ///   context: context,
   ///   alertType: StylishDialogType.PROGRESS,
   ///   ...
-  ///).show();
+  ///);
+  ///
+  ///dialog.show();
   ///```
   Future show() => showDialog(
         context: this.context,
