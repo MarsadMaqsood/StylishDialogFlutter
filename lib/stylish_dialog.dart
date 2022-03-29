@@ -307,7 +307,24 @@ class StylishDialog {
     ///```
     ///Wrap you widget with
     ///```dart
-    ///GestureDetector() or InkWell()
+    ///GestureDetector(
+    /// onTap: (){
+    ///
+    /// },
+    ///
+    /// child: ...
+    ///
+    ///),
+    /// //or
+    ///
+    ///InkWell(
+    /// onTap: (){
+    ///
+    /// },
+    ///
+    /// child: ...
+    ///
+    ///),
     ///```
     Widget? cancelButton,
   }) {

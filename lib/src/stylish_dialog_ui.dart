@@ -64,8 +64,8 @@ class _StylishDialogState extends State<StylishDialogUI>
   void didUpdateWidget(covariant StylishDialogUI oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    ///dispose current active controller and
-    /// create new one for changeAlertType
+    ///dispose the current active controller and
+    /// create a new one for changeAlertType
     _controller.dispose();
     _initializeAnimation();
   }
