@@ -64,7 +64,7 @@ class StylishDialog {
   @Deprecated('Use `cancelEvent` instead. Will be removed soon')
   String? cancelText;
 
-  ///Use this to stop dialog from dismissing by touching outside of the dialog
+  ///Use this to avoid dialog from dismissing by touching outside of the dialog
   ///Default value is true
   ///
   ///```
