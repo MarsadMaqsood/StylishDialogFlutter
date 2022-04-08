@@ -49,7 +49,7 @@ class StylishDialogUI extends StatefulWidget {
 
 class _StylishDialogState extends State<StylishDialogUI>
     with TickerProviderStateMixin {
-  var _key = GlobalKey<NavigatorState>();
+  final GlobalKey _key = GlobalKey<NavigatorState>();
 
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -95,7 +95,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     widget.cancelText ??= 'Cancel';
 
     return Dialog(
-      key: (widget.key == null ? _key : widget.key),
+      key: (widget.key ?? _key),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
       ),
@@ -117,7 +117,8 @@ class _StylishDialogState extends State<StylishDialogUI>
         if (widget.contentText != null) _contentTextWidget(widget.contentText),
         if (widget.addView != null)
           Container(
-              padding: EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+              padding:
+                  const EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
               child: widget.addView),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -199,10 +200,11 @@ class _StylishDialogState extends State<StylishDialogUI>
   }
 
   _playAnimation() {
-    if (widget.animationLoop!)
+    if (widget.animationLoop!) {
       _controller.repeat();
-    else
+    } else {
       _controller.forward();
+    }
   }
 
   _stylishDialogChange() {
@@ -236,7 +238,7 @@ class _StylishDialogState extends State<StylishDialogUI>
                 width: 2,
               ),
             ),
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: SizeTransition(
               sizeFactor: _animation,
               axis: Axis.horizontal,
@@ -292,7 +294,7 @@ class _StylishDialogState extends State<StylishDialogUI>
                 width: 2,
               ),
             ),
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: ScaleTransition(
                 scale: _animation,
                 child: const Icon(
@@ -318,13 +320,13 @@ class _StylishDialogState extends State<StylishDialogUI>
           borderRadius: BorderRadius.circular(12),
           color: Colors.white,
         ),
-        padding: EdgeInsets.all(1),
+        padding: const EdgeInsets.all(1),
         child: Transform.rotate(
           angle: 0.07,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               if (widget.titleText != null) _titleTextWidget(widget.titleText),
@@ -332,8 +334,8 @@ class _StylishDialogState extends State<StylishDialogUI>
                 _contentTextWidget(widget.contentText),
               if (widget.addView != null)
                 Container(
-                    padding:
-                        EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+                    padding: const EdgeInsets.only(
+                        left: 10, top: 8, bottom: 4, right: 10),
                     child: widget.addView),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

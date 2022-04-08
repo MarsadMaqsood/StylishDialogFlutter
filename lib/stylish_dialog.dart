@@ -218,11 +218,12 @@ class StylishDialog {
   ///dialog.show();
   ///```
   Future show() => showDialog(
-        context: this.context,
-        barrierDismissible: this.dismissOnTouchOutside,
+        context: context,
+        barrierDismissible: dismissOnTouchOutside,
         builder: (context) {
-          if (this.controller != null)
-            this.controller!.setValue(DialogStatus.Showing);
+          if (controller != null) {
+            controller!.setValue(DialogStatus.Showing);
+          }
 
           return StatefulBuilder(builder: (context, setState) {
             _stateSetter = setState;
@@ -242,7 +243,7 @@ class StylishDialog {
   Widget get _buildDialog =>
       WillPopScope(onWillPop: _onWillPop, child: _buildDialogUI());
 
-  Future<bool> _onWillPop() async => this.dismissOnTouchOutside;
+  Future<bool> _onWillPop() async => dismissOnTouchOutside;
 
   ///Function used to dismiss the dialog
   ///```
@@ -255,7 +256,7 @@ class StylishDialog {
   ///dialog.dismiss();
   ///```
   dismiss({bool rootNavigator = true}) {
-    Navigator.of(this.context, rootNavigator: rootNavigator).pop();
+    Navigator.of(context, rootNavigator: rootNavigator).pop();
   }
 
   late StateSetter _stateSetter;
@@ -338,8 +339,9 @@ class StylishDialog {
       this.confirmButton = confirmButton;
       this.cancelButton = cancelButton;
       _changeAlert = alertType;
-      if (this.controller != null)
-        this.controller!.setValue(DialogStatus.Changed);
+      if (controller != null) {
+        controller!.setValue(DialogStatus.Changed);
+      }
 
       _buildDialogUI();
     });
@@ -348,24 +350,23 @@ class StylishDialog {
   ///Function to build dialog UI
   _buildDialogUI() {
     return StylishDialogUI(
-      context: this.context,
-      alertType: _changeAlert == StylishDialogType._CHANGE
-          ? this.alertType
-          : _changeAlert,
-      titleText: this.titleText,
-      contentText: this.contentText,
-      confirmText: this.confirmText,
-      cancelText: this.cancelText,
-      confirmPressEvent: this.confirmPressEvent,
-      cancelPressEvent: this.cancelPressEvent,
-      addView: this.addView,
-      animationLoop: this.animationLoop,
-      cancelButton: this.cancelButton,
-      confirmButton: this.confirmButton,
-      titleStyle: this.titleStyle,
-      contentStyle: this.contentStyle,
+      context: context,
+      alertType:
+          _changeAlert == StylishDialogType._CHANGE ? alertType : _changeAlert,
+      titleText: titleText,
+      contentText: contentText,
+      confirmText: confirmText,
+      cancelText: cancelText,
+      confirmPressEvent: confirmPressEvent,
+      cancelPressEvent: cancelPressEvent,
+      addView: addView,
+      animationLoop: animationLoop,
+      cancelButton: cancelButton,
+      confirmButton: confirmButton,
+      titleStyle: titleStyle,
+      contentStyle: contentStyle,
       color: progressColor ?? Theme.of(context).primaryColor,
-      style: this.style!,
+      style: style!,
     );
   }
 }

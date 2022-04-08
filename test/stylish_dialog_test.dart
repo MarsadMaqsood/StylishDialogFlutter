@@ -11,10 +11,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                    home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                    home: StylishDialogUI(
                         alertType: StylishDialogType.NORMAL,
                         context: context)));
             return testWidget;
@@ -27,10 +27,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                    home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                    home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.PROGRESS,
                   titleText: 'This is title',
@@ -46,10 +46,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                    home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                    home: StylishDialogUI(
                   alertType: StylishDialogType.SUCCESS,
                   context: context,
                   animationLoop: false,
@@ -66,10 +66,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                  home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                  home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.INFO,
                     titleText: 'You know',
@@ -87,10 +87,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                  home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                  home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.WARNING,
                     titleText: 'Wait',
@@ -108,10 +108,10 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-                data: new MediaQueryData(),
-                child: new MaterialApp(
-                    home: new StylishDialogUI(
+            Widget testWidget = MediaQuery(
+                data: const MediaQueryData(),
+                child: MaterialApp(
+                    home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.ERROR,
                   titleText: 'Oops',
@@ -129,9 +129,9 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-              data: new MediaQueryData(),
-              child: new MaterialApp(
+            Widget testWidget = MediaQuery(
+              data: const MediaQueryData(),
+              child: MaterialApp(
                 home: ElevatedButton(
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
@@ -142,7 +142,7 @@ void main() {
                     );
                     dialog.show();
 
-                    Future.delayed(Duration(seconds: 5), () {
+                    Future.delayed(const Duration(seconds: 5), () {
                       dialog.changeAlertType(
                         alertType: StylishDialogType.SUCCESS,
                         titleText: 'Congrats!',
@@ -154,7 +154,7 @@ void main() {
                       );
                     });
                   },
-                  child: Text('Show'),
+                  child: const Text('Show'),
                 ),
               ),
             );
@@ -170,9 +170,9 @@ void main() {
       await tester.pumpWidget(
         Builder(
           builder: (BuildContext context) {
-            Widget testWidget = new MediaQuery(
-              data: new MediaQueryData(),
-              child: new MaterialApp(
+            Widget testWidget = MediaQuery(
+              data: const MediaQueryData(),
+              child: MaterialApp(
                 home: ElevatedButton(
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
@@ -180,8 +180,8 @@ void main() {
                         alertType: StylishDialogType.NORMAL,
                         addView: TextField(
                           controller: controller,
-                          decoration:
-                              InputDecoration(hintText: 'Enter your name'),
+                          decoration: const InputDecoration(
+                              hintText: 'Enter your name'),
                         ),
                         confirmText: 'Submit',
                         confirmPressEvent: () {
@@ -191,7 +191,7 @@ void main() {
                         animationLoop: false);
                     dialog.show();
                   },
-                  child: Text('Show'),
+                  child: const Text('Show'),
                 ),
               ),
             );

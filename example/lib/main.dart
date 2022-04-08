@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: StylishExample(),
+      home: const StylishExample(),
     );
   }
 }
@@ -36,7 +36,7 @@ class _StylishExampleState extends State<StylishExample> {
       body: SafeArea(
         child: Stack(
           children: [
-            Center(
+            const Center(
               child: Text(
                 'Simple dialog bind with success dialog',
                 style: TextStyle(fontSize: 18),
@@ -71,7 +71,7 @@ class _StylishExampleState extends State<StylishExample> {
                     );
                     dialog.show();
 
-                    Future.delayed(Duration(seconds: 3), () {
+                    Future.delayed(const Duration(seconds: 3), () {
                       dialog.changeAlertType(
                         alertType: StylishDialogType.SUCCESS,
                         titleText: 'Congrats!',
@@ -96,8 +96,8 @@ class _StylishExampleState extends State<StylishExample> {
                           onPressed: () {
                             dialog.dismiss();
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(4),
+                          child: const Padding(
+                            padding: EdgeInsets.all(4),
                             child: Text(
                               'Dismiss',
                               style:
@@ -112,12 +112,12 @@ class _StylishExampleState extends State<StylishExample> {
                       );
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     'Show Me',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(160, 44)),
+                    minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                     backgroundColor: MaterialStateProperty.all(
                       Colors.teal,
                     ),
@@ -125,7 +125,7 @@ class _StylishExampleState extends State<StylishExample> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             Positioned.fill(
@@ -135,14 +135,14 @@ class _StylishExampleState extends State<StylishExample> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => StylishDialogExamples()));
+                        builder: (context) => const StylishDialogExamples()));
                   },
-                  child: Text(
+                  child: const Text(
                     'More Examples',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(160, 42)),
+                    minimumSize: MaterialStateProperty.all(const Size(160, 42)),
                     backgroundColor: MaterialStateProperty.all(
                       Colors.teal,
                     ),

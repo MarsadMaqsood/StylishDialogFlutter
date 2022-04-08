@@ -5,7 +5,7 @@ abstract class Controller {
 
   Function(DialogStatus status)? listener;
 
-  void dismiss() {}
+  void dismiss();
 
   void dispose();
 }
