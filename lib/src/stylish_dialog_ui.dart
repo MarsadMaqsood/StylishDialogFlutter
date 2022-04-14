@@ -23,6 +23,7 @@ class StylishDialogUI extends StatefulWidget {
     this.titleStyle,
     this.contentStyle,
     this.style,
+    this.backgroundColor,
   }) : super(key: key);
 
   final BuildContext context;
@@ -42,6 +43,7 @@ class StylishDialogUI extends StatefulWidget {
   TextStyle? titleStyle;
   TextStyle? contentStyle;
   Style? style;
+  Color? backgroundColor;
 
   @override
   _StylishDialogState createState() => _StylishDialogState();
@@ -93,6 +95,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     widget.confirmText ??= 'Confirm';
     //Default values of Cancel Button Text
     widget.cancelText ??= 'Cancel';
+    print(widget.backgroundColor);
 
     return Dialog(
       key: (widget.key ?? _key),
@@ -100,8 +103,9 @@ class _StylishDialogState extends State<StylishDialogUI>
         borderRadius: BorderRadius.circular(14),
       ),
       elevation: 0,
-      backgroundColor:
-          widget.style == Style.Default ? Colors.white : Colors.black,
+      backgroundColor: widget.style == Style.Default
+          ? (widget.backgroundColor ?? Colors.white)
+          : Colors.black,
       child: widget.style == Style.Default
           ? _stylishContentBox()
           : _stylishContentBoxStyle1(),
@@ -232,7 +236,7 @@ class _StylishDialogState extends State<StylishDialogUI>
             height: _sizeK,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(44),
-              color: Colors.white,
+              // color: Colors.white,
               border: Border.all(
                 color: Colors.green,
                 width: 2,
@@ -288,7 +292,7 @@ class _StylishDialogState extends State<StylishDialogUI>
             height: _sizeK,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(44),
-              color: Colors.white,
+              // color: Colors.white,
               border: Border.all(
                 color: Colors.red,
                 width: 2,
@@ -318,7 +322,7 @@ class _StylishDialogState extends State<StylishDialogUI>
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: Colors.white,
+          color: widget.backgroundColor ?? Colors.white,
         ),
         padding: const EdgeInsets.all(1),
         child: Transform.rotate(

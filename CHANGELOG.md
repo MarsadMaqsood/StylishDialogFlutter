@@ -1,3 +1,6 @@
+## 0.0.13
+- Fix: Text color
+
 ## 0.0.12
 - Updated Changelog and example code
 

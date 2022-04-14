@@ -168,6 +168,9 @@ class StylishDialog {
   ///Default [Style.Default]
   Style? style;
 
+  ///Background color of dialog
+  Color? backgroundColor;
+
   ///Handle dialog callbacks
   /// [DialogStatus.Showing], [DialogStatus.Changed] or [DialogStatus.Dismissed]
   /// ```dart
@@ -205,6 +208,7 @@ class StylishDialog {
     this.progressColor,
     this.style = Style.Default,
     this.controller,
+    this.backgroundColor,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
   ///Function used to show the dialog
@@ -338,6 +342,7 @@ class StylishDialog {
       this.cancelPressEvent = cancelPressEvent;
       this.confirmButton = confirmButton;
       this.cancelButton = cancelButton;
+
       _changeAlert = alertType;
       if (controller != null) {
         controller!.setValue(DialogStatus.Changed);
@@ -367,6 +372,7 @@ class StylishDialog {
       contentStyle: contentStyle,
       color: progressColor ?? Theme.of(context).primaryColor,
       style: style!,
+      backgroundColor: backgroundColor,
     );
   }
 }
