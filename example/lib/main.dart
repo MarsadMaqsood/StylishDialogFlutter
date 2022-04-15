@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_dialog/stylish_dialog.dart';
 
-import 'StylishDialogExamples.dart';
+import 'stylish_dialog_examples.dart';
 
 void main() {
   runApp(const MyApp());
