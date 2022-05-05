@@ -1,3 +1,6 @@
+## 0.1.1
+- Added `showAdaptiveDialog`
+
 ## 0.0.13
 - Fix: Text color
 

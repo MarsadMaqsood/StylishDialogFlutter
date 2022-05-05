@@ -7,6 +7,7 @@ import 'package:stylish_dialog/src/callback.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 
 export 'src/callback.dart';
+export 'src/adaptive_dialog.dart';
 
 enum StylishDialogType {
   NORMAL,

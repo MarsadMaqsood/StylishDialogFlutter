@@ -15,7 +15,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ```yaml
 dependencies:
     stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
-    #stylish_dialog: ^0.0.13
+    #stylish_dialog: ^0.1.1
 ```
 ## ⚡ Import
 
@@ -110,6 +110,14 @@ Style.Default
 Style.Style1
 ```
 
+## PreferedStyle
+
+```dart
+PreferedStyle.Android
+PreferedStyle.IOS
+PreferedStyle.System
+```
+
 ### Press Event
 
 ```dart
@@ -151,7 +159,29 @@ DialogController controller = DialogController(
 ```
 ___
 
-### Example 
+
+### Adaptive Dialog
+
+```dart
+showAdaptiveDialog(
+    context: context,
+    builder: (context) => AdaptiveDialog(
+        //preferedStyle: PreferedStyle.IOS,
+        title: const Text('Title'),
+        content: const Text('This is example dialog'),
+        actions: [
+            TextButton(
+                onPressed: () {}, child: const Text('Confirm')),
+            TextButton(
+                onPressed: () {}, child: const Text('Cancel')),
+            ],
+    ),
+);
+
+
+```
+
+### Examples 
 
 ```dart
 StylishDialog dialog = StylishDialog(
