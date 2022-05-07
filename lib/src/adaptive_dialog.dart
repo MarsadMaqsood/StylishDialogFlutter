@@ -9,7 +9,8 @@ enum PreferedStyle {
   System,
 }
 
-typedef AdaptiveBuilder = AdaptiveDialog Function(BuildContext context);
+///[AdaptiveDialog]
+typedef AdaptiveBuilder = Widget Function(BuildContext context);
 
 class AdaptiveDialog extends Dialog {
   const AdaptiveDialog({
