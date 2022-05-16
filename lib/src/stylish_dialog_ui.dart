@@ -46,7 +46,7 @@ class StylishDialogUI extends StatefulWidget {
   Color? backgroundColor;
 
   @override
-  _StylishDialogState createState() => _StylishDialogState();
+  State<StylishDialogUI> createState() => _StylishDialogState();
 }
 
 class _StylishDialogState extends State<StylishDialogUI>
@@ -186,6 +186,9 @@ class _StylishDialogState extends State<StylishDialogUI>
           onPressed: () async {
             pressEvent();
           },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(color),
+          ),
           child: Padding(
             padding:
                 const EdgeInsets.only(left: 8.0, right: 4.0, top: 4, bottom: 4),
@@ -194,9 +197,6 @@ class _StylishDialogState extends State<StylishDialogUI>
               textAlign: TextAlign.center,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
-          ),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(color),
           ),
         ),
       ),
