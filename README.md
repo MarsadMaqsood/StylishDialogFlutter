@@ -15,7 +15,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 ```yaml
 dependencies:
     stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
-    #stylish_dialog: ^0.1.2
+    #stylish_dialog: ^0.1.3
 ```
 ## ⚡ Import
 
@@ -169,11 +169,11 @@ dialog.changeAlertType(
 DialogController controller = DialogController(
         listener: (status) {
             if (status == DialogStatus.Showing) {
-                print("Dialog is showing");
+                debugPrint("Dialog is showing");
             } else if (status == DialogStatus.Changed) {
-                print("Dialog type changed");
+                debugPrint("Dialog type changed");
             } else if (status == DialogStatus.Dismissed) {
-                print("Dialog dismissed");
+                debugPrint("Dialog dismissed");
             }
         },
     );

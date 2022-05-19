@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Stylish Dialog Example',
       theme: ThemeData(
+        // useMaterial3: true,
         primarySwatch: Colors.teal,
       ),
       home: const StylishExample(),
@@ -27,7 +28,7 @@ class StylishExample extends StatefulWidget {
   const StylishExample({Key? key}) : super(key: key);
 
   @override
-  _StylishExampleState createState() => _StylishExampleState();
+  State<StylishExample> createState() => _StylishExampleState();
 }
 
 class _StylishExampleState extends State<StylishExample> {
@@ -53,11 +54,11 @@ class _StylishExampleState extends State<StylishExample> {
                     DialogController controller = DialogController(
                       listener: (status) {
                         if (status == DialogStatus.Showing) {
-                          print("Dialog is showing");
+                          debugPrint("Dialog is showing");
                         } else if (status == DialogStatus.Changed) {
-                          print("Dialog type changed");
+                          debugPrint("Dialog type changed");
                         } else if (status == DialogStatus.Dismissed) {
-                          print("Dialog dismissed");
+                          debugPrint("Dialog dismissed");
                         }
                       },
                     );
@@ -98,6 +99,10 @@ class _StylishExampleState extends State<StylishExample> {
                           onPressed: () {
                             dialog.dismiss();
                           },
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                          ),
                           child: const Padding(
                             padding: EdgeInsets.all(4),
                             child: Text(
@@ -106,23 +111,19 @@ class _StylishExampleState extends State<StylishExample> {
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
                           ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.teal),
-                          ),
                         ),
                       );
                     });
                   },
-                  child: const Text(
-                    'Show Me',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                     backgroundColor: MaterialStateProperty.all(
                       Colors.teal,
                     ),
+                  ),
+                  child: const Text(
+                    'Show Me',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
               ),
@@ -139,15 +140,15 @@ class _StylishExampleState extends State<StylishExample> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const StylishDialogExamples()));
                   },
-                  child: const Text(
-                    'More Examples',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all(const Size(160, 42)),
                     backgroundColor: MaterialStateProperty.all(
                       Colors.teal,
                     ),
+                  ),
+                  child: const Text(
+                    'More Examples',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
               ),

@@ -2,5 +2,5 @@ include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
-    avoid_print: false
+    # avoid_print: false
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule

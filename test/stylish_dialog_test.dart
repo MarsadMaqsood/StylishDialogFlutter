@@ -185,7 +185,7 @@ void main() {
                         ),
                         confirmText: 'Submit',
                         confirmPressEvent: () {
-                          print(controller.text);
+                          debugPrint(controller.text);
                         },
                         titleText: 'Name',
                         animationLoop: false);

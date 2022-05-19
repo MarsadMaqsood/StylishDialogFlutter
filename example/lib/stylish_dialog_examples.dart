@@ -8,7 +8,7 @@ class StylishDialogExamples extends StatefulWidget {
   const StylishDialogExamples({Key? key}) : super(key: key);
 
   @override
-  _StylishDialogExamplesState createState() => _StylishDialogExamplesState();
+  State<StylishDialogExamples> createState() => _StylishDialogExamplesState();
 }
 
 class _StylishDialogExamplesState extends State<StylishDialogExamples> {
@@ -55,15 +55,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     contentText: 'This is simple dialog',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -84,15 +84,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     titleText: 'Processing...',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -113,15 +113,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     titleText: 'Wow',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -143,15 +143,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     contentText: 'You did it',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -172,15 +172,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     titleText: 'Wait',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -202,15 +202,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     contentText: 'Sun rises in the east',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -232,15 +232,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     contentText: 'Are you sure you want to do this',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -262,15 +262,15 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                     contentText: 'Task failed to complete',
                   ).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -292,22 +292,22 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                       contentText: 'Please enter your name',
                       confirmText: 'Submit',
                       confirmPressEvent: () {
-                        print(controller.text);
+                        debugPrint(controller.text);
                       },
                       addView: TextField(
                         controller: controller,
                         decoration: const InputDecoration(),
                       )).show();
                 },
-                child: const Text(
-                  'Show Me',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(const Size(160, 44)),
                   backgroundColor: MaterialStateProperty.all(
                     Colors.teal,
                   ),
+                ),
+                child: const Text(
+                  'Show Me',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ],

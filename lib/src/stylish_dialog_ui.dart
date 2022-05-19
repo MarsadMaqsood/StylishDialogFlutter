@@ -95,7 +95,6 @@ class _StylishDialogState extends State<StylishDialogUI>
     widget.confirmText ??= 'Confirm';
     //Default values of Cancel Button Text
     widget.cancelText ??= 'Cancel';
-    print(widget.backgroundColor);
 
     return Dialog(
       key: (widget.key ?? _key),

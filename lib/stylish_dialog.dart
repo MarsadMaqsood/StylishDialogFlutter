@@ -227,7 +227,8 @@ class StylishDialog {
         barrierDismissible: dismissOnTouchOutside,
         builder: (context) {
           if (controller != null) {
-            controller!.setValue(DialogStatus.Showing);
+            controller!.listener!(DialogStatus.Showing);
+            // controller!.setValue(DialogStatus.Showing);
           }
 
           return StatefulBuilder(builder: (context, setState) {
@@ -239,7 +240,8 @@ class StylishDialog {
       ).then((value) {
         if (value == null) {
           if (controller != null) {
-            controller!.setValue(DialogStatus.Dismissed);
+            // controller!.setValue(DialogStatus.Dismissed);
+            controller!.listener!(DialogStatus.Dismissed);
           }
         }
       });
@@ -346,7 +348,8 @@ class StylishDialog {
 
       _changeAlert = alertType;
       if (controller != null) {
-        controller!.setValue(DialogStatus.Changed);
+        // controller!.setValue(DialogStatus.Changed);
+        controller!.listener!(DialogStatus.Changed);
       }
 
       _buildDialogUI();

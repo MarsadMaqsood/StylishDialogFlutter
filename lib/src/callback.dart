@@ -8,10 +8,10 @@ class DialogController extends ChangeNotifier {
 
   Function(DialogStatus status)? listener;
 
-  setValue(DialogStatus status) {
-    if (listener != null) listener!(status);
-    notifyListeners();
-  }
+  // setValue(DialogStatus status) {
+  //   if (listener != null) listener!(status);
+  //   notifyListeners();
+  // }
 
   @override
   void dispose() {

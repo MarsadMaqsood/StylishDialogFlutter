@@ -1,3 +1,7 @@
+## 0.1.3
+- Removed unnecessary code
+- Fix: lint warnings
+
 ## 0.1.2
 - Fix: bug
 
