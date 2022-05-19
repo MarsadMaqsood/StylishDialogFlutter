@@ -32,6 +32,25 @@ class StylishExample extends StatefulWidget {
 }
 
 class _StylishExampleState extends State<StylishExample> {
+  //Dialog Controller
+  DialogController controller = DialogController(
+    listener: (status) {
+      if (status == DialogStatus.Showing) {
+        debugPrint("Dialog is showing");
+      } else if (status == DialogStatus.Changed) {
+        debugPrint("Dialog type changed");
+      } else if (status == DialogStatus.Dismissed) {
+        debugPrint("Dialog dismissed");
+      }
+    },
+  );
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,19 +69,6 @@ class _StylishExampleState extends State<StylishExample> {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
-                    //Dialog Controller
-                    DialogController controller = DialogController(
-                      listener: (status) {
-                        if (status == DialogStatus.Showing) {
-                          debugPrint("Dialog is showing");
-                        } else if (status == DialogStatus.Changed) {
-                          debugPrint("Dialog type changed");
-                        } else if (status == DialogStatus.Dismissed) {
-                          debugPrint("Dialog dismissed");
-                        }
-                      },
-                    );
-
                     StylishDialog dialog = StylishDialog(
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
