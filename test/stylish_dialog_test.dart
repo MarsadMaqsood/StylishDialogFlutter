@@ -33,8 +33,8 @@ void main() {
                     home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.PROGRESS,
-                  titleText: 'This is title',
-                  contentText: 'This is content text',
+                  title: const Text('This is title'),
+                  content: const Text('This is content text'),
                 )));
             return testWidget;
           },
@@ -53,8 +53,8 @@ void main() {
                   alertType: StylishDialogType.SUCCESS,
                   context: context,
                   animationLoop: false,
-                  titleText: 'Wow',
-                  contentText: 'Task completed',
+                  title: const Text('Wow'),
+                  content: const Text('Task completed'),
                 )));
             return testWidget;
           },
@@ -72,8 +72,8 @@ void main() {
                   home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.INFO,
-                    titleText: 'You know',
-                    contentText: 'This is an amazing dialog',
+                    title: const Text('You know'),
+                    content: const Text('This is an amazing dialog'),
                     animationLoop: false,
                   ),
                 ));
@@ -93,8 +93,8 @@ void main() {
                   home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.WARNING,
-                    titleText: 'Wait',
-                    contentText: 'Are you sure you want to delete',
+                    title: const Text('Wait'),
+                    content: const Text('Are you sure you want to delete'),
                     animationLoop: false,
                   ),
                 ));
@@ -114,8 +114,8 @@ void main() {
                     home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.ERROR,
-                  titleText: 'Oops',
-                  contentText: 'Task Failed',
+                  title: const Text('Oops'),
+                  content: const Text('Task Failed'),
                   animationLoop: false,
                 )));
             return testWidget;
@@ -137,7 +137,7 @@ void main() {
                     StylishDialog dialog = StylishDialog(
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
-                      titleText: 'Processing...',
+                      title: const Text('Processing...'),
                       animationLoop: false,
                     );
                     dialog.show();
@@ -145,8 +145,8 @@ void main() {
                     Future.delayed(const Duration(seconds: 5), () {
                       dialog.changeAlertType(
                         alertType: StylishDialogType.SUCCESS,
-                        titleText: 'Congrats!',
-                        contentText: 'Task completed successfuly',
+                        title: const Text('Congrats!'),
+                        content: const Text('Task completed successfuly'),
                         confirmPressEvent: () {
                           dialog.dismiss();
                         },
@@ -187,7 +187,7 @@ void main() {
                         confirmPressEvent: () {
                           debugPrint(controller.text);
                         },
-                        titleText: 'Name',
+                        title: const Text('Name'),
                         animationLoop: false);
                     dialog.show();
                   },

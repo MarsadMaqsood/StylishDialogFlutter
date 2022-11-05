@@ -48,10 +48,10 @@ class StylishDialog {
   final StylishDialogType? alertType;
 
   ///Use this to set dialog title text
-  String? titleText;
+  Widget? title;
 
   ///Use this to set the dialog content/detail text
-  String? contentText;
+  Widget? content;
 
   ///Use this to set confirm button text.
   ///
@@ -149,14 +149,14 @@ class StylishDialog {
   ///    fontSize: 20.0,
   /// )
   ///```
-  TextStyle? titleStyle;
+  // TextStyle? titleStyle;
 
   ///Use this to change title text style
   ///Default is
   ///```
   /// TextStyle()
   ///```
-  TextStyle? contentStyle;
+  // TextStyle? contentStyle;
 
   ///Use this to change progress bar color.
   ///Default is
@@ -186,8 +186,8 @@ class StylishDialog {
   StylishDialog({
     required this.context,
     required this.alertType,
-    this.titleText,
-    this.contentText,
+    this.title,
+    this.content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
         this.confirmText,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
@@ -201,11 +201,11 @@ class StylishDialog {
     this.addView,
     this.confirmButton,
     this.cancelButton,
-    this.titleStyle = const TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 20.0,
-    ),
-    this.contentStyle = const TextStyle(),
+    // this.titleStyle = const TextStyle(
+    //   fontWeight: FontWeight.bold,
+    //   fontSize: 20.0,
+    // ),
+    // this.contentStyle = const TextStyle(),
     this.progressColor,
     this.style = Style.Default,
     this.controller,
@@ -286,8 +286,8 @@ class StylishDialog {
   ///```
   changeAlertType({
     required StylishDialogType alertType,
-    String? titleText,
-    String? contentText,
+    Widget? title,
+    Widget? content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
         String? confirmText,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
@@ -337,8 +337,8 @@ class StylishDialog {
     Widget? cancelButton,
   }) {
     _stateSetter(() {
-      this.titleText = titleText;
-      this.contentText = contentText;
+      this.title = title;
+      this.content = content;
       this.confirmText = confirmText;
       this.cancelText = cancelText;
       this.confirmPressEvent = confirmPressEvent;
@@ -362,8 +362,8 @@ class StylishDialog {
       context: context,
       alertType:
           _changeAlert == StylishDialogType._CHANGE ? alertType : _changeAlert,
-      titleText: titleText,
-      contentText: contentText,
+      title: title,
+      content: content,
       confirmText: confirmText,
       cancelText: cancelText,
       confirmPressEvent: confirmPressEvent,
@@ -372,8 +372,8 @@ class StylishDialog {
       animationLoop: animationLoop,
       cancelButton: cancelButton,
       confirmButton: confirmButton,
-      titleStyle: titleStyle,
-      contentStyle: contentStyle,
+      // titleStyle: titleStyle,
+      // contentStyle: contentStyle,
       color: progressColor ?? Theme.of(context).primaryColor,
       style: style!,
       backgroundColor: backgroundColor,

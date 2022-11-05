@@ -71,20 +71,27 @@ class _StylishExampleState extends State<StylishExample> {
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
                       context: context,
-                      alertType: StylishDialogType.PROGRESS,
-                      titleText: 'Processing...',
-                      dismissOnTouchOutside: false,
+                      alertType: StylishDialogType.NORMAL,
+                      title: const Text('Processing...'),
+                      content: const Text(
+                          'Lorem Ipsum dolar summit Lorem Ipsum dolar summit Lorem Ipsum dolar summit Lorem Ipsum dolar summit Lorem Ipsum dolar summit Lorem Ipsum dolar summit '),
+                      // dismissOnTouchOutside: false,
                       controller: controller,
+                      // style: Style.Style1,
                       // backgroundColor: Colors.purple,
                       // style: Style.Style1,
+                      confirmText: 'Confirm',
+                      cancelPressEvent: () {},
                     );
                     dialog.show();
+
+                    return;
 
                     Future.delayed(const Duration(seconds: 3), () {
                       dialog.changeAlertType(
                         alertType: StylishDialogType.SUCCESS,
-                        titleText: 'Congrats!',
-                        contentText: 'Task completed successfuly',
+                        title: const Text('Congrats!'),
+                        content: const Text('Task completed successfuly'),
 
                         /// Deprecated
                         ///

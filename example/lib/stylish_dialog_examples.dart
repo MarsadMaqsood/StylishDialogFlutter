@@ -51,8 +51,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.NORMAL,
-                    titleText: 'Hey',
-                    contentText: 'This is simple dialog',
+                    title: const Text('Hey'),
+                    content: const Text('This is simple dialog'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -81,7 +81,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.PROGRESS,
-                    titleText: 'Processing...',
+                    title: const Text('Processing...'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -110,7 +110,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.SUCCESS,
-                    titleText: 'Wow',
+                    title: const Text('Wow'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -139,8 +139,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.SUCCESS,
-                    titleText: 'Wow',
-                    contentText: 'You did it',
+                    title: const Text('Wow'),
+                    content: const Text('You did it'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -169,7 +169,7 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.INFO,
-                    titleText: 'Wait',
+                    title: const Text('Wait'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -198,8 +198,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.INFO,
-                    titleText: 'You know',
-                    contentText: 'Sun rises in the east',
+                    title: const Text('You know'),
+                    content: const Text('Sun rises in the east'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -228,8 +228,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.WARNING,
-                    titleText: 'Wait',
-                    contentText: 'Are you sure you want to do this',
+                    title: const Text('Wait'),
+                    content: const Text('Are you sure you want to do this'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -258,8 +258,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                     context: context,
                     alertType: StylishDialogType.ERROR,
-                    titleText: 'Opps',
-                    contentText: 'Task failed to complete',
+                    title: const Text('Opps'),
+                    content: const Text('Task failed to complete'),
                   ).show();
                 },
                 style: ButtonStyle(
@@ -288,8 +288,8 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   StylishDialog(
                       context: context,
                       alertType: StylishDialogType.NORMAL,
-                      titleText: 'Name',
-                      contentText: 'Please enter your name',
+                      title: const Text('Name'),
+                      content: const Text('Please enter your name'),
                       confirmText: 'Submit',
                       confirmPressEvent: () {
                         debugPrint(controller.text);

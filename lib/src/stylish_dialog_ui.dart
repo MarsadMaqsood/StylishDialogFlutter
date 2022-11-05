@@ -10,8 +10,8 @@ class StylishDialogUI extends StatefulWidget {
     required this.context,
     required this.alertType,
     this.animationLoop,
-    this.titleText,
-    this.contentText,
+    this.title,
+    this.content,
     this.confirmText,
     this.cancelText,
     this.confirmPressEvent,
@@ -20,8 +20,8 @@ class StylishDialogUI extends StatefulWidget {
     this.confirmButton,
     this.cancelButton,
     this.color,
-    this.titleStyle,
-    this.contentStyle,
+    // this.titleStyle,
+    // this.contentStyle,
     this.style,
     this.backgroundColor,
   }) : super(key: key);
@@ -29,8 +29,10 @@ class StylishDialogUI extends StatefulWidget {
   final BuildContext context;
   final StylishDialogType? alertType;
   final bool? animationLoop;
-  String? titleText;
-  String? contentText;
+  Widget? title;
+  // String? titleText;
+  // String? contentText;
+  Widget? content;
   String? confirmText;
   String? cancelText;
   VoidCallback? confirmPressEvent;
@@ -40,8 +42,8 @@ class StylishDialogUI extends StatefulWidget {
   Widget? confirmButton;
   Widget? cancelButton;
   Color? color;
-  TextStyle? titleStyle;
-  TextStyle? contentStyle;
+  // TextStyle? titleStyle;
+  // TextStyle? contentStyle;
   Style? style;
   Color? backgroundColor;
 
@@ -105,9 +107,11 @@ class _StylishDialogState extends State<StylishDialogUI>
       backgroundColor: widget.style == Style.Default
           ? (widget.backgroundColor ?? Colors.white)
           : Colors.black,
-      child: widget.style == Style.Default
-          ? _stylishContentBox()
-          : _stylishContentBoxStyle1(),
+      child: Container(
+          padding: const EdgeInsets.all(12),
+          child: widget.style == Style.Default
+              ? _stylishContentBox()
+              : _stylishContentBoxStyle1()),
     );
   }
 
@@ -116,13 +120,16 @@ class _StylishDialogState extends State<StylishDialogUI>
       mainAxisSize: MainAxisSize.min,
       children: [
         _stylishDialogChange(),
-        if (widget.titleText != null) _titleTextWidget(widget.titleText),
-        if (widget.contentText != null) _contentTextWidget(widget.contentText),
+        if (widget.title != null) _titleTextWidget(widget.title),
+        if (widget.content != null) _contentTextWidget(widget.content),
         if (widget.addView != null)
           Container(
               padding:
                   const EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
               child: widget.addView),
+        const SizedBox(
+          height: 12,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
@@ -153,25 +160,37 @@ class _StylishDialogState extends State<StylishDialogUI>
   }
 
   //Text widget for title text
-  _titleTextWidget(text) {
+  Widget _titleTextWidget(text) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
-      child: Text(
-        '$text',
-        textAlign: TextAlign.center,
-        style: widget.titleStyle,
+      padding: const EdgeInsets.only(
+        top: KPadding,
+        left: KPadding,
+        right: KPadding,
+      ),
+      child: DefaultTextStyle(
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20.0,
+          color: (Theme.of(context).textTheme.headline6?.color) ?? Colors.black,
+        ),
+        child: text,
       ),
     );
   }
 
   //Text widget for content text
-  _contentTextWidget(text) {
+  Widget _contentTextWidget(text) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
-      child: Text(
-        '$text',
-        textAlign: TextAlign.center,
-        style: widget.contentStyle,
+      padding: const EdgeInsets.only(
+        right: KPadding,
+        left: KPadding,
+        top: KPadding,
+      ),
+      child: DefaultTextStyle(
+        style: TextStyle(
+          color: (Theme.of(context).textTheme.subtitle1?.color) ?? Colors.black,
+        ),
+        child: text,
       ),
     );
   }
@@ -179,23 +198,20 @@ class _StylishDialogState extends State<StylishDialogUI>
   //Button widget for confirm and cancel buttons
   _pressButtonWidget(pressEvent, color, text) {
     return Flexible(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: TextButton(
-          onPressed: () async {
-            pressEvent();
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(color),
-          ),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 8.0, right: 4.0, top: 4, bottom: 4),
-            child: Text(
-              '$text',
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
+      child: TextButton(
+        onPressed: () async {
+          pressEvent();
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(color),
+        ),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 8.0, right: 4.0, top: 4, bottom: 4),
+          child: Text(
+            '$text',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       ),
@@ -214,14 +230,15 @@ class _StylishDialogState extends State<StylishDialogUI>
     switch (widget.alertType) {
       case StylishDialogType.NORMAL:
         return Container(
-          width: 0,
-        );
+            // width: 0,
+            );
       case StylishDialogType.PROGRESS:
         return Padding(
           padding:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: CircularProgressIndicator(
             color: widget.color,
+            strokeWidth: 3,
           ),
         );
       case StylishDialogType.SUCCESS:
@@ -310,8 +327,8 @@ class _StylishDialogState extends State<StylishDialogUI>
 
       default:
         return Container(
-          width: 0,
-        );
+            // width: 0,
+            );
     }
   }
 
@@ -332,9 +349,8 @@ class _StylishDialogState extends State<StylishDialogUI>
               const SizedBox(
                 height: 12,
               ),
-              if (widget.titleText != null) _titleTextWidget(widget.titleText),
-              if (widget.contentText != null)
-                _contentTextWidget(widget.contentText),
+              if (widget.title != null) _titleTextWidget(widget.title),
+              if (widget.content != null) _contentTextWidget(widget.content),
               if (widget.addView != null)
                 Container(
                     padding: const EdgeInsets.only(
@@ -396,3 +412,5 @@ class _StylishDialogState extends State<StylishDialogUI>
     );
   }
 }
+
+const double KPadding = 12.0;
