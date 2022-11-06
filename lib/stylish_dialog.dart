@@ -34,7 +34,8 @@ class StylishDialog {
   final BuildContext context;
 
   ///To show dialog with different alert types. You can specify alert type
-  /// using; for Normal [StylishDialogType.NORMAL]
+  /// using;
+  /// for Normal [StylishDialogType.NORMAL]
   ///
   ///Progress [StylishDialogType.PROGRESS]
   ///
@@ -45,12 +46,13 @@ class StylishDialog {
   ///Warning [StylishDialogType.WARNING]
   ///
   ///Error [StylishDialogType.ERROR]
+  ///
   final StylishDialogType? alertType;
 
-  ///Use this to set dialog title text
+  ///Dialog's title [Text] widget
   Widget? title;
 
-  ///Use this to set the dialog content/detail text
+  ///Dialog's content [Text] widget
   Widget? content;
 
   ///Use this to set confirm button text.
@@ -141,23 +143,6 @@ class StylishDialog {
   ///```
   Widget? cancelButton;
 
-  ///Use this to change content text style.
-  ///Default is
-  ///```
-  /// TextStyle(
-  ///    fontWeight: FontWeight.bold,
-  ///    fontSize: 20.0,
-  /// )
-  ///```
-  // TextStyle? titleStyle;
-
-  ///Use this to change title text style
-  ///Default is
-  ///```
-  /// TextStyle()
-  ///```
-  // TextStyle? contentStyle;
-
   ///Use this to change progress bar color.
   ///Default is
   ///```
@@ -201,11 +186,6 @@ class StylishDialog {
     this.addView,
     this.confirmButton,
     this.cancelButton,
-    // this.titleStyle = const TextStyle(
-    //   fontWeight: FontWeight.bold,
-    //   fontSize: 20.0,
-    // ),
-    // this.contentStyle = const TextStyle(),
     this.progressColor,
     this.style = Style.Default,
     this.controller,
@@ -222,7 +202,7 @@ class StylishDialog {
   ///
   ///dialog.show();
   ///```
-  Future show() => showDialog(
+  Future<void> show() => showDialog(
         context: context,
         barrierDismissible: dismissOnTouchOutside,
         builder: (context) {
@@ -262,7 +242,7 @@ class StylishDialog {
   ///...
   ///dialog.dismiss();
   ///```
-  dismiss({bool rootNavigator = true}) {
+  void dismiss({bool rootNavigator = true}) {
     Navigator.of(context, rootNavigator: rootNavigator).pop();
   }
 
@@ -284,7 +264,7 @@ class StylishDialog {
   ///);
   ///
   ///```
-  changeAlertType({
+  void changeAlertType({
     required StylishDialogType alertType,
     Widget? title,
     Widget? content,
