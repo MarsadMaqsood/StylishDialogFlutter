@@ -1,14 +1,15 @@
 ## 1.0.0
-Change
-- `titleText` renamed to the `title`
-- `contentText` renamed to the `content`
+```diff
++ title:
++ content:
 
-Removed
-- `titleStyle`
-- `contentStyle`
-
-Fix: bug
-
+- titleText:
+- contentText:
+- titleStyle:
+- contentStyle:
+```
+- Fix: bug
+- Updated documentation
 
 ## 0.1.3
 - Removed unnecessary code
@@ -117,7 +118,6 @@ Added `changeAlertType()` function to change current dialog type.
 + confirmPressEvent:
 + cancelPressEvent:
 ```
-
 
 
 ## 0.0.3+1
