@@ -10,17 +10,34 @@ export 'src/callback.dart';
 export 'src/adaptive_dialog.dart';
 
 enum StylishDialogType {
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
   NORMAL,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/2.png)
   PROGRESS,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/3.png)
   SUCCESS,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/4.png)
   INFO,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/5.png)
   WARNING,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/6.png)
   ERROR,
+
   _CHANGE,
 }
 
 enum Style {
+  //Default dialog style with differnet alert types `StylishDialogType`
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
   Default,
+
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/7.png)
   Style1,
 }
 
@@ -206,10 +223,7 @@ class StylishDialog {
         context: context,
         barrierDismissible: dismissOnTouchOutside,
         builder: (context) {
-          if (controller != null) {
-            controller!.listener!(DialogStatus.Showing);
-            // controller!.setValue(DialogStatus.Showing);
-          }
+          controller?.setValue = DialogStatus.Showing;
 
           return StatefulBuilder(builder: (context, setState) {
             _stateSetter = setState;
@@ -219,10 +233,10 @@ class StylishDialog {
         },
       ).then((value) {
         if (value == null) {
-          if (controller != null) {
-            // controller!.setValue(DialogStatus.Dismissed);
-            controller!.listener!(DialogStatus.Dismissed);
-          }
+          // if (controller != null) {
+          controller?.setValue = DialogStatus.Dismissed;
+          // controller!.listener!(DialogStatus.Dismissed);
+          // }
         }
       });
 
@@ -327,10 +341,8 @@ class StylishDialog {
       this.cancelButton = cancelButton;
 
       _changeAlert = alertType;
-      if (controller != null) {
-        // controller!.setValue(DialogStatus.Changed);
-        controller!.listener!(DialogStatus.Changed);
-      }
+
+      controller?.setValue = DialogStatus.Changed;
 
       _buildDialogUI();
     });

@@ -39,7 +39,11 @@ class StylishDialogUI extends StatefulWidget {
   Widget? confirmButton;
   Widget? cancelButton;
   Color? color;
+
+  ///Dialog style
   Style? style;
+
+  ///Dialog background color
   Color? backgroundColor;
 
   @override
@@ -71,6 +75,7 @@ class _StylishDialogState extends State<StylishDialogUI>
 
   @override
   void dispose() {
+    ///dispose controller
     _controller.dispose();
     super.dispose();
   }
@@ -88,9 +93,10 @@ class _StylishDialogState extends State<StylishDialogUI>
 
   @override
   Widget build(BuildContext context) {
-    //Default values of Confirm Button Text
+    ///Default values of Confirm Button Text
     widget.confirmText ??= 'Confirm';
-    //Default values of Cancel Button Text
+
+    ///Default values of Cancel Button Text
     widget.cancelText ??= 'Cancel';
 
     return Dialog(
@@ -248,14 +254,14 @@ class _StylishDialogState extends State<StylishDialogUI>
             width: _sizeK,
             height: _sizeK,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(44),
+              borderRadius: BorderRadius.circular(28),
               // color: Colors.white,
               border: Border.all(
                 color: Colors.green,
                 width: 2,
               ),
             ),
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(2.0),
             child: ScaleTransition(
               scale: _animation,
               // axis: Axis.horizontal,
@@ -362,7 +368,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     }
   }
 
-  _stylishContentBoxStyle1() {
+  Widget _stylishContentBoxStyle1() {
     return Transform.rotate(
       angle: -0.07,
       child: Container(
@@ -373,47 +379,53 @@ class _StylishDialogState extends State<StylishDialogUI>
         padding: const EdgeInsets.all(1),
         child: Transform.rotate(
           angle: 0.07,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                height: 12,
-              ),
-              if (widget.title != null) _titleTextWidget(widget.title),
-              if (widget.content != null) _contentTextWidget(widget.content),
-              if (widget.addView != null)
-                Container(
-                    padding: const EdgeInsets.only(
-                        left: 10, top: 8, bottom: 4, right: 10),
-                    child: widget.addView),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ///Confirm
-                  if (widget.confirmButton != null)
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: widget.confirmButton!,
-                    )
-                  else if (widget.confirmPressEvent != null)
-                    _pressButtonWidgetStyle1(widget.confirmPressEvent,
-                        Colors.black, widget.confirmText),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // const SizedBox(
+                //   height: 12,
+                // ),
+                if (widget.title != null) _titleTextWidget(widget.title),
+                if (widget.content != null) _contentTextWidget(widget.content),
+                if (widget.addView != null)
+                  Container(
+                      padding: const EdgeInsets.only(
+                          left: 10, top: 8, bottom: 4, right: 10),
+                      child: widget.addView),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ///Confirm
+                    if (widget.confirmButton != null)
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: widget.confirmButton!,
+                      )
+                    else if (widget.confirmPressEvent != null)
+                      _pressButtonWidgetStyle1(widget.confirmPressEvent,
+                          Colors.black, widget.confirmText),
 
-                  ///Cancel
-                  if (widget.cancelButton != null)
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: widget.cancelButton!,
-                    )
-                  else if (widget.cancelPressEvent != null)
-                    _pressButtonWidgetStyle1(
-                        widget.cancelPressEvent, null, widget.cancelText,
-                        // Colors.transparent, widget.cancelText,
-                        textColor: Colors.black),
-                ],
-              ),
-            ],
+                    ///Cancel
+                    if (widget.cancelButton != null)
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: widget.cancelButton!,
+                      )
+                    else if (widget.cancelPressEvent != null)
+                      _pressButtonWidgetStyle1(
+                          widget.cancelPressEvent, null, widget.cancelText,
+                          // Colors.transparent, widget.cancelText,
+                          textColor: Colors.black),
+                  ],
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+              ],
+            ),
           ),
         ),
       ),

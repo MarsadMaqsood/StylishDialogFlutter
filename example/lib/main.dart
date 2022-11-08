@@ -78,6 +78,7 @@ class _StylishExampleState extends State<StylishExample> {
                       dismissOnTouchOutside: false,
                       controller: controller,
                       // style: Style.Style1,
+
                       // backgroundColor: Colors.purple,
                       // confirmText: 'Yes',
                       // confirmPressEvent: () {},

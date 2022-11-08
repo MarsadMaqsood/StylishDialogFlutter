@@ -14,16 +14,15 @@ typedef AdaptiveBuilder = Widget Function(BuildContext context);
 
 class AdaptiveDialog extends Dialog {
   const AdaptiveDialog({
-    Key? key,
+    super.key,
     this.title,
     this.actions = const [],
     this.content,
     this.preferedStyle = PreferedStyle.System,
-  }) : super(key: key);
+  });
 
   final Widget? title, content;
   final List<Widget> actions;
-
   final PreferedStyle preferedStyle;
 
   @override

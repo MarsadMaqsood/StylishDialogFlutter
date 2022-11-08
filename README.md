@@ -14,8 +14,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 
 ```yaml
 dependencies:
-    stylish_dialog: any  # Any attribute updates automatically your source to the lastest version
-    #stylish_dialog: ^0.1.3
+    stylish_dialog: ^1.0.0
 ```
 ## ⚡ Import
 
@@ -28,25 +27,21 @@ import 'package:stylish_dialog/stylish_dialog.dart';
 ```dart
 context:
 alertType:
-titleText:
-contentText:
+controller:
+title:
+content:
 addView:
 confirmButton:
 cancelButton:
 dismissOnTouchOutside:
 animationLoop:
-titleStyle:
-contentStyle:
 progressColor:
-controller:
 backgroundColor:
 @deprecated confirmText:
 @deprecated cancelText:
 @deprecated confirmPressEvent:
 @deprecated cancelPressEvent:
 ```
-    
-
 
 ## Properties
 
@@ -55,41 +50,39 @@ context → BuildContext
 
 alertType → StylishDialogType
 
-titleText → String
+controller → DialogController
+
+title → Widget
+
+content → Widget
 
 addView → Widget
 
 confirmText → String
 
-confirmText → String
-
 cancelText → String
-
-confirmPressEvent → void Function ()
-
-cancelPressEvent → void Function ()
-
-dismissOnTouchOutside → bool
-
-rootNavigator → bool
-
-animationLoop → bool
 
 confirmButton → Widget
 
 cancelButton → Widget
 
-titleStyle → TextStyle
-
-contentStyle → TextStyle
-
-progressColor → Color
+animationLoop → bool
 
 style → Style
 
-controller → DialogController
+progressColor → Color
 
 backgroundColor → Color
+
+confirmPressEvent → void Function()
+
+cancelPressEvent → void Function()
+
+dismissOnTouchOutside → bool
+
+rootNavigator → bool
+
+preferedStyle → PreferedStyle
 ```
 
 ## Alert Type
@@ -135,8 +128,6 @@ showAdaptiveDialog(
             ],
     ),
 );
-
-
 ```
 
 ### Press Event
@@ -180,16 +171,16 @@ DialogController controller = DialogController(
 ```
 ___
 
-### Examples 
+## Examples 
 
 ```dart
 StylishDialog dialog = StylishDialog(
         context: context,
         alertType: StylishDialogType.SUCCESS,
-        titleText: 'This is title',
-        contentText: 'This is content text',
-        animationLoop: true,
         controller: controller,
+        title: Text('This is title'),
+        content: Text('This is content text'),
+        animationLoop: true,
     );
         
 //show stylish dialog
@@ -198,7 +189,7 @@ dialog.show();
 //dismiss stylish dialog
 dialog.dismiss();
 
-//dialog.dismiss(/*rootNavigator: bool  default true */);
+//dialog.dismiss(/*rootNavigator: bool  //default true */);
 
 ```
 ___
@@ -211,8 +202,8 @@ Simple Stylish Dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.NORMAL,
-    titleText: 'This is title',
-    contentText: 'This is content text',
+    title: Text('This is title'),
+    content: Text('This is content text'),
 ).show();
 ```
 
@@ -226,8 +217,8 @@ Note: `addView:` is only supported with `StylishDialogType.NORMAL` `alertType`
 StylishDialog(
     context: context,
     alertType: StylishDialogType.NORMAL,
-    titleText: 'Name',
-    contentText: 'Please enter your name',
+    title: Text('Name'),
+    content: Text('Please enter your name'),
     confirmText: 'Submit',
     confirmPressEvent: () {
         print(controller.text);
@@ -248,8 +239,8 @@ Progress dialog without title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.PROGRESS,
-    titleText: 'This is title',
-    contentText: 'This is content text',
+    title: Text('This is title'),
+    content: Text('This is content text'),
 ).show();
 ```
 
@@ -259,8 +250,8 @@ Progress dialog with only title
 StylishDialog(
     context: context,
     alertType: StylishDialogType.PROGRESS,
-    titleText: 'This is title',
-    contentText: 'This is content text',
+    title: Text('This is title'),
+    content: Text('This is content text'),
 ).show();
 ```
     
@@ -270,8 +261,8 @@ Progress dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.PROGRESS,
-    titleText: 'This is title',
-    contentText: 'This is content text',
+    title: Text('This is title'),
+    content: Text('This is content text'),
 ).show();
 ```
 
@@ -294,7 +285,7 @@ Success dialog with only title
 StylishDialog(
     context: context,
     alertType: StylishDialogType.SUCCESS,
-    titleText: 'Wow',
+    title: Text('Wow'),
 ).show();
 ```
 
@@ -304,8 +295,8 @@ Success Dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.SUCCESS,
-    titleText: 'Wow',
-    contentText: 'Task completed',
+    title: Text('Wow'),
+    content: Text('Task completed'),
 ).show();
 ```
     
@@ -328,7 +319,7 @@ Info Dialog with only title
 StylishDialog(
     context: context,
     alertType: StylishDialogType.INFO,
-    titleText: 'You know',
+    title: Text('You know'),
 ).show();
 ```
 
@@ -338,8 +329,8 @@ Info Dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.INFO,
-    titleText: 'You know',
-    contentText: 'This is an amazing dialog',
+    title: Text('You know'),
+    content: Text('This is an amazing dialog'),
 ).show();
 ```
 
@@ -362,7 +353,7 @@ Warning Dialog with only title
 StylishDialog(
     context: context,
     alertType: StylishDialogType.WARNING,
-    titleText: 'Wait',
+    title: Text('Wait'),
 ).show();
 ```
 
@@ -372,8 +363,8 @@ Warning Dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.WARNING,
-    titleText: 'Wait',
-    contentText: 'Are you sure you want to delete',
+    title: Text('Wait'),
+    content: Text('Are you sure you want to delete'),
 ).show();
 ```
 
@@ -396,7 +387,7 @@ Error Dialog with only title
 StylishDialog(
     context: context,
     alertType: StylishDialogType.ERROR,
-    titleText: 'Oops',
+    title: Text('Oops'),
 ).show();
 ```
 
@@ -406,8 +397,8 @@ Error Dialog with title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.ERROR,
-    titleText: 'Oops',
-    contentText: 'Task Failed',
+    title: Text('Oops'),
+    content: Text('Task Failed'),
 ).show();
 ```
 
@@ -421,8 +412,8 @@ Success Dialog with click
 StylishDialog(
     context: context,
     alertType: StylishDialogType.SUCCESS,
-    titleText: 'Wow',
-    contentText: 'You did it',
+    title: Text('Wow'),
+    content: Text('You did it'),
     confirmText: 'Dismiss',
     confirmPressEvent: () {
         //Dismiss stylish dialog
@@ -441,7 +432,7 @@ Progress dialog binds with Success dialog
 StylishDialog dialog = StylishDialog(
     context: context,
     alertType: StylishDialogType.PROGRESS,
-    titleText: 'Processing...',
+    title: Text('Processing...'),
     dismissOnTouchOutside: false,
     animationLoop: true,
 );
@@ -450,8 +441,8 @@ dialog.show();
 Future.delayed(Duration(seconds: 3), () {
     dialog.changeAlertType(
     alertType: StylishDialogType.SUCCESS,
-        titleText: 'Congrats!',
-        contentText: 'Task completed successfuly',
+        title: Text('Congrats!'),
+        content: Text('Task completed successfuly'),
 
         confirmButton: TextButton(
             onPressed: () {

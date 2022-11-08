@@ -1,3 +1,15 @@
+## 1.0.0
+Change
+- `titleText` renamed to the `title`
+- `contentText` renamed to the `content`
+
+Removed
+- `titleStyle`
+- `contentStyle`
+
+Fix: bug
+
+
 ## 0.1.3
 - Removed unnecessary code
 - Fix: lint warnings
