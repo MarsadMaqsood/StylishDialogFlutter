@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'package:stylish_dialog/helper/platform.dart'
+    if (dart.library.html) 'package:stylish_dialog/helper/platform_web.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,13 +29,13 @@ class AdaptiveDialog extends Dialog {
   @override
   Widget build(BuildContext context) {
     return preferedStyle == PreferedStyle.System
-        ? Platform.isIOS
-            ? CupertinoAlertDialog(
+        ? isAndroid
+            ? AlertDialog(
                 title: title,
                 actions: actions,
                 content: content,
               )
-            : AlertDialog(
+            : CupertinoAlertDialog(
                 title: title,
                 actions: actions,
                 content: content,

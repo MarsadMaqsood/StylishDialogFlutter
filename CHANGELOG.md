@@ -1,3 +1,8 @@
+## 1.0.1
+Fix: bug
+
+## 1.0.1-beta
+Fix: bug
 ## 1.0.0
 ```diff
 + title:

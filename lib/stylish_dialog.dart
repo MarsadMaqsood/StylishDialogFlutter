@@ -168,8 +168,18 @@ class StylishDialog {
   Color? progressColor;
 
   ///Use this to change button style
-  ///Default [Style.Default]
-  Style? style;
+  ///
+  ///Default is [Style.Default]
+  ///
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
+  ///`Style.Default`
+  ///
+  ///---
+  ///
+  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/7.png)
+  ///`Style.Style1`
+  ///
+  Style style;
 
   ///Background color of dialog
   Color? backgroundColor;
@@ -209,7 +219,7 @@ class StylishDialog {
     this.backgroundColor,
   }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
 
-  ///Function used to show the dialog
+  ///The function used to show the stylish dialog
   ///```
   ///StylishDialog dialog = StylishDialog(
   ///   context: context,
@@ -246,7 +256,7 @@ class StylishDialog {
 
   Future<bool> _onWillPop() async => dismissOnTouchOutside;
 
-  ///Function used to dismiss the dialog
+  ///The Function used to dismiss the dialog
   ///```
   ///StylishDialog dialog = StylishDialog(
   ///   context: context,
@@ -263,7 +273,7 @@ class StylishDialog {
   late StateSetter _stateSetter;
   StylishDialogType _changeAlert = StylishDialogType._CHANGE;
 
-  ///Function used to change current dialog alert type
+  ///Call [changeAlertType] function to change the alert type of the current dialog
   ///```
   ///StylishDialog dialog = StylishDialog(
   ///   context: context,
@@ -280,7 +290,11 @@ class StylishDialog {
   ///```
   void changeAlertType({
     required StylishDialogType alertType,
+
+    ///title widget of the dialog
     Widget? title,
+
+    ///content widget of the dialog
     Widget? content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
         String? confirmText,
@@ -349,7 +363,7 @@ class StylishDialog {
   }
 
   ///Function to build dialog UI
-  _buildDialogUI() {
+  Widget _buildDialogUI() {
     return StylishDialogUI(
       context: context,
       alertType:
@@ -364,10 +378,8 @@ class StylishDialog {
       animationLoop: animationLoop,
       cancelButton: cancelButton,
       confirmButton: confirmButton,
-      // titleStyle: titleStyle,
-      // contentStyle: contentStyle,
       color: progressColor ?? Theme.of(context).primaryColor,
-      style: style!,
+      style: style,
       backgroundColor: backgroundColor,
     );
   }

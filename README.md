@@ -14,7 +14,7 @@ A collection of stylish animated dialogs like Normal, Progress, Success, Info, W
 
 ```yaml
 dependencies:
-    stylish_dialog: ^1.0.0
+    stylish_dialog: ^1.0.1
 ```
 ## ⚡ Import
 
