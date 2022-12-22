@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../stylish_dialog.dart';
 
@@ -133,7 +134,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           height: 12,
         ),
         Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: kIsWeb ? MainAxisSize.min : MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ///Cancel
