@@ -297,6 +297,7 @@ class _StylishDialogState extends State<StylishDialogUI>
               'i',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: 'serif',
                 color: Colors.blue,
                 fontSize: 36,
               ),
@@ -325,6 +326,7 @@ class _StylishDialogState extends State<StylishDialogUI>
               'i',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: 'serif',
                 color: Colors.amber,
                 fontSize: 36,
               ),
