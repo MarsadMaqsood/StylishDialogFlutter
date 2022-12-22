@@ -71,7 +71,7 @@ class _StylishExampleState extends State<StylishExample> {
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
                       context: context,
-                      alertType: StylishDialogType.PROGRESS,
+                      alertType: StylishDialogType.WARNING,
                       // animationLoop: true,
                       title: const Text('Processing...'),
 

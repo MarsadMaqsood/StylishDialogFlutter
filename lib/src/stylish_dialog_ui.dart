@@ -133,6 +133,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           height: 12,
         ),
         Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ///Cancel
