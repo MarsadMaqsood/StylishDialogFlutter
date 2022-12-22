@@ -89,7 +89,7 @@ class _StylishExampleState extends State<StylishExample> {
 
                     Future.delayed(const Duration(seconds: 3), () {
                       dialog.changeAlertType(
-                        alertType: StylishDialogType.SUCCESS,
+                        alertType: StylishDialogType.WARNING,
                         title: const Text('Congrats!'),
                         content: const Text('Task completed successfuly'),
 
