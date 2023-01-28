@@ -2,7 +2,7 @@
 Changes: 
 - `Style.Default` to `DefaultStyle()`
 - `Style.Style1` to `Style1()`
-- 
+
 Fix: bug
 
 ## 1.0.1
