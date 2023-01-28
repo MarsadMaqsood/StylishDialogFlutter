@@ -174,7 +174,8 @@ class _StylishDialogState extends State<StylishDialogUI>
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20.0,
-          color: (Theme.of(context).textTheme.headline6?.color) ?? Colors.black,
+          color:
+              (Theme.of(context).textTheme.titleLarge?.color) ?? Colors.black,
         ),
         child: text,
       ),
@@ -191,7 +192,8 @@ class _StylishDialogState extends State<StylishDialogUI>
       ),
       child: DefaultTextStyle(
         style: TextStyle(
-          color: (Theme.of(context).textTheme.subtitle1?.color) ?? Colors.black,
+          color:
+              (Theme.of(context).textTheme.titleMedium?.color) ?? Colors.black,
         ),
         child: text,
       ),
