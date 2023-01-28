@@ -16,6 +16,7 @@ void main() {
                 child: MaterialApp(
                     home: StylishDialogUI(
                         alertType: StylishDialogType.NORMAL,
+                        style: DefaultStyle(),
                         context: context)));
             return testWidget;
           },
@@ -33,6 +34,7 @@ void main() {
                     home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.PROGRESS,
+                  style: DefaultStyle(),
                   title: const Text('This is title'),
                   content: const Text('This is content text'),
                 )));
@@ -52,7 +54,7 @@ void main() {
                     home: StylishDialogUI(
                   alertType: StylishDialogType.SUCCESS,
                   context: context,
-                  animationLoop: false,
+                  style: DefaultStyle(),
                   title: const Text('Wow'),
                   content: const Text('Task completed'),
                 )));
@@ -72,9 +74,9 @@ void main() {
                   home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.INFO,
+                    style: DefaultStyle(),
                     title: const Text('You know'),
                     content: const Text('This is an amazing dialog'),
-                    animationLoop: false,
                   ),
                 ));
             return testWidget;
@@ -93,9 +95,9 @@ void main() {
                   home: StylishDialogUI(
                     context: context,
                     alertType: StylishDialogType.WARNING,
+                    style: DefaultStyle(),
                     title: const Text('Wait'),
                     content: const Text('Are you sure you want to delete'),
-                    animationLoop: false,
                   ),
                 ));
             return testWidget;
@@ -114,9 +116,9 @@ void main() {
                     home: StylishDialogUI(
                   context: context,
                   alertType: StylishDialogType.ERROR,
+                  style: DefaultStyle(),
                   title: const Text('Oops'),
                   content: const Text('Task Failed'),
-                  animationLoop: false,
                 )));
             return testWidget;
           },
@@ -138,7 +140,6 @@ void main() {
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
                       title: const Text('Processing...'),
-                      animationLoop: false,
                     );
                     dialog.show();
 
@@ -176,19 +177,19 @@ void main() {
                 home: ElevatedButton(
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
-                        context: context,
-                        alertType: StylishDialogType.NORMAL,
-                        addView: TextField(
-                          controller: controller,
-                          decoration: const InputDecoration(
-                              hintText: 'Enter your name'),
-                        ),
-                        confirmText: 'Submit',
-                        confirmPressEvent: () {
-                          debugPrint(controller.text);
-                        },
-                        title: const Text('Name'),
-                        animationLoop: false);
+                      context: context,
+                      alertType: StylishDialogType.NORMAL,
+                      addView: TextField(
+                        controller: controller,
+                        decoration:
+                            const InputDecoration(hintText: 'Enter your name'),
+                      ),
+                      confirmText: 'Submit',
+                      confirmPressEvent: () {
+                        debugPrint(controller.text);
+                      },
+                      title: const Text('Name'),
+                    );
                     dialog.show();
                   },
                   child: const Text('Show'),

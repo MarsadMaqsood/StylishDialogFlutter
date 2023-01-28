@@ -11,7 +11,6 @@ class StylishDialogUI extends StatefulWidget {
     super.key,
     required this.context,
     required this.alertType,
-    this.animationLoop,
     this.title,
     this.content,
     this.confirmText,
@@ -21,14 +20,12 @@ class StylishDialogUI extends StatefulWidget {
     this.addView,
     this.confirmButton,
     this.cancelButton,
-    this.color,
-    this.style,
-    this.backgroundColor,
+    this.progressColor,
+    required this.style,
   });
 
   final BuildContext context;
   final StylishDialogType? alertType;
-  final bool? animationLoop;
   Widget? title;
   Widget? content;
   String? confirmText;
@@ -39,13 +36,10 @@ class StylishDialogUI extends StatefulWidget {
 
   Widget? confirmButton;
   Widget? cancelButton;
-  Color? color;
+  Color? progressColor;
 
   ///Dialog style
-  Style? style;
-
-  ///Dialog background color
-  Color? backgroundColor;
+  Style style;
 
   @override
   State<StylishDialogUI> createState() => _StylishDialogState();
@@ -69,7 +63,7 @@ class _StylishDialogState extends State<StylishDialogUI>
     super.didUpdateWidget(oldWidget);
 
     ///dispose the current active controller and
-    /// create a new one for changeAlertType
+    /// create a new one for `changeAlertType`
     _controller.dispose();
     _initializeAnimation();
   }
@@ -106,10 +100,8 @@ class _StylishDialogState extends State<StylishDialogUI>
         borderRadius: BorderRadius.circular(14),
       ),
       elevation: 0,
-      backgroundColor: widget.style == Style.Default
-          ? (widget.backgroundColor ?? Colors.white)
-          : Colors.black,
-      child: widget.style == Style.Default
+      backgroundColor: widget.style.backgroundColor,
+      child: widget.style.runtimeType == DefaultStyle
           ? Container(
               padding: const EdgeInsets.all(12),
               child: _stylishContentBox(),
@@ -127,9 +119,10 @@ class _StylishDialogState extends State<StylishDialogUI>
         if (widget.content != null) _contentTextWidget(widget.content),
         if (widget.addView != null)
           Container(
-              padding:
-                  const EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
-              child: widget.addView),
+            padding:
+                const EdgeInsets.only(left: 10, top: 8, bottom: 4, right: 10),
+            child: widget.addView,
+          ),
         const SizedBox(
           height: 12,
         ),
@@ -224,7 +217,7 @@ class _StylishDialogState extends State<StylishDialogUI>
   }
 
   _playAnimation() {
-    if (widget.animationLoop!) {
+    if ((widget.style as DefaultStyle).animationLoop) {
       _controller.repeat();
     } else {
       _controller.forward();
@@ -235,8 +228,8 @@ class _StylishDialogState extends State<StylishDialogUI>
     switch (widget.alertType) {
       case StylishDialogType.NORMAL:
         return Container(
-            // width: 0,
-            );
+          width: 0,
+        );
       case StylishDialogType.PROGRESS:
         return Container(
           width: _sizeK,
@@ -244,7 +237,7 @@ class _StylishDialogState extends State<StylishDialogUI>
           margin:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: CircularProgressIndicator(
-            color: widget.color,
+            color: widget.progressColor,
             strokeWidth: 2.5,
           ),
         );
@@ -380,7 +373,7 @@ class _StylishDialogState extends State<StylishDialogUI>
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: widget.backgroundColor ?? Colors.white,
+          color: (widget.style as Style1).dialogBgColor,
         ),
         padding: const EdgeInsets.all(1),
         child: Transform.rotate(

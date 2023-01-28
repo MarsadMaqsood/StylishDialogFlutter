@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-
 import 'package:stylish_dialog/stylish_dialog.dart';
 
 class StylishDialogExamples extends StatefulWidget {
@@ -294,9 +293,13 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                       confirmPressEvent: () {
                         debugPrint(controller.text);
                       },
-                      addView: TextField(
-                        controller: controller,
-                        decoration: const InputDecoration(),
+                      style: Style1(),
+                      addView: SizedBox(
+                        width: 400,
+                        child: TextField(
+                          controller: controller,
+                          decoration: const InputDecoration(),
+                        ),
                       )).show();
                 },
                 style: ButtonStyle(
@@ -309,6 +312,9 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                   'Show Me',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
+              ),
+              const SizedBox(
+                height: 28,
               ),
             ],
           ),

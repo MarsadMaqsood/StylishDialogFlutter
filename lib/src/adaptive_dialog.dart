@@ -22,8 +22,18 @@ class AdaptiveDialog extends Dialog {
     this.preferedStyle = PreferedStyle.System,
   });
 
-  final Widget? title, content;
+  ///title of the dialog
+  final Widget? title;
+
+  ///content of the dialog
+  final Widget? content;
+
+  ///dialog actions
   final List<Widget> actions;
+
+  ///Dialog prefered style
+  ///
+  ///default is [PreferedStyle.System]
   final PreferedStyle preferedStyle;
 
   @override

@@ -3,9 +3,11 @@
 library stylish_dialog;
 
 import 'package:flutter/material.dart';
+import 'package:stylish_dialog/model/style.dart';
 import 'package:stylish_dialog/src/callback.dart';
 import 'package:stylish_dialog/src/stylish_dialog_ui.dart';
 
+export 'model/style.dart';
 export 'src/callback.dart';
 export 'src/adaptive_dialog.dart';
 
@@ -31,16 +33,6 @@ enum StylishDialogType {
   _CHANGE,
 }
 
-enum Style {
-  //Default dialog style with differnet alert types `StylishDialogType`
-
-  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
-  Default,
-
-  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/7.png)
-  Style1,
-}
-
 enum DialogStatus {
   Showing,
   Changed,
@@ -48,28 +40,28 @@ enum DialogStatus {
 }
 
 class StylishDialog {
+  ///The [BuildContext] of the current widget.
   final BuildContext context;
 
-  ///To show dialog with different alert types. You can specify alert type
-  /// using;
-  /// for Normal [StylishDialogType.NORMAL]
+  /// The type of alert to be displayed in the dialog.
   ///
-  ///Progress [StylishDialogType.PROGRESS]
+  /// You can specify the alert type using one of the following options:
+  /// - `StylishDialogType.NORMAL` for a normal alert.
+  /// - `StylishDialogType.PROGRESS` for a progress alert which shows a loading indicator.
+  /// - `StylishDialogType.SUCCESS` for a success alert with a success icon.
+  /// - `StylishDialogType.INFO` for an informational alert with an informational icon.
+  /// - `StylishDialogType.WARNING` for a warning alert with a warning icon.
+  /// - `StylishDialogType.ERROR` for an error alert with an error icon.
   ///
-  ///Success [StylishDialogType.SUCCESS]
-  ///
-  ///Info [StylishDialogType.INFO]
-  ///
-  ///Warning [StylishDialogType.WARNING]
-  ///
-  ///Error [StylishDialogType.ERROR]
-  ///
-  final StylishDialogType? alertType;
+  /// This property also affects the color and icon of the dialog, so it's recommended
+  /// to set it according to the context of the alert.
+  final StylishDialogType alertType;
 
-  ///Dialog's title [Text] widget
+  /// The title of the dialog, displayed at the top of the dialog box.
   Widget? title;
 
-  ///Dialog's content [Text] widget
+  /// The main content of the dialog, displayed in the middle of the dialog box.
+  /// The widget can be any text-based widget, such as [Text] or [RichText].
   Widget? content;
 
   ///Use this to set confirm button text.
@@ -84,20 +76,25 @@ class StylishDialog {
   @Deprecated('Use `cancelEvent` instead. Will be removed soon')
   String? cancelText;
 
-  ///Use this to avoid dialog from dismissing by touching outside of the dialog
-  ///Default value is true
+  /// Use this property to specify whether the dialog should be dismissed when the user touches outside of it.
+  /// If set to `true`, the dialog will be dismissed when the user touches outside of it.
+  /// If set to `false`, the dialog will not be dismissed when the user touches outside of it.
   ///
-  ///```
-  ///bool dismissOnTouchOutside = true;
-  ///```
+  /// The default value is `true`.
+  ///
+  /// ```dart
+  /// bool dismissOnTouchOutside = true;
+  /// ```
+  ///
+  /// To use this property, pass it as an argument when creating an instance of the [StylishDialog] class.
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   dismissOnTouchOutside: false,
+  ///   // other properties...
+  /// )
+  /// ```
   bool dismissOnTouchOutside;
-
-  ///Play animations in a loop.
-  ///Default value is false
-  ///```
-  /// bool animationLoop = false;
-  ///```
-  bool animationLoop;
 
   ///Hanlde confirm button press event.
   ///
@@ -111,87 +108,152 @@ class StylishDialog {
   @Deprecated('Use `cancelButton` instead. Will be removed soon')
   VoidCallback? cancelPressEvent;
 
-  ///Add custom widget in the dialog.
+  /// Allows you to add a custom widget to the dialog.
+  ///
+  /// You can use this property to add any widget you want to the dialog, such as a [TextField], a [List], or an [Image].
+  ///
+  /// To use this property, pass it as an argument when creating an instance of the [StylishDialog] class.
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   addView: customWidget,
+  ///   // other properties...
+  /// )
+  /// ```
   Widget? addView;
 
-  ///Use this to add confirm button widget.
-  ///To assign press event on non-clickable widgets like
-  ///```dart
+  /// Use this property to add a confirm button widget to the dialog.
+  /// The widget can be any type of button, such as [TextButton], [ElevatedButton] or [IconButton].
+  /// To assign a press event to the non-clickable widget, wrap it in a clickable widget such as [GestureDetector] or [InkWell].
+  /// The code snippet below shows an example of how to use [GestureDetector] to assign a press event to the [Container]:
+  /// ```dart
   /// GestureDetector(
   ///   onTap: (){
-  ///
-  ///   }
-  ///   child: widget,
+  ///     // code to execute when button is pressed
+  ///   },
+  ///   child: Container(
+  ///     child: Text('Confirm'),
+  ///   ),
   /// )
+  /// ```
+  /// or
   ///
-  ///or
-  ///
+  ///```dart
   /// InkWell(
   ///   onTap: (){
-  ///
-  ///   }
-  ///   child: widget,
+  ///     // code to execute when button is pressed
+  ///   },
+  ///   child: Container(
+  ///     child: Text('Confirm'),
+  ///   ),
   /// )
-  ///```
+  /// ```
   Widget? confirmButton;
 
-  ///Use this to add cancel button widget.
-  ///To assign press event on non-clickable widgets like
-  ///```dart
-  /// Containter(), Text() etc.
-  ///```
-  ///Wrap you widget with
-  ///```dart
+  /// Use this property to add a confirm button widget to the dialog.
+  /// The widget can be any type of button, such as [TextButton], [ElevatedButton] or [IconButton].
+  /// To assign a press event to the non-clickable widget, wrap it in a clickable widget such as [GestureDetector] or [InkWell].
+  /// The code snippet below shows an example of how to use [GestureDetector] to assign a press event to the [Container]:
+  /// ```dart
   /// GestureDetector(
   ///   onTap: (){
-  ///
-  ///   }
-  ///   child: widget,
+  ///     // code to execute when button is pressed
+  ///   },
+  ///   child: Container(
+  ///     child: Text('Cancel'),
+  ///   ),
   /// )
+  /// ```
+  /// or
   ///
-  ///or
-  ///
+  ///```dart
   /// InkWell(
   ///   onTap: (){
-  ///
-  ///   }
-  ///   child: widget,
+  ///     // code to execute when button is pressed
+  ///   },
+  ///   child: Container(
+  ///     child: Text('Cancel'),
+  ///   ),
   /// )
-  ///```
+  /// ```
   Widget? cancelButton;
 
-  ///Use this to change progress bar color.
-  ///Default is
-  ///```
-  ///  Theme.of(context).primaryColor
-  ///```
+  /// Use this property to customize the color of the progress bar.
+  ///
+  /// This property only takes effect when the [alertType] is set to [StylishDialogType.PROGRESS] and the [style] is set to [DefaultStyle].
+  /// By default, the progress bar will use the primary color of the current theme. You can use this property to override that and specify a custom color.
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   alertType: StylishDialogType.PROGRESS,
+  ///   progressColor: Colors.red,
+  ///   // other properties...
+  /// )
+  /// ```
   Color? progressColor;
 
-  ///Use this to change button style
+  /// Allows you to change the style of the dialog UI.
   ///
-  ///Default is [Style.Default]
+  /// The `style` property takes an instance of the subclasses of [Style] class, such as [DefaultStyle] or [Style1].
+  /// The default value is [DefaultStyle].
   ///
-  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
-  ///`Style.Default`
+  /// ```dart
+  /// Style myStyle = Style1();
+  /// StylishDialog(
+  ///   style: myStyle,
+  ///   // other properties...
+  /// )
+  /// ```
   ///
-  ///---
+  /// You can also use the predefined styles provided by the library, such as `DefaultStyle()` or `Style1()`.
   ///
-  ///![](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/7.png)
-  ///`Style.Style1`
+  /// ```dart
+  /// StylishDialog(
+  ///   style: Style1(),
+  ///   // other properties...
+  /// )
+  /// ```
   ///
-  Style style;
+  /// Examples of different styles provided by the library:
+  ///
+  /// ![Default Style](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/1.png)
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   style: DefaultStyle(),
+  ///   // other properties...
+  /// )
+  /// ```
+  /// ---
+  ///
+  /// ![Style 1](https://raw.githubusercontent.com/MarsadMaqsood/StylishDialogFlutter/master/assets/7.png)
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   style: Style1(),
+  ///   // other properties...
+  /// )
+  /// ```
+  Style? style;
 
-  ///Background color of dialog
-  Color? backgroundColor;
-
-  ///Handle dialog callbacks
-  /// [DialogStatus.Showing], [DialogStatus.Changed] or [DialogStatus.Dismissed]
+  /// Use this property to handle the callbacks of the dialog.
+  ///
+  /// By providing an instance of [DialogController] to this property, you can listen to the status of the dialog, which can be [DialogStatus.Showing], [DialogStatus.Changed] or [DialogStatus.Dismissed].
+  /// You can use this to perform actions based on the status of the dialog.
+  ///
   /// ```dart
   /// DialogController controller = DialogController(
-  ///  listener: (status) {
-  ///   ...
-  ///  },
+  ///   listener: (status) {
+  ///     if (status == DialogStatus.Showing) {
+  ///       // perform some action
+  ///     }
+  ///   },
   /// );
+  ///
+  /// StylishDialog(
+  ///   controller: controller,
+  ///   // other properties...
+  /// )
   /// ```
   final DialogController? controller;
 
@@ -209,15 +271,13 @@ class StylishDialog {
     @Deprecated('Use `cancelButton` instead. will be removed soon')
         this.cancelPressEvent,
     this.dismissOnTouchOutside = true,
-    this.animationLoop = false,
     this.addView,
     this.confirmButton,
     this.cancelButton,
     this.progressColor,
-    this.style = Style.Default,
+    this.style,
     this.controller,
-    this.backgroundColor,
-  }) : assert(alertType != null, "StylishDialog: Require non-null alert type");
+  });
 
   ///The function used to show the stylish dialog
   ///```
@@ -290,11 +350,10 @@ class StylishDialog {
   ///```
   void changeAlertType({
     required StylishDialogType alertType,
-
-    ///title widget of the dialog
     Widget? title,
 
-    ///content widget of the dialog
+    /// The main content of the dialog, displayed in the middle of the dialog box.
+    /// The widget can be any text-based widget, such as [Text] or [RichText].
     Widget? content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
         String? confirmText,
@@ -305,43 +364,60 @@ class StylishDialog {
     @Deprecated('Use `cancelButton` instead. will be removed soon')
         VoidCallback? cancelPressEvent,
 
-    ///Use this to add confirm button widget.
-    ///To assign press event on non-clickable widgets like
+    /// Use this property to add a confirm button widget to the dialog.
+    /// The widget can be any type of button, such as [TextButton], [ElevatedButton] or [IconButton].
+    /// To assign a press event to the non-clickable widget, wrap it in a clickable widget such as [GestureDetector] or [InkWell].
+    /// The code snippet below shows an example of how to use [GestureDetector] to assign a press event to the [Container]:
+    /// ```dart
+    /// GestureDetector(
+    ///   onTap: (){
+    ///     // code to execute when button is pressed
+    ///   },
+    ///   child: Container(
+    ///     child: Text('Confirm'),
+    ///   ),
+    /// )
+    /// ```
+    /// or
+    ///
     ///```dart
-    /// Containter(), Text() etc.
-    ///```
-    ///Wrap you widget with
-    ///```dart
-    ///GestureDetector() or InkWell()
-    ///```
+    /// InkWell(
+    ///   onTap: (){
+    ///     // code to execute when button is pressed
+    ///   },
+    ///   child: Container(
+    ///     child: Text('Confirm'),
+    ///   ),
+    /// )
+    /// ```
     Widget? confirmButton,
 
-    ///Use this to add cancel button widget.
-    ///To assign press event on non-clickable widgets like
+    /// Use this property to add a confirm button widget to the dialog.
+    /// The widget can be any type of button, such as [TextButton], [ElevatedButton] or [IconButton].
+    /// To assign a press event to the non-clickable widget, wrap it in a clickable widget such as [GestureDetector] or [InkWell].
+    /// The code snippet below shows an example of how to use [GestureDetector] to assign a press event to the [Container]:
+    /// ```dart
+    /// GestureDetector(
+    ///   onTap: (){
+    ///     // code to execute when button is pressed
+    ///   },
+    ///   child: Container(
+    ///     child: Text('Cancel'),
+    ///   ),
+    /// )
+    /// ```
+    /// or
+    ///
     ///```dart
-    /// Containter(), Text() etc.
-    ///```
-    ///Wrap you widget with
-    ///```dart
-    ///GestureDetector(
-    /// onTap: (){
-    ///
-    /// },
-    ///
-    /// child: ...
-    ///
-    ///),
-    /// //or
-    ///
-    ///InkWell(
-    /// onTap: (){
-    ///
-    /// },
-    ///
-    /// child: ...
-    ///
-    ///),
-    ///```
+    /// InkWell(
+    ///   onTap: (){
+    ///     // code to execute when button is pressed
+    ///   },
+    ///   child: Container(
+    ///     child: Text('Cancel'),
+    ///   ),
+    /// )
+    /// ```
     Widget? cancelButton,
   }) {
     _stateSetter(() {
@@ -375,12 +451,10 @@ class StylishDialog {
       confirmPressEvent: confirmPressEvent,
       cancelPressEvent: cancelPressEvent,
       addView: addView,
-      animationLoop: animationLoop,
       cancelButton: cancelButton,
       confirmButton: confirmButton,
-      color: progressColor ?? Theme.of(context).primaryColor,
-      style: style,
-      backgroundColor: backgroundColor,
+      progressColor: progressColor ?? Theme.of(context).primaryColor,
+      style: style ?? DefaultStyle(),
     );
   }
 }
