@@ -19,9 +19,24 @@ class DefaultStyle extends Style {
   ///Default value is `false`
   final bool animationLoop;
 
+  /// Use this property to customize the color of the progress bar.
+  ///
+  /// This property only takes effect when the [alertType] is set to [StylishDialogType.PROGRESS] and the [style] is set to [DefaultStyle].
+  /// By default, the progress bar will use the primary color of the current theme. You can use this property to override that and specify a custom color.
+  ///
+  /// ```dart
+  /// StylishDialog(
+  ///   alertType: StylishDialogType.PROGRESS,
+  ///   progressColor: Colors.red,
+  ///   // other properties...
+  /// )
+  /// ```
+  Color? progressColor;
+
   DefaultStyle({
     this.backgroundColor = Colors.white,
     this.animationLoop = false,
+    this.progressColor,
   });
 }
 

@@ -20,7 +20,6 @@ class StylishDialogUI extends StatefulWidget {
     this.addView,
     this.confirmButton,
     this.cancelButton,
-    this.progressColor,
     required this.style,
   });
 
@@ -36,7 +35,6 @@ class StylishDialogUI extends StatefulWidget {
 
   Widget? confirmButton;
   Widget? cancelButton;
-  Color? progressColor;
 
   ///Dialog style
   Style style;
@@ -237,7 +235,8 @@ class _StylishDialogState extends State<StylishDialogUI>
           margin:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: CircularProgressIndicator(
-            color: widget.progressColor,
+            color: (widget.style as DefaultStyle).progressColor ??
+                Theme.of(context).primaryColor,
             strokeWidth: 2.5,
           ),
         );

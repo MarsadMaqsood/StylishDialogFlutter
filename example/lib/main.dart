@@ -71,15 +71,10 @@ class _StylishExampleState extends State<StylishExample> {
                   onPressed: () {
                     StylishDialog dialog = StylishDialog(
                       context: context,
-                      alertType: StylishDialogType.WARNING,
-                      // animationLoop: true,
+                      alertType: StylishDialogType.PROGRESS,
                       title: const Text('Processing...'),
-
                       dismissOnTouchOutside: false,
                       controller: controller,
-                      // style: Style.Style1,
-
-                      // backgroundColor: Colors.purple,
                       // confirmText: 'Yes',
                       // confirmPressEvent: () {},
                       // cancelPressEvent: () {},

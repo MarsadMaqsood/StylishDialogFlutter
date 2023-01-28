@@ -99,9 +99,10 @@ StylishDialogType.ERROR
 ## Dialog Style
 
 ```dart
-Style.Default
-Style.Style1
+DefaultStyle()
+Style1()
 ```
+
 
 ## PreferedStyle
 
@@ -177,6 +178,7 @@ ___
 StylishDialog dialog = StylishDialog(
         context: context,
         alertType: StylishDialogType.SUCCESS,
+        style: DefaultStyle(),
         controller: controller,
         title: Text('This is title'),
         content: Text('This is content text'),
@@ -239,6 +241,9 @@ Progress dialog without title and content text
 StylishDialog(
     context: context,
     alertType: StylishDialogType.PROGRESS,
+    style: DefaultStyle(
+        progressColor: Colors.teal,
+    ),
     title: Text('This is title'),
     content: Text('This is content text'),
 ).show();

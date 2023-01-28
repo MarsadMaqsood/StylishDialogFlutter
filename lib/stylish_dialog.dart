@@ -178,20 +178,6 @@ class StylishDialog {
   /// ```
   Widget? cancelButton;
 
-  /// Use this property to customize the color of the progress bar.
-  ///
-  /// This property only takes effect when the [alertType] is set to [StylishDialogType.PROGRESS] and the [style] is set to [DefaultStyle].
-  /// By default, the progress bar will use the primary color of the current theme. You can use this property to override that and specify a custom color.
-  ///
-  /// ```dart
-  /// StylishDialog(
-  ///   alertType: StylishDialogType.PROGRESS,
-  ///   progressColor: Colors.red,
-  ///   // other properties...
-  /// )
-  /// ```
-  Color? progressColor;
-
   /// Allows you to change the style of the dialog UI.
   ///
   /// The `style` property takes an instance of the subclasses of [Style] class, such as [DefaultStyle] or [Style1].
@@ -274,7 +260,6 @@ class StylishDialog {
     this.addView,
     this.confirmButton,
     this.cancelButton,
-    this.progressColor,
     this.style,
     this.controller,
   });
@@ -453,7 +438,6 @@ class StylishDialog {
       addView: addView,
       cancelButton: cancelButton,
       confirmButton: confirmButton,
-      progressColor: progressColor ?? Theme.of(context).primaryColor,
       style: style ?? DefaultStyle(),
     );
   }
