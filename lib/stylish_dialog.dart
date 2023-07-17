@@ -243,6 +243,13 @@ class StylishDialog {
   /// ```
   final DialogController? controller;
 
+  ///Size of the Progress Indicator
+  ///
+  ///Default value is 48.0
+  ///
+  ///sets equal height and width to the progress Indicator Container
+  double? progressIndicatorSize;
+
   StylishDialog({
     required this.context,
     required this.alertType,
@@ -262,6 +269,7 @@ class StylishDialog {
     this.cancelButton,
     this.style,
     this.controller,
+    this.progressIndicatorSize
   });
 
   ///The function used to show the stylish dialog
@@ -438,6 +446,7 @@ class StylishDialog {
       addView: addView,
       cancelButton: cancelButton,
       confirmButton: confirmButton,
+      sizeK: progressIndicatorSize,
       style: style ?? DefaultStyle(),
     );
   }

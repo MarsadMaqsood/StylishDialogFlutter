@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../stylish_dialog.dart';
 
-const double _sizeK = 48.0;
 const double KPadding = 12.0;
 
 // ignore: must_be_immutable
@@ -20,6 +19,7 @@ class StylishDialogUI extends StatefulWidget {
     this.addView,
     this.confirmButton,
     this.cancelButton,
+    this.sizeK,
     required this.style,
   });
 
@@ -38,6 +38,8 @@ class StylishDialogUI extends StatefulWidget {
 
   ///Dialog style
   Style style;
+  //progress Indicator Size
+  double? sizeK = 48.0;
 
   @override
   State<StylishDialogUI> createState() => _StylishDialogState();
@@ -230,8 +232,8 @@ class _StylishDialogState extends State<StylishDialogUI>
         );
       case StylishDialogType.PROGRESS:
         return Container(
-          width: _sizeK,
-          height: _sizeK,
+          width: widget.sizeK,
+          height: widget.sizeK,
           margin:
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: CircularProgressIndicator(
@@ -247,8 +249,8 @@ class _StylishDialogState extends State<StylishDialogUI>
               const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
           child: Container(
             alignment: Alignment.center,
-            width: _sizeK,
-            height: _sizeK,
+            width: widget.sizeK,
+            height: widget.sizeK,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
               // color: Colors.white,
@@ -273,8 +275,8 @@ class _StylishDialogState extends State<StylishDialogUI>
       case StylishDialogType.INFO:
         _playAnimation();
         return Container(
-          width: _sizeK,
-          height: _sizeK,
+          width: widget.sizeK,
+          height: widget.sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             border: Border.all(
@@ -302,8 +304,8 @@ class _StylishDialogState extends State<StylishDialogUI>
       case StylishDialogType.WARNING:
         _playAnimation();
         return Container(
-          width: _sizeK,
-          height: _sizeK,
+          width: widget.sizeK,
+          height: widget.sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             border: Border.all(
@@ -337,8 +339,8 @@ class _StylishDialogState extends State<StylishDialogUI>
         _playAnimation();
         return Container(
           alignment: Alignment.center,
-          width: _sizeK,
-          height: _sizeK,
+          width: widget.sizeK,
+          height: widget.sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             // color: Colors.white,
