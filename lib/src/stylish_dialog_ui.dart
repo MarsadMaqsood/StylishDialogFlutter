@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import '../stylish_dialog.dart';
 
 const double paddingK = 12.0;
+const double sizeK = 48.0;
 
-// ignore: must_be_immutable
 class StylishDialogUI extends StatefulWidget {
-  StylishDialogUI({
+  const StylishDialogUI({
     super.key,
     required this.context,
     required this.alertType,
     this.title,
     this.content,
-    this.confirmText,
-    this.cancelText,
-    this.confirmPressEvent,
-    this.cancelPressEvent,
     this.addView,
     this.confirmButton,
     this.cancelButton,
@@ -25,21 +21,16 @@ class StylishDialogUI extends StatefulWidget {
 
   final BuildContext context;
   final StylishDialogType? alertType;
-  Widget? title;
-  Widget? content;
-  String? confirmText;
-  String? cancelText;
-  VoidCallback? confirmPressEvent;
-  VoidCallback? cancelPressEvent;
-  Widget? addView;
+  final Widget? title, content;
 
-  Widget? confirmButton;
-  Widget? cancelButton;
+  final Widget? addView;
+
+  final Widget? confirmButton, cancelButton;
 
   ///Dialog style
-  Style style;
+  final Style style;
   //progress Indicator Size
-  double? sizeK = 48.0;
+  final double? sizeK;
 
   @override
   State<StylishDialogUI> createState() => _StylishDialogState();
@@ -88,12 +79,6 @@ class _StylishDialogState extends State<StylishDialogUI>
 
   @override
   Widget build(BuildContext context) {
-    ///Default values of Confirm Button Text
-    widget.confirmText ??= 'Confirm';
-
-    ///Default values of Cancel Button Text
-    widget.cancelText ??= 'Cancel';
-
     return Dialog(
       key: (widget.key ?? _key),
       shape: RoundedRectangleBorder(
@@ -135,20 +120,14 @@ class _StylishDialogState extends State<StylishDialogUI>
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: widget.cancelButton!,
-              )
-            else if (widget.cancelPressEvent != null)
-              _pressButtonWidget(
-                  widget.cancelPressEvent, Colors.red, widget.cancelText),
+              ),
 
             ///Confirm
             if (widget.confirmButton != null)
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: widget.confirmButton!,
-              )
-            else if (widget.confirmPressEvent != null)
-              _pressButtonWidget(
-                  widget.confirmPressEvent, Colors.teal, widget.confirmText),
+              ),
           ],
         ),
       ],
@@ -164,6 +143,7 @@ class _StylishDialogState extends State<StylishDialogUI>
         right: paddingK,
       ),
       child: DefaultTextStyle(
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20.0,
@@ -179,39 +159,18 @@ class _StylishDialogState extends State<StylishDialogUI>
   Widget _contentTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(
-        right: paddingK,
-        left: paddingK,
         top: paddingK,
+        left: paddingK,
+        right: paddingK,
       ),
       child: DefaultTextStyle(
+        textAlign: TextAlign.center,
         style: TextStyle(
+          fontSize: (Theme.of(context).textTheme.bodyLarge?.fontSize) ?? 15.0,
           color:
               (Theme.of(context).textTheme.titleMedium?.color) ?? Colors.black,
         ),
         child: text,
-      ),
-    );
-  }
-
-  //Button widget for confirm and cancel buttons
-  Widget _pressButtonWidget(pressEvent, color, text) {
-    return TextButton(
-      onPressed: () {
-        pressEvent?.call();
-      },
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(color),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: Text(
-          '$text',
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
-        ),
       ),
     );
   }
@@ -227,15 +186,14 @@ class _StylishDialogState extends State<StylishDialogUI>
   Widget _stylishDialogChange() {
     switch (widget.alertType) {
       case StylishDialogType.NORMAL:
-        return Container(
-          width: 0,
-        );
+        return const SizedBox();
       case StylishDialogType.PROGRESS:
         return Container(
-          width: widget.sizeK,
-          height: widget.sizeK,
-          margin:
-              const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
+          width: widget.sizeK ?? sizeK,
+          height: widget.sizeK ?? sizeK,
+          margin: const EdgeInsets.only(
+            top: 12.0,
+          ),
           child: CircularProgressIndicator(
             color: (widget.style as DefaultStyle).progressColor ??
                 Theme.of(context).primaryColor,
@@ -244,39 +202,35 @@ class _StylishDialogState extends State<StylishDialogUI>
         );
       case StylishDialogType.SUCCESS:
         _playAnimation();
-        return Padding(
-          padding:
-              const EdgeInsets.only(top: 12.0, left: 8, right: 8, bottom: 8),
-          child: Container(
-            alignment: Alignment.center,
-            width: widget.sizeK,
-            height: widget.sizeK,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(28),
-              // color: Colors.white,
-              border: Border.all(
-                color: Colors.green,
-                width: 2,
-              ),
+        return Container(
+          alignment: Alignment.center,
+          width: sizeK,
+          height: sizeK,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(
+              color: Colors.green,
+              width: 2,
             ),
-            padding: const EdgeInsets.all(2.0),
-            child: ScaleTransition(
-              scale: _animation,
-              // axis: Axis.horizontal,
-              // axisAlignment: -1, // 0
-              child: const Icon(
-                Icons.check,
-                color: Colors.green,
-                size: 38,
-              ),
+          ),
+          margin: const EdgeInsets.only(
+            top: 12,
+          ),
+          padding: const EdgeInsets.all(2.0),
+          child: ScaleTransition(
+            scale: _animation,
+            child: const Icon(
+              Icons.check,
+              color: Colors.green,
+              size: 36,
             ),
           ),
         );
       case StylishDialogType.INFO:
         _playAnimation();
         return Container(
-          width: widget.sizeK,
-          height: widget.sizeK,
+          width: sizeK,
+          height: sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             border: Border.all(
@@ -285,18 +239,18 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
           ),
           margin: const EdgeInsets.only(
-              top: 12.0, left: 8.0, right: 8.0, bottom: 8.0),
+            top: 12.0,
+          ),
           padding: const EdgeInsets.all(2.0),
           child: ScaleTransition(
             scale: _animation,
-            child: const Text(
-              'i',
-              textAlign: TextAlign.center,
-              style: TextStyle(
+            child: const Icon(
+              IconData(
+                0x0069,
                 fontFamily: 'serif',
-                color: Colors.blue,
-                fontSize: 36,
               ),
+              color: Colors.blue,
+              size: 36,
             ),
           ),
         );
@@ -304,8 +258,8 @@ class _StylishDialogState extends State<StylishDialogUI>
       case StylishDialogType.WARNING:
         _playAnimation();
         return Container(
-          width: widget.sizeK,
-          height: widget.sizeK,
+          width: sizeK,
+          height: sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             border: Border.all(
@@ -314,33 +268,27 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
           ),
           margin: const EdgeInsets.only(
-              top: 12.0, left: 8.0, right: 8.0, bottom: 8.0),
+            top: 12.0,
+          ),
           padding: const EdgeInsets.all(2.0),
           child: ScaleTransition(
             scale: _animation,
-            child: const Text(
-              'i',
-              textAlign: TextAlign.center,
-              style: TextStyle(
+            child: const Icon(
+              IconData(
+                0x0069,
                 fontFamily: 'serif',
-                color: Colors.amber,
-                fontSize: 36,
               ),
+              color: Colors.amber,
+              size: 36,
             ),
-
-            // child: const Icon(
-            //   Icons.info_outlined,
-            //   color: Colors.amber,
-            //   size: 44,
-            // ),
           ),
         );
       case StylishDialogType.ERROR:
         _playAnimation();
         return Container(
           alignment: Alignment.center,
-          width: widget.sizeK,
-          height: widget.sizeK,
+          width: sizeK,
+          height: sizeK,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             // color: Colors.white,
@@ -350,21 +298,21 @@ class _StylishDialogState extends State<StylishDialogUI>
             ),
           ),
           margin: const EdgeInsets.only(
-              top: 12.0, left: 8.0, right: 8.0, bottom: 8.0),
+            top: 12.0,
+          ),
           padding: const EdgeInsets.all(2.0),
           child: ScaleTransition(
-              scale: _animation,
-              child: const Icon(
-                Icons.clear,
-                color: Colors.red,
-                size: 38,
-              )),
+            scale: _animation,
+            child: const Icon(
+              Icons.clear,
+              color: Colors.red,
+              size: 36,
+            ),
+          ),
         );
 
       default:
-        return Container(
-            // width: 0,
-            );
+        return const SizedBox();
     }
   }
 
@@ -398,27 +346,19 @@ class _StylishDialogState extends State<StylishDialogUI>
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ///Confirm
+                    ///Confirm Button
                     if (widget.confirmButton != null)
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: widget.confirmButton!,
-                      )
-                    else if (widget.confirmPressEvent != null)
-                      _pressButtonWidgetStyle1(widget.confirmPressEvent,
-                          Colors.black, widget.confirmText),
+                      ),
 
-                    ///Cancel
+                    ///Cancel Button
                     if (widget.cancelButton != null)
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: widget.cancelButton!,
-                      )
-                    else if (widget.cancelPressEvent != null)
-                      _pressButtonWidgetStyle1(
-                          widget.cancelPressEvent, null, widget.cancelText,
-                          // Colors.transparent, widget.cancelText,
-                          textColor: Colors.black),
+                      ),
                   ],
                 ),
                 const SizedBox(
@@ -427,27 +367,6 @@ class _StylishDialogState extends State<StylishDialogUI>
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _pressButtonWidgetStyle1(pressEvent, color, text, {textColor}) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: TextButton(
-        onPressed: () async {
-          pressEvent();
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(color),
-          overlayColor: MaterialStateProperty.all(
-              (textColor ?? Colors.white).withOpacity(0.2)),
-        ),
-        child: Text(
-          '$text',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: textColor ?? Colors.white, fontSize: 16),
         ),
       ),
     );

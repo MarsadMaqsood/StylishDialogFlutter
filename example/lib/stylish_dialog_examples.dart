@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:stylish_dialog/stylish_dialog.dart';
 
 class StylishDialogExamples extends StatefulWidget {
-  const StylishDialogExamples({Key? key}) : super(key: key);
+  const StylishDialogExamples({super.key});
 
   @override
   State<StylishDialogExamples> createState() => _StylishDialogExamplesState();
@@ -289,10 +289,12 @@ class _StylishDialogExamplesState extends State<StylishDialogExamples> {
                       alertType: StylishDialogType.NORMAL,
                       title: const Text('Name'),
                       content: const Text('Please enter your name'),
-                      confirmText: 'Submit',
-                      confirmPressEvent: () {
-                        debugPrint(controller.text);
-                      },
+                      confirmButton: TextButton(
+                        onPressed: () {
+                          debugPrint(controller.text);
+                        },
+                        child: const Text('Submit'),
+                      ),
                       style: Style1(),
                       addView: SizedBox(
                         width: 400,

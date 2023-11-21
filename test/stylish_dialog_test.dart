@@ -148,10 +148,12 @@ void main() {
                         alertType: StylishDialogType.SUCCESS,
                         title: const Text('Congrats!'),
                         content: const Text('Task completed successfuly'),
-                        confirmPressEvent: () {
-                          dialog.dismiss();
-                        },
-                        confirmText: 'Dismiss',
+                        confirmButton: TextButton(
+                          onPressed: () {
+                            dialog.dismiss();
+                          },
+                          child: const Text('Dismiss'),
+                        ),
                       );
                     });
                   },
@@ -184,10 +186,12 @@ void main() {
                         decoration:
                             const InputDecoration(hintText: 'Enter your name'),
                       ),
-                      confirmText: 'Submit',
-                      confirmPressEvent: () {
-                        debugPrint(controller.text);
-                      },
+                      confirmButton: TextButton(
+                        onPressed: () {
+                          debugPrint(controller.text);
+                        },
+                        child: const Text('Submit'),
+                      ),
                       title: const Text('Name'),
                     );
                     dialog.show();

@@ -1,3 +1,8 @@
+## 1.1.0-beta
+- Removed deprecated APIs
+- Fixed bugs
+
+
 ## 1.0.2
 Changes: 
 - `Style.Default` to `DefaultStyle()`

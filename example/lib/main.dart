@@ -8,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class StylishExample extends StatefulWidget {
-  const StylishExample({Key? key}) : super(key: key);
+  const StylishExample({super.key});
 
   @override
   State<StylishExample> createState() => _StylishExampleState();
@@ -73,7 +73,7 @@ class _StylishExampleState extends State<StylishExample> {
                       context: context,
                       alertType: StylishDialogType.PROGRESS,
                       title: const Text('Processing...'),
-                      dismissOnTouchOutside: false,
+                      dismissOnTouchOutside: true,
                       controller: controller,
                       // confirmText: 'Yes',
                       // confirmPressEvent: () {},
@@ -82,9 +82,9 @@ class _StylishExampleState extends State<StylishExample> {
                     );
                     dialog.show();
 
-                    Future.delayed(const Duration(seconds: 3), () {
+                    Future.delayed(const Duration(seconds: 2), () {
                       dialog.changeAlertType(
-                        alertType: StylishDialogType.WARNING,
+                        alertType: StylishDialogType.NORMAL,
                         title: const Text('Congrats!'),
                         content: const Text('Task completed successfuly'),
 
@@ -92,10 +92,11 @@ class _StylishExampleState extends State<StylishExample> {
                         ///
                         /// ```dart
                         ///
-                        /// confirmText: 'Dismiss',
+                        /// confirmText: 'Dismissss',
                         /// confirmPressEvent: () {
                         ///   dialog.dismiss();
                         /// },
+
                         ///
                         /// cancelText: 'Not now',
                         /// cancelPressEvent: () {},
