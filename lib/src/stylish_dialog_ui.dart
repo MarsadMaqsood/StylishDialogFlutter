@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../stylish_dialog.dart';
 
-const double KPadding = 12.0;
+const double paddingK = 12.0;
 
 // ignore: must_be_immutable
 class StylishDialogUI extends StatefulWidget {
@@ -159,9 +159,9 @@ class _StylishDialogState extends State<StylishDialogUI>
   Widget _titleTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: KPadding,
-        left: KPadding,
-        right: KPadding,
+        top: paddingK,
+        left: paddingK,
+        right: paddingK,
       ),
       child: DefaultTextStyle(
         style: TextStyle(
@@ -179,9 +179,9 @@ class _StylishDialogState extends State<StylishDialogUI>
   Widget _contentTextWidget(text) {
     return Padding(
       padding: const EdgeInsets.only(
-        right: KPadding,
-        left: KPadding,
-        top: KPadding,
+        right: paddingK,
+        left: paddingK,
+        top: paddingK,
       ),
       child: DefaultTextStyle(
         style: TextStyle(

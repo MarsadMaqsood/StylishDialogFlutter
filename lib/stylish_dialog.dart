@@ -256,20 +256,20 @@ class StylishDialog {
     this.title,
     this.content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
-        this.confirmText,
+    this.confirmText,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
-        this.cancelText,
+    this.cancelText,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
-        this.confirmPressEvent,
+    this.confirmPressEvent,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
-        this.cancelPressEvent,
+    this.cancelPressEvent,
     this.dismissOnTouchOutside = true,
     this.addView,
     this.confirmButton,
     this.cancelButton,
     this.style,
     this.controller,
-    this.progressIndicatorSize
+    this.progressIndicatorSize,
   });
 
   ///The function used to show the stylish dialog
@@ -349,13 +349,13 @@ class StylishDialog {
     /// The widget can be any text-based widget, such as [Text] or [RichText].
     Widget? content,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
-        String? confirmText,
+    String? confirmText,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
-        String? cancelText,
+    String? cancelText,
     @Deprecated('Use `confirmButton` instead. will be removed soon')
-        VoidCallback? confirmPressEvent,
+    VoidCallback? confirmPressEvent,
     @Deprecated('Use `cancelButton` instead. will be removed soon')
-        VoidCallback? cancelPressEvent,
+    VoidCallback? cancelPressEvent,
 
     /// Use this property to add a confirm button widget to the dialog.
     /// The widget can be any type of button, such as [TextButton], [ElevatedButton] or [IconButton].
